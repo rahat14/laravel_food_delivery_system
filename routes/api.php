@@ -29,6 +29,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
      Route::get('/foods' , 'App\Http\Controllers\APIController@getFoodMenuViaResturant') ;
 
 
+     Route::get('/foods/variation/{food_id}' , 'App\Http\Controllers\APIController@getMenuVariation') ;
 
-
+     
     
+
+     // POST 
+     
+     Route::post('/foods/search' , 'App\Http\Controllers\APIController@getFoodMenuViaSearch') ;

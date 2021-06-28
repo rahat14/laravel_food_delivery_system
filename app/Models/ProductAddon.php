@@ -16,6 +16,7 @@ class ProductAddon extends Model
 
     public function addon()
     {
-        return $this->hasOne(Addon::class);
+      //  return $this->hasOne(Addon::class);
+        return $this->belongsTo(Addon::class);
     }
 }
