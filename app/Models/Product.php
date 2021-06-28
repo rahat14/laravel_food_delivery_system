@@ -29,13 +29,13 @@ class Product extends Model
         return $this->belongsToMany(OrderDetail::class);
     }
 
-    public function productiamges()
+    public function productimages()
     {
         return $this->hasMany(ProductImage::class);
     }
 
     public function productaddons()
     {
-        return $this->belongsToMany(ProductAddon::class);
+        return $this->hasMany(ProductAddon::class);
     }
 }
