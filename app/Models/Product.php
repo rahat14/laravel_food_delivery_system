@@ -36,7 +36,7 @@ class Product extends Model
 
     public function productaddons()
     {
-        return $this->belongsToMany(ProductAddon::class);
+        return $this->hasMany(ProductAddon::class);
     }
 
 
