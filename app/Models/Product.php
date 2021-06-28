@@ -16,7 +16,7 @@ class Product extends Model
 
     public function subcategory()
     {
-        return $this->belongsTo(Subategory::class);
+        return $this->belongsTo(Subcategory::class);
     }
 
     public function restaurant()
@@ -38,4 +38,6 @@ class Product extends Model
     {
         return $this->hasMany(ProductAddon::class);
     }
+
+
 }

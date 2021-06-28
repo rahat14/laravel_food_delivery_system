@@ -43,4 +43,5 @@ class Restaurant extends Model
     {
         return $this->belongsToMany(OrderItem::class);
     }
+  
 }
