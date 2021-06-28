@@ -13,4 +13,8 @@ class Addon extends Model
     {
         return $this->belongsToMany(OrderItem::class);
     }
+    public function productaddons()
+    {
+        return $this->belongsToMany(ProductAddon::class);
+    }
 }
