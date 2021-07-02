@@ -39,5 +39,9 @@ class Product extends Model
         return $this->hasMany(ProductAddon::class);
     }
 
+    public function category_subcategory()
+    {
+        return $this->hasMany(RestaurantMenu::class);
+    }
 
 }

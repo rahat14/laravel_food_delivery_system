@@ -43,5 +43,10 @@ class Restaurant extends Model
     {
         return $this->belongsToMany(OrderItem::class);
     }
+    public function category_subcategory()
+    {
+        return $this->hasMany(RestaurantMenu::class);
+    }
+
   
 }

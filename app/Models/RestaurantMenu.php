@@ -19,10 +19,12 @@ class RestaurantMenu extends Model
     }
     public function categories()
     {
-        return $this->hasMany(Category::class);
+        return $this->belongsTo(Category::class , "category_id" , "id");
     }
     public function subcategories()
     {
-        return $this->hasMany(Subcategory::class);
+        return $this->belongsTo(Subcategory::class , "subcategory_id" ,"id");
     }
+
+   
 }
