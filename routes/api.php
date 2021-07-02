@@ -24,11 +24,33 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
      Route::get('/resturants' , 'App\Http\Controllers\APIController@AllResturant') ;
+     
+     Route::get('/resturants/{res_id}' , 'App\Http\Controllers\APIController@SingleResturant') ;
+
+     Route::get('/foods/[res_id]' , 'App\Http\Controllers\APIController@getFoodMenuViaResturant') ;
 
 
-     Route::get('/foods' , 'App\Http\Controllers\APIController@getFoodMenuViaResturant') ;
+     Route::get('/foods/variation/{food_id}' , 'App\Http\Controllers\APIController@getMenuVariation') ;
+
+     Route::get('/startup' , 'App\Http\Controllers\APIController@settings') ;
 
 
+     Route::get('/foods/category/{cat_id}' , 'App\Http\Controllers\APIController@FoodFromCategory') ;
 
+     Route::get('/foods/sub-category/{sub_cat_id}' , 'App\Http\Controllers\APIController@FoodFromSUBCategory') ;
 
+     
     
+
+     // POST 
+     
+     Route::post('/foods/search' , 'App\Http\Controllers\APIController@getFoodMenuViaSearch') ;
+     Route::post('/register' , 'App\Http\Controllers\APIController@UserRegister') ;
+     Route::post('/login' , 'App\Http\Controllers\APIController@login_api') ;
+     Route::post('/add-address' , 'App\Http\Controllers\APIController@addAdress') ;
+     Route::post('/update-address' , 'App\Http\Controllers\APIController@updateAddress') ;
+     Route::post('/delelte-address/{id}' , 'App\Http\Controllers\APIController@deleteAddress') ;
+     
+     Route::post('/add-review' , 'App\Http\Controllers\APIController@addReview') ;
+
+     

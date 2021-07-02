@@ -9,6 +9,12 @@ class Addon extends Model
 {
     use HasFactory;
 
+    public function productsaddon()
+    {
+        return $this->belongsToMany(ProductAddon::class);
+    }
+
+
     public function orderitems()
     {
         return $this->belongsToMany(OrderItem::class);
