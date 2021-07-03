@@ -289,6 +289,8 @@ public function settings(){
         $user-> password = Hash::make($password) ; 
         $user -> save() ; 
 
+
+
         return response()-> 
         json([
             'msg'=> 'User Registerd !!!' , 
@@ -337,10 +339,21 @@ public function settings(){
         if(auth()->attempt(array('phone' => $input['phone'], 'password' => $input['password'])))
         {
 
+          $user = auth()->user();
+
+          $uid = $user->id ;
+
+
+          $newUser = User::find($uid)
+          ->with("address")
+          ->get() ;
+
+
+
             return response()->json([
                 'msg' => 'user found',
                 'error' =>  false  ,
-                'data' =>  auth()->user()
+                'data' =>   $newUser
             ], 200); 
 
         }else{

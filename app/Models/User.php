@@ -16,6 +16,12 @@ class User extends Authenticatable
         return $this->hasOne(UserType::class);
     }
 
+    public function address()
+    {
+        return $this->hasMany(UserAddress::class ,"customer_id" , "id");
+    }
+
+
     /**
      * The attributes that are mass assignable.
      *
