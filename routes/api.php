@@ -24,14 +24,16 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
      Route::get('/resturants' , 'App\Http\Controllers\APIController@AllResturant') ;
-     
      Route::get('/resturants/{res_id}' , 'App\Http\Controllers\APIController@SingleResturant') ;
 
-     Route::get('/foods/{res_id}' , 'App\Http\Controllers\APIController@singleFood') ;
+     //food menu request 
+     Route::get('/foods/resturant/{res_id}' , 'App\Http\Controllers\APIController@getFoodMenuViaResturant') ;
+     Route::get('/foods/resturant/featured/{res_id}' , 'App\Http\Controllers\APIController@getFearuedFoodMenuViaResturant') ;
+     
+     
 
 
      Route::get('/foods/variation/{food_id}' , 'App\Http\Controllers\APIController@getMenuVariation') ;
-
      Route::get('/startup' , 'App\Http\Controllers\APIController@settings') ;
 
 

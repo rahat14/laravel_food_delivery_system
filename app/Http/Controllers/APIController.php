@@ -58,15 +58,14 @@ public function settings(){
     // All Resturant 
 
     public function AllResturant(){
+       
         $list = Restaurant::query()
-             ->orderBy('id', 'DESC')
+             ->orderBy('id', 'ASC')
             //  ->with("categories")
             //  ->with("subcategories") 
             ->with(["category_subcategory.subcategories" , "category_subcategory.categories"]) 
           
-            ->with(["products.productaddons" , "products.productimages" , 
-            "products.category_subcategory.subcategories" , "products.category_subcategory.categories"])
-            ->paginate(15);
+           ->paginate(16);
 
              return response()-> json($list , 200) ; 
     }
@@ -77,9 +76,6 @@ public function settings(){
         $list = Restaurant::query()
              ->where('id' , $res_id)
           
-             ->with(["products.productaddons" , "products.productimages" ,
-             "products.category_subcategory.subcategories" ,
-              "products.category_subcategory.categories"])
              ->with(["category_subcategory.subcategories" , "category_subcategory.categories"]) 
 
              ->paginate(15);
@@ -93,13 +89,25 @@ public function settings(){
 
     public function getFoodMenuViaResturant($res_id){
         $list = Product::query()
+             ->orderBy('id', 'DESC')
              ->where("restaurant_id" , $res_id)
-             ->with("subcategory") 
-             ->with("category")
              ->with("restaurant")
              ->with(["category_subcategory.subcategories" , "category_subcategory.categories"]) 
              ->with(["productaddons" , "productimages"])
-             ->paginate(25);
+             ->paginate(5);
+             return response()-> json($list , 200) ; 
+    }
+
+    public function getFearuedFoodMenuViaResturant($res_id){
+        $list = Product::query()
+             ->orderBy('id', 'ASC')
+             ->where("restaurant_id" , $res_id)
+             ->where("is_featured" , 1)
+             ->with(["category_subcategory.subcategories" , "category_subcategory.categories"]) 
+             ->with(["productaddons" , "productimages"])
+             ->get();
+
+
              return response()-> json($list , 200) ; 
     }
 
