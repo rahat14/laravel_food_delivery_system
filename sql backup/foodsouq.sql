@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 02, 2021 at 07:42 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.0
+-- Generation Time: Jul 06, 2021 at 08:06 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `food_delivery`
+-- Database: `test`
 --
 
 -- --------------------------------------------------------
@@ -453,7 +453,7 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `slug`, `restaurant_id`, `banner`, `icon`, `image`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'enim', NULL, 1, '/84957594b46e1b0240de794e94e61c4e.jpg', '/226212f19f8792d7867e5c0b8135312e.jpg', 'tmp//93d5daf0adf7bd768f1ad398cace6d62.jpg', 0, '2012-11-22 18:09:00', '2012-07-22 04:07:03'),
+(1, 'enim', NULL, 0, '/84957594b46e1b0240de794e94e61c4e.jpg', '/226212f19f8792d7867e5c0b8135312e.jpg', 'tmp//93d5daf0adf7bd768f1ad398cace6d62.jpg', 0, '2012-11-22 18:09:00', '2012-07-22 04:07:03'),
 (2, 'laborum', NULL, 2, '/9ee338582ebe7866adb034b201c16ba5.jpg', '/67d489766c03178df9459277f7dbff8d.jpg', 'tmp//aac2acccc8207fee740b75da5393cd1e.jpg', 0, '2006-11-20 19:14:32', '2001-08-12 02:18:48'),
 (3, 'praesentium', NULL, 3, '/41a294490227c5c74ed248af16699885.jpg', '/693b3a2ca132fe5ef3922ab4752ae3eb.jpg', 'tmp//d800d4fd71db4fef1353c62d163e6a56.jpg', 0, '2016-09-03 01:31:14', '2010-09-29 12:21:50'),
 (4, 'nulla', NULL, 4, '/7eec154a5e790b5735607256249c31fd.jpg', '/fffa2a233b3df9738313c516ba1697b8.jpg', 'tmp//075a8656fabca3c693ee5e63e6eed3ca.jpg', 0, '1989-08-15 01:26:32', '2019-03-08 17:18:59'),
@@ -793,23 +793,23 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `slug`, `restaurant_id`, `category_id`, `subcategory_id`, `primary_image`, `unit_price`, `discount_price`, `ingridient`, `detail`, `tag`, `status`, `created_at`, `updated_at`, `is_featured`, `rating`) VALUES
-(1, 'quidem', NULL, 1, 1, 1, 'tmp//b11415eca21cfd1885a67f87d39be5ce.jpg', 1, 0, 'o', 'f', 'l', 0, '2006-03-09 12:55:44', '2010-11-25 18:58:02', 0, 0),
-(2, 'et', NULL, 2, 2, 2, 'tmp//a840eaf39c9d76fad91475205925eb50.jpg', 0, 0, 'x', 'x', 'v', 0, '1981-01-03 16:04:47', '1989-02-03 01:14:22', 1, 0),
-(3, 'perspiciatis', NULL, 3, 3, 3, 'tmp//694fdd14563902499df9d26961f12334.jpg', 215384279, 51882, 'd', 'j', 'm', 0, '1980-01-30 10:22:10', '2003-01-19 21:46:47', 1, 0),
-(4, 'delectus', NULL, 4, 4, 4, 'tmp//aea929217fbd798e850024d5637da647.jpg', 3011, 6, 'u', 'n', 'b', 0, '1998-05-11 09:59:58', '1999-10-13 06:11:15', 1, 0),
-(5, 'animi', NULL, 5, 5, 5, 'tmp//b23bef1178d4719443cacec1925ad6a3.jpg', 866, 9337932, 'g', 'q', 'p', 0, '1989-10-19 22:37:51', '2017-07-05 10:22:56', 1, 0),
-(6, 'voluptatem', NULL, 6, 6, 1, 'tmp//002213e8938a1b9dcd04a92413d3bf8e.jpg', 60172, 413, 'i', 'n', 'l', 0, '2009-11-11 09:37:24', '1990-02-12 18:51:07', 0, 0),
-(7, 'voluptas', NULL, 7, 7, 2, 'tmp//85061be565548788bfef98c67d208412.jpg', 0, 441272871, 'r', 'f', 'g', 0, '1999-12-21 23:57:44', '1976-10-13 05:13:25', 1, 0),
-(8, 'earum', NULL, 8, 8, 3, 'tmp//597e7b71867484b6e83dfc3d4b32b023.jpg', 283332, 66, 'r', 'z', 'e', 0, '1975-12-12 10:49:01', '2007-07-31 08:22:52', 1, 0),
-(9, 'eum', NULL, 9, 9, 4, 'tmp//d09810fa3ef57deb0f350ee2ad237d88.jpg', 48173152, 50087630, 'r', 'd', 'm', 0, '2004-09-06 18:17:05', '2007-08-27 10:49:50', 0, 0),
+(1, 'quidem', NULL, 1, 0, 0, 'tmp//b11415eca21cfd1885a67f87d39be5ce.jpg', 1, 0, 'o', 'f', 'l', 0, '2006-03-09 12:55:44', '2010-11-25 18:58:02', 0, 0),
+(2, 'et', NULL, 1, 2, 2, 'tmp//a840eaf39c9d76fad91475205925eb50.jpg', 0, 0, 'x', 'x', 'v', 0, '1981-01-03 16:04:47', '1989-02-03 01:14:22', 1, 0),
+(3, 'perspiciatis', NULL, 1, 3, 3, 'tmp//694fdd14563902499df9d26961f12334.jpg', 215384279, 51882, 'd', 'j', 'm', 0, '1980-01-30 10:22:10', '2003-01-19 21:46:47', 1, 0),
+(4, 'delectus', NULL, 1, 4, 4, 'tmp//aea929217fbd798e850024d5637da647.jpg', 3011, 6, 'u', 'n', 'b', 0, '1998-05-11 09:59:58', '1999-10-13 06:11:15', 1, 0),
+(5, 'animi', NULL, 1, 5, 5, 'tmp//b23bef1178d4719443cacec1925ad6a3.jpg', 866, 9337932, 'g', 'q', 'p', 0, '1989-10-19 22:37:51', '2017-07-05 10:22:56', 1, 0),
+(6, 'voluptatem', NULL, 1, 6, 1, 'tmp//002213e8938a1b9dcd04a92413d3bf8e.jpg', 60172, 413, 'i', 'n', 'l', 0, '2009-11-11 09:37:24', '1990-02-12 18:51:07', 0, 0),
+(7, 'voluptas', NULL, 1, 7, 2, 'tmp//85061be565548788bfef98c67d208412.jpg', 0, 441272871, 'r', 'f', 'g', 0, '1999-12-21 23:57:44', '1976-10-13 05:13:25', 1, 0),
+(8, 'earum', NULL, 1, 8, 3, 'tmp//597e7b71867484b6e83dfc3d4b32b023.jpg', 283332, 66, 'r', 'z', 'e', 0, '1975-12-12 10:49:01', '2007-07-31 08:22:52', 1, 0),
+(9, 'eum', NULL, 1, 9, 4, 'tmp//d09810fa3ef57deb0f350ee2ad237d88.jpg', 48173152, 50087630, 'r', 'd', 'm', 0, '2004-09-06 18:17:05', '2007-08-27 10:49:50', 0, 0),
 (10, 'nisi', NULL, 10, 10, 5, 'tmp//bd7775422293abb4879b5c5b0f356d4b.jpg', 2, 105706, 'i', 'j', 'w', 0, '2010-01-01 05:46:25', '1974-07-09 14:36:01', 1, 0),
 (11, 'reprehenderit', NULL, 11, 1, 1, 'tmp//d70522078dea95679d6fee44c3ce277a.jpg', 2, 0, 'z', 's', 's', 0, '1987-03-27 08:11:10', '2019-12-21 13:38:42', 1, 0),
 (12, 'rerum', NULL, 12, 2, 2, 'tmp//a5339ea2d61bd01e9b278cc09cb4aa63.jpg', 355, 135182, 'c', 'c', 'i', 0, '1983-06-28 03:45:29', '1992-11-24 21:10:54', 0, 0),
 (13, 'ex', NULL, 13, 3, 3, 'tmp//c38297553f8609efa3e5ad221aa62d09.jpg', 15227, 5, 'g', 'b', 'f', 0, '1995-07-12 21:59:13', '1977-06-09 02:54:35', 1, 0),
-(14, 'et', NULL, 14, 4, 4, 'tmp//5a0c5976a4eeb44510ba39f9dfd805b2.jpg', 3559945, 27633797, 'h', 'l', 'r', 0, '2019-06-02 04:04:38', '2001-04-11 14:45:45', 0, 0),
-(15, 'beatae', NULL, 15, 5, 5, 'tmp//6c6069080612a25d184037a4e61f05c5.jpg', 3109, 6645, 'c', 'q', 'f', 0, '1997-06-07 14:12:35', '2004-05-14 02:27:55', 1, 0),
-(16, 'reprehenderit', NULL, 16, 6, 1, 'tmp//71465701112d413530ccee8865f70098.jpg', 8436671, 61641810, 'n', 'n', 'h', 0, '2007-03-28 07:28:38', '1994-12-18 04:04:42', 1, 0),
-(17, 'voluptas', NULL, 17, 7, 2, 'tmp//30c10aaf0ce0f18a728a0d56143f5399.jpg', 4687, 9224, 'w', 'w', 'c', 0, '2013-08-28 01:33:21', '2004-07-04 06:06:18', 1, 0),
+(14, 'et', NULL, 1, 4, 4, 'tmp//5a0c5976a4eeb44510ba39f9dfd805b2.jpg', 3559945, 27633797, 'h', 'l', 'r', 0, '2019-06-02 04:04:38', '2001-04-11 14:45:45', 0, 0),
+(15, 'beatae', NULL, 1, 5, 5, 'tmp//6c6069080612a25d184037a4e61f05c5.jpg', 3109, 6645, 'c', 'q', 'f', 0, '1997-06-07 14:12:35', '2004-05-14 02:27:55', 1, 0),
+(16, 'reprehenderit', NULL, 1, 6, 1, 'tmp//71465701112d413530ccee8865f70098.jpg', 8436671, 61641810, 'n', 'n', 'h', 0, '2007-03-28 07:28:38', '1994-12-18 04:04:42', 1, 0),
+(17, 'voluptas', NULL, 1, 7, 2, 'tmp//30c10aaf0ce0f18a728a0d56143f5399.jpg', 4687, 9224, 'w', 'w', 'c', 0, '2013-08-28 01:33:21', '2004-07-04 06:06:18', 1, 0),
 (18, 'eos', NULL, 18, 8, 3, 'tmp//162f81ce1cb2ef733bfef1f961af77b8.jpg', 121687414, 394160, 't', 'e', 'i', 0, '2021-05-03 05:14:35', '1980-07-08 18:08:22', 1, 0),
 (19, 'omnis', NULL, 19, 9, 4, 'tmp//be0f3fd969acfd7e798a82c2f166adcc.jpg', 82, 25, 'm', 'y', 'd', 0, '2017-07-18 12:02:28', '2014-08-08 13:04:36', 0, 0),
 (20, 'quidem', NULL, 20, 10, 5, 'tmp//0dde26e85e5c8a87c1e8144ae5e4d2ae.jpg', 1068, 0, 'k', 'k', 'x', 0, '1975-08-19 02:19:25', '1991-02-10 12:30:23', 1, 0),
@@ -886,13 +886,13 @@ INSERT INTO `products` (`id`, `name`, `slug`, `restaurant_id`, `category_id`, `s
 (91, 'porro', NULL, 11, 1, 1, 'tmp//29306c838d940454c77117452141ff73.jpg', 2311763, 523075812, 'k', 'j', 'i', 0, '1971-03-15 02:08:07', '2011-11-25 23:47:19', 0, 0),
 (92, 'nihil', NULL, 12, 2, 2, 'tmp//3cd856a50012604ce41bf2176f8c93c2.jpg', 467, 22491, 'p', 'n', 'p', 0, '1983-10-14 17:20:39', '2016-08-16 08:51:23', 1, 0),
 (93, 'nihil', NULL, 13, 3, 3, 'tmp//93300edb3dec95804b0a0b7e6e137716.jpg', 5567, 134069, 'r', 'w', 'd', 0, '1974-07-01 16:16:23', '2009-11-03 13:03:50', 0, 0),
-(94, 'unde', NULL, 14, 4, 4, 'tmp//3e6ff1caf4f2b1f7b843b6d1873c0354.jpg', 21241693, 2, 's', 'w', 't', 0, '1971-03-26 20:05:49', '2002-11-05 14:39:12', 1, 0),
-(95, 'optio', NULL, 15, 5, 5, 'tmp//a22d7fdfef819940c6687dcad5169dab.jpg', 2, 259599, 'n', 'r', 'f', 0, '2017-07-04 18:07:32', '2015-10-07 09:28:14', 1, 0),
-(96, 'omnis', NULL, 16, 6, 1, 'tmp//900d8fd6c7497dd1e605faa3feb398e8.jpg', 32, 192745012, 'o', 'q', 's', 0, '1985-11-09 05:29:41', '2004-10-20 01:31:38', 1, 0),
-(97, 'sapiente', NULL, 17, 7, 2, 'tmp//bb6e2c99665d53cc38522ba2481535cb.jpg', 136, 47, 'u', 'f', 'x', 0, '1974-04-28 09:53:42', '1981-12-24 01:40:37', 0, 0),
-(98, 'autem', NULL, 18, 8, 3, 'tmp//ef71fe422a6f64432a8cf8a35aaa8e3c.jpg', 204, 3489, 'g', 'f', 'm', 0, '2009-12-25 03:38:30', '1993-01-26 08:27:50', 0, 0),
-(99, 'amet', NULL, 19, 9, 4, 'tmp//6441f0415ffd6bd90c4db803eddc9f27.jpg', 9652, 332168, 'e', 'e', 'u', 0, '1999-10-17 17:40:01', '1985-03-22 12:47:49', 0, 0),
-(100, 'veniam', NULL, 20, 10, 5, 'tmp//714668e207fe0a559419d5cd0dfd136a.jpg', 4, 2424087, 'z', 'v', 's', 0, '1997-09-14 10:37:21', '1999-12-05 20:38:51', 0, 0);
+(94, 'unde', NULL, 1, 4, 4, 'tmp//3e6ff1caf4f2b1f7b843b6d1873c0354.jpg', 21241693, 2, 's', 'w', 't', 0, '1971-03-26 20:05:49', '2002-11-05 14:39:12', 1, 0),
+(95, 'optio', NULL, 1, 5, 5, 'tmp//a22d7fdfef819940c6687dcad5169dab.jpg', 2, 259599, 'n', 'r', 'f', 0, '2017-07-04 18:07:32', '2015-10-07 09:28:14', 1, 0),
+(96, 'omnis', NULL, 1, 6, 1, 'tmp//900d8fd6c7497dd1e605faa3feb398e8.jpg', 32, 192745012, 'o', 'q', 's', 0, '1985-11-09 05:29:41', '2004-10-20 01:31:38', 1, 0),
+(97, 'sapiente', NULL, 1, 7, 2, 'tmp//bb6e2c99665d53cc38522ba2481535cb.jpg', 136, 47, 'u', 'f', 'x', 0, '1974-04-28 09:53:42', '1981-12-24 01:40:37', 1, 0),
+(98, 'autem', NULL, 1, 8, 3, 'tmp//ef71fe422a6f64432a8cf8a35aaa8e3c.jpg', 204, 3489, 'g', 'f', 'm', 0, '2009-12-25 03:38:30', '1993-01-26 08:27:50', 1, 0),
+(99, 'amet', NULL, 1, 9, 4, 'tmp//6441f0415ffd6bd90c4db803eddc9f27.jpg', 9652, 332168, 'e', 'e', 'u', 0, '1999-10-17 17:40:01', '1985-03-22 12:47:49', 1, 0),
+(100, 'veniam', NULL, 1, 10, 5, 'tmp//714668e207fe0a559419d5cd0dfd136a.jpg', 4, 2424087, 'z', 'v', 's', 0, '1997-09-14 10:37:21', '1999-12-05 20:38:51', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -1066,7 +1066,6 @@ INSERT INTO `restaurants` (`id`, `name`, `slug`, `email`, `phone`, `division_id`
 (1, 'laudantium', 'r', 'jermain76@example.com', '924.060.1544', '', '5', '7', '2223 Jessika Village Apt. 821\nEast Wymanchester, CA 17882', 59960133.52, 4.938, '3', 5, '/880f886191828c6bd37ae35f0eb5b180.jpg', 0, '1975-08-31 01:19:45', '1993-04-22 12:34:33', 0, 0),
 (2, 'et', 'l', 'lonzo.grimes@example.net', '09701844425', '2', '3', '5', '774 Kavon Route Apt. 769\nJakubowskistad, UT 75258', 3427688.1160428, 8321.39, '1', 1, '/ce5a4007ad1e6c2396bcecebe59ab21d.jpg', 0, '2019-01-26 11:27:30', '1976-07-27 12:42:10', 0, 0),
 (3, 'enim', 'b', 'hassan.king@example.net', '(814)873-7694x663', '1', '9', '1', '4954 Cremin Freeway Apt. 801\nSouth Misaelburgh, GA 53288', 3.08, 94092.8469, '', 1, '/accf22a3ce7dd61a77d8712030492593.jpg', 0, '1974-07-11 23:05:17', '1972-01-10 06:11:52', 0, 0),
-(4, 'itaque', 't', 'nyah34@example.org', '(737)714-0536x6368', '9', '', '6', '26468 Terry Glens Suite 530\nNigelmouth, MA 29320', 5.79357734, 10704850.528, '3', 5, '/fc12ed092b344ce16d00d8a02bec2329.jpg', 0, '2020-08-21 10:19:27', '1988-01-16 00:23:05', 0, 0),
 (5, 'autem', 'i', 'bhoeger@example.net', '+96(6)6243476753', '2', '2', '4', '71883 Upton Village\nSouth Sheilatown, RI 42816-9096', 2568, 0, '', 8, '/c8a1d63802f5ef78c4e500c58dacbf76.jpg', 0, '1984-10-13 20:20:38', '1991-05-15 06:01:31', 0, 0),
 (6, 'temporibus', 'r', 'anais05@example.net', '(568)034-4507x45044', '4', '6', '1', '14096 Adelle Walks Suite 132\nCharlotteland, RI 88571', 0, 7.6, '4', 5, '/bfe246f5fd88791913c4642b48002ba2.jpg', 0, '1986-12-02 19:49:32', '1976-08-24 14:40:02', 1, 0),
 (7, 'animi', 'j', 'nstanton@example.com', '237-435-0903x16440', '8', '3', '2', '760 Kacey Way\nPort Angelinashire, LA 70865', 439700.7448, 0, '', 5, '/9a1a81c63c17892c40752142e17e5a51.jpg', 0, '2006-02-18 19:57:55', '2005-05-23 10:07:28', 0, 0),
@@ -1100,6 +1099,17 @@ CREATE TABLE `restaurant_menus` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `restaurant_menus`
+--
+
+INSERT INTO `restaurant_menus` (`id`, `restaurant_id`, `product_id`, `category_id`, `subcategory_id`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 0, 1, 0, 1, NULL, NULL),
+(2, 1, 0, 0, 1, 1, NULL, NULL),
+(3, 0, 1, 1, 0, 1, NULL, NULL),
+(4, 0, 1, 0, 1, 1, NULL, NULL),
+(5, 0, 2, 2, 0, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1152,7 +1162,7 @@ CREATE TABLE `subcategories` (
 --
 
 INSERT INTO `subcategories` (`id`, `name`, `slug`, `restaurant_id`, `category_id`, `banner`, `icon`, `image`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'perferendis', NULL, 1, 1, NULL, NULL, 'tmp//230378ea0cba9cdad38612018ac66e89.jpg', 0, '1979-02-12 04:24:55', '2018-02-28 01:46:25'),
+(1, 'perferendis', NULL, 0, 1, NULL, NULL, 'tmp//230378ea0cba9cdad38612018ac66e89.jpg', 0, '1979-02-12 04:24:55', '2018-02-28 01:46:25'),
 (2, 'placeat', NULL, 2, 2, NULL, NULL, 'tmp//cd62076172deb6f0d286eaace13098a5.jpg', 0, '2013-02-11 07:55:50', '1975-10-08 01:44:31'),
 (3, 'esse', NULL, 3, 3, NULL, NULL, 'tmp//557855bb3fa86283465f8a567b9941b5.jpg', 0, '1995-02-05 11:07:47', '1973-01-19 05:04:48'),
 (4, 'inventore', NULL, 4, 4, NULL, NULL, 'tmp//fd66eef50071b56f59624e337933ff82.jpg', 0, '1974-04-09 19:11:41', '1982-02-26 12:43:11'),
@@ -1179,6 +1189,13 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `user_type_id`, `email`, `phone`, `address`, `status`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'trest', 3, '23423', '01516185792', '', 1, NULL, '$2y$10$oD8SLQiNAYoBqXPG9sq9auooRPxxNq03uqGqE5kBGzzp2r.1nBTvm', NULL, '2021-07-03 03:33:41', '2021-07-03 03:33:41');
+
 -- --------------------------------------------------------
 
 --
@@ -1193,8 +1210,18 @@ CREATE TABLE `user_addresses` (
   `area_id` bigint(20) UNSIGNED NOT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `address_type` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `user_addresses`
+--
+
+INSERT INTO `user_addresses` (`id`, `customer_id`, `division_id`, `district_id`, `area_id`, `address`, `created_at`, `updated_at`, `address_type`) VALUES
+(1, 1, 1, 1, 1, 'asefasfsadfsdf', NULL, NULL, ''),
+(2, 1, 1, 1, 0, 'asdfasdf', NULL, NULL, 'asdfasdf'),
+(3, 1, 1, 1, 1, 'asdfasdf', NULL, NULL, 'asdfasdf');
 
 -- --------------------------------------------------------
 
@@ -1658,7 +1685,7 @@ ALTER TABLE `restaurants`
 -- AUTO_INCREMENT for table `restaurant_menus`
 --
 ALTER TABLE `restaurant_menus`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `settings`
@@ -1676,13 +1703,13 @@ ALTER TABLE `subcategories`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user_addresses`
 --
 ALTER TABLE `user_addresses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user_reviews`

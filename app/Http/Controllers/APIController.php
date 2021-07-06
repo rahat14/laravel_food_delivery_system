@@ -93,8 +93,8 @@ public function settings(){
              ->where("restaurant_id" , $res_id)
              ->with("restaurant")
              ->with(["category_subcategory.subcategories" , "category_subcategory.categories"]) 
-             ->with(["productaddons" , "productimages"])
-             ->paginate(5);
+             ->with(["productaddons.addon" , "productimages"])
+             ->paginate(15);
              return response()-> json($list , 200) ; 
     }
 
@@ -104,7 +104,7 @@ public function settings(){
              ->where("restaurant_id" , $res_id)
              ->where("is_featured" , 1)
              ->with(["category_subcategory.subcategories" , "category_subcategory.categories"]) 
-             ->with(["productaddons" , "productimages"])
+             ->with(["productaddons.addon" , "productimages"])
              ->get();
 
 
@@ -117,7 +117,7 @@ public function settings(){
             ->with(["category_subcategory.subcategories" , "category_subcategory.categories"]) 
            //  ->with("category")
              ->with("restaurant")
-             ->with(["productaddons" , "productimages"])
+             ->with(["productaddons.addon" , "productimages"])
              ->paginate(25);
              return response()-> json($list , 200) ; 
     }
@@ -148,7 +148,7 @@ public function settings(){
             ->with("restaurant")
             ->with(["category_subcategory.subcategories" , "category_subcategory.categories"]) 
           
-            ->with(["products.productaddons" , "products.productimages"])
+            ->with(["products.productaddons.addon" , "products.productimages"])
             // ->with("categories")
             ->paginate(15);
         
@@ -163,7 +163,7 @@ public function settings(){
           
             // ->with("subcategory") 
             ->with("restaurant")
-            ->with(["products.productaddons" , "products.productimages"])
+            ->with(["products.productaddons.addon" , "products.productimages"])
             // ->with("category")
             ->paginate(15);
         
