@@ -46,6 +46,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
      // POST 
      
+     Route::post('/fav' , 'App\Http\Controllers\APIController@getFav') ;
      Route::post('/foods/search' , 'App\Http\Controllers\APIController@getFoodMenuViaSearch') ;
      Route::post('/register' , 'App\Http\Controllers\APIController@UserRegister') ;
      Route::post('/login' , 'App\Http\Controllers\APIController@login_api') ;

@@ -270,6 +270,37 @@ public function settings(){
 }
 
 
+// get all Fav 
+
+public function getFav(Request $req ){
+
+    $isFood = $req->isFood ; 
+    $idListStr = $req->ids ; 
+    $idList = explode(',', $idListStr);
+
+    if($isFood == 1 ){
+
+        $list = Product::with("restaurant")
+        ->with(["category_subcategory.subcategories" , "category_subcategory.categories"]) 
+        ->with(["productaddons.addon" , "productimages"])
+        ->whereIn('id', $idList)
+        ->paginate(100);
+        return response()-> json($list , 200) ; 
+
+    }else {
+
+        $list = Restaurant::
+        with(["category_subcategory.subcategories" , "category_subcategory.categories"]) 
+        ->whereIn('id', $idList)
+        ->paginate(100);
+        return response()-> json($list , 200) ; 
+
+    }
+         
+}
+
+
+
 
     /*
         ALL POST  

@@ -9,13 +9,13 @@ class OrderProductAddon extends Model
 {
     use HasFactory;
 
-    public function orderdetail()
+    public function orderitem()
     {
-        return $this->belongsTo(OrderDetail::class);
+        return $this->belongsTo(OrderItem::class);
     }
     public function product()
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(Product::class);
     }
     public function addons()
     {
