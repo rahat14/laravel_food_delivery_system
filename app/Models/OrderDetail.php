@@ -38,4 +38,21 @@ class OrderDetail extends Model
     {
         return $this->hasOne(OrderStatus::class);
     }
+
+    protected $fillable = [
+        'id',
+        'invoice_id',
+        'customer_id',
+        'total_amount',
+        'discount_amount',
+        'delivery_zone',
+        'address_id',
+        'coupon_id',
+        'vat',
+        'grand_total',
+        'payment_method',
+        'trx_id',
+        'order_list',
+    ];
+
 }
