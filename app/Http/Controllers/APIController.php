@@ -265,6 +265,7 @@ class APIController extends Controller
         $list = UserAddress::query()
             ->where("customer_id", $user_id)
             ->orderBy("id", "DESC")
+            
             ->get();
 
         return response()->
@@ -280,6 +281,8 @@ class APIController extends Controller
         $list = OrderDetail::query()
             ->where("customer_id", $user_id)
             ->orderBy("id", "DESC")
+            ->with("useraddress")
+            ->with("orderstatus.orderstatustype")
             ->get();
 
         return response()->

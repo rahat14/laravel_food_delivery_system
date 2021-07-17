@@ -21,7 +21,7 @@ class OrderDetail extends Model
 
     public function useraddress()
     {
-        return $this->hasOne(UserAddress::class);
+        return $this->belongsTo(UserAddress::class , "address_id" , "id");
     }
 
     public function coupon()
@@ -29,14 +29,14 @@ class OrderDetail extends Model
         return $this->hasOne(Coupon::class);
     }
 
-    public function paymentmethod()
-    {
-        return $this->hasOne(PaymentMethod::class);
-    }
+    // public function paymentmethod()
+    // {
+    //     return $this->hasOne(PaymentMethod::class);
+    // }
 
     public function orderstatus()
     {
-        return $this->hasOne(OrderStatus::class);
+        return $this->hasMany(OrderStatus::class ,"order_id" , "id");
     }
 
     protected $fillable = [
