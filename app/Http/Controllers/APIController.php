@@ -323,7 +323,7 @@ class APIController extends Controller
             return response()->
                 json([
                 'msg' => 'User With This Phone Number Allready Exist',
-                'error' => false,
+                'error' => true ,
                 'data' => null,
             ], 200);
 
