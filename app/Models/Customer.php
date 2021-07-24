@@ -14,10 +14,18 @@ class Customer extends Model
         return $this->belongsTo(UserType::class);
     }
 
-    public function useraddress()
+    // public function useraddress()
+    // {
+    //     return $this->hasOne(UserAddress::class);
+    // }
+
+    public function address()
     {
-        return $this->hasOne(UserAddress::class);
+        return $this->hasMany(UserAddress::class ,"customer_id" , "id");
     }
+
+
+
 
     public function wallet()
     {

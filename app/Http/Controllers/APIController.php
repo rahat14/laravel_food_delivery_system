@@ -5,17 +5,20 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use App\Models\Category;
+use App\Models\Customer;
 use App\Models\OrderDetail;
+use App\Models\OrderItem;
 use App\Models\OrderProductAddon;
 use App\Models\OrderStatus;
-use App\Models\OrderItem;
 use App\Models\Product;
 use App\Models\ProductAddon;
+use App\MOdels\Referrel;
 use App\Models\Restaurant;
 use App\Models\Subcategory;
 use App\Models\User;
 use App\Models\UserAddress;
 use App\Models\UserReview;
+use App\MOdels\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -265,7 +268,7 @@ class APIController extends Controller
         $list = UserAddress::query()
             ->where("customer_id", $user_id)
             ->orderBy("id", "DESC")
-            
+
             ->get();
 
         return response()->
@@ -300,29 +303,108 @@ class APIController extends Controller
     public function UserRegister(Request $req)
     {
 
-        $name = $req->name;
-        $mail = $req->mail;
+        $user_name = $req->name;
+        // $mail = $req->mail;
         $password = $req->password;
         $phone = $req->phone;
-
+        $ref_code = $req->code;
         $address = "";
 
-        $user = new User();
-        $user->name = str_replace('%20', ' ', $name);
-        $user->email = $mail;
-        $user->status = 1;
-        $user->phone = $phone;
-        $user->user_type_id = 3;
-        $user->address = $address;
-        $user->password = Hash::make($password);
-        $user->save();
+        // have to check for phone alllready exist or not
 
-        return response()->
-            json([
-            'msg' => 'User Registerd !!!',
-            'error' => false,
-            'data' => $user,
-        ], 200);
+        $users = Customer::query()
+            ->where('phone', $phone)
+            ->limit(1)
+            ->get();
+
+        $count = $users->count();
+
+        if ($count > 0) {
+            return response()->
+                json([
+                'msg' => 'User With This Phone Number Allready Exist',
+                'error' => false,
+                'data' => null,
+            ], 200);
+
+        } 
+        else {
+
+            $user = new Customer();
+            $user->fullname = str_replace('%20', ' ', $user_name);
+            $user->username = str_replace('%20', ' ', $user_name);
+            $user->referred_by = $ref_code;
+            $user->referrel_code = $ref_code;
+            $user->status = 1;
+            $user->phone = $phone;
+            $user->user_type_id = 3;
+            // $user->address = $address;
+            $user->password = Hash::make($password);
+            $user->save();
+
+            if ($ref_code != 0) {
+
+                // check if ref_code is valide or not
+
+                $userList = Customer::query()
+                    ->where('id', $ref_code)
+                    ->limit(1)
+                    ->get();
+
+                $counter = $userList->count();
+
+                if ($counter != 0) {
+
+                    $refferal = new Referrel();
+
+                    $refferal->referrel_owner_id = $ref_code;
+                    $refferal->referrel_user_id = $user->id;
+                    $refferal->referrel_code = $ref_code;
+                    $refferal->save();
+
+                    $users = Wallet::query()
+                        ->where("customer_id", $ref_code)
+                        ->increment('point', 20);
+
+                    $wallerModel = new Wallet();
+                    $wallerModel->customer_id = $user->id;
+                    $wallerModel->point = 0;
+                    $wallerModel->save();
+
+                    return response()->
+                        json([
+                        'msg' => 'User Registerd !!!',
+                        'error' => false,
+                        'data' => $user,
+                    ], 200);
+
+                }
+                else {
+                        // no valid ref code 
+
+
+                        return response()->
+                        json([
+                        'msg' => 'Refferal Code No Valid !!!',
+                        'error' => true ,
+                        'data' => null ,
+                    ], 200);
+
+
+                }
+
+            } else {
+
+                return response()->
+                    json([
+                    'msg' => 'User Registerd !!!',
+                    'error' => false,
+                    'data' => $user,
+                ], 200);
+
+            }
+
+        }
 
     }
 
@@ -357,21 +439,35 @@ class APIController extends Controller
 
         $input = $request->all();
 
-        if (auth()->attempt(array('phone' => $input['phone'], 'password' => $input['password']))) {
+        $users = Customer::query()
+            ->where('phone', $request->phone)
+            ->with("address")
+            ->limit(1)
+            ->get();
 
-            $user = auth()->user();
+        $counter = $users->count();
 
-            $uid = $user->id;
+        if ($counter > 0) {
 
-            $newUser = User::find($uid)
-                ->with("address")
-                ->get();
+            $user = $users[0];
 
-            return response()->json([
-                'msg' => 'user found',
-                'error' => false,
-                'data' => $newUser,
-            ], 200);
+            if (Hash::check($request->password, $user->password)) {
+
+                return response()->json([
+                    'msg' => 'user found',
+                    'error' => false,
+                    'data' => $user,
+                ], 200);
+
+            } else {
+
+                return response()->json([
+                    'msg' => 'Phone OR Password Not Valid',
+                    'error' => true,
+                    'data' => null,
+                ], 200);
+
+            }
 
         } else {
 
@@ -460,6 +556,22 @@ class APIController extends Controller
 
     }
 
+    public function getAllTHeReview($food_id, $res_id)
+    {
+
+        // food item review
+
+        $list = UserReview::query()
+            ->with("customer")
+            ->where("food_id", $food_id)
+            ->where("restaurant_id", $res_id)
+            ->orderby("id", "DESC")
+            ->get();
+
+        return response()->json($list, 200);
+
+    }
+
     public function addReview(Request $req)
     {
 
@@ -513,6 +625,7 @@ class APIController extends Controller
             json([
             'msg' => 'Review Added',
             'error' => false,
+            'data' => null,
 
         ], 200);
 
@@ -547,33 +660,31 @@ class APIController extends Controller
 
                 $order_item_model = new OrderItem();
                 $order_item_model->order_id = $o_Id;
-                $order_item_model->product_id = $order_detail->product_id;
-                $order_item_model->quantity = $order_detail->qty; //line 43
-                $order_item_model->unit_price = $order_detail->actual_unit_price;
-               // = $order_detail->sub_total;
+                $order_item_model->product_id = $order_detail->item_id;
+                $order_item_model->quantity = $order_detail->item_qty; //line 43
+                $order_item_model->unit_price = $order_detail->item_price;
+                // = $order_detail->sub_total;
                 $order_item_model->restaurant_id = $order_detail->restaurant_id;
+
+                $product_addons_string = $order_detail->item_addons;
 
                 $order_item_model->save();
 
-                $product_addons_string = $order_detail->add_ons;
+                //  $product_addons = json_decode($product_addons_string);
 
-                $product_addons = json_decode($request->product_addons_string);
-
-                if (is_array($product_addons) || is_object($product_addons)) {
-                    foreach ($product_addons as $addon) {
+                if (is_array($product_addons_string) || is_object($product_addons_string)) {
+                    foreach ($product_addons_string as $addon) {
 
                         $addONmodel = new OrderProductAddon();
-    
+
                         $addONmodel->order_id = $o_Id;
-                        $addONmodel->product_id = $addon->$product_id;
-                        $addONmodel->product_id = $addon->$addon_id;
-    
+                        $addONmodel->product_id = $addon->product_id;
+                        $addONmodel->addon_id = $addon->id;
+
                         $addONmodel->save();
-    
+
                     }
                 }
-
-
 
             }
 
@@ -589,5 +700,42 @@ class APIController extends Controller
                 'data' => null,
             ], 200);
         }
+    }
+
+    public function AdjustBalance(Request $req)
+    {
+        $type = $req->type;
+        $amt = (Int) $req->amount;
+        $user_id = $req->user_id;
+
+        if ($type == "credit") {
+            // using his balance
+
+            $usersWallet = Wallet::query()
+                ->where("customer_id", $user_id)
+                ->decrement('point', $amt);
+
+            $Wallet = Wallet::query()
+                ->where("customer_id", $user_id)
+                ->limit(1)
+                ->get();
+
+            return response()->json($Wallet, 200);
+
+        } else if ($type == "debit") {
+            //add money to balance
+            $usersWallet = Wallet::query()
+                ->where("customer_id", $user_id)
+                ->increment('point', $amt);
+
+            $Wallet = Wallet::query()
+                ->where("customer_id", $user_id)
+                ->limit(1)
+                ->get();
+
+            return response()->json($Wallet, 200);
+
+        }
+
     }
 }

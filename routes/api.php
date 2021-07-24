@@ -46,11 +46,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
      Route::get('/user/orders/{user_id}' , 'App\Http\Controllers\APIController@getAllPreviousOrder') ;
 
+     Route::get('/foods/review/{food_id}/{res_id}' , 'App\Http\Controllers\APIController@getAllTHeReview') ;
+
      
     
 
      // POST 
      
+
+
+     //adjust balance 
+
+     Route::post('/balance' , 'App\Http\Controllers\APIController@AdjustBalance') ;
+    
      Route::post('/create-order' , 'App\Http\Controllers\APIController@create_Order') ;
      
      Route::post('/fav' , 'App\Http\Controllers\APIController@getFav') ;
@@ -61,7 +69,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
      Route::post('/add-address' , 'App\Http\Controllers\APIController@addAdress') ;
      Route::post('/update-address' , 'App\Http\Controllers\APIController@updateAddress') ;
      Route::post('/delete-address/{id}' , 'App\Http\Controllers\APIController@deleteAddress') ;
-     
      Route::post('/add-review' , 'App\Http\Controllers\APIController@addReview') ;
 
      
