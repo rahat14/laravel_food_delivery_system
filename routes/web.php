@@ -20,11 +20,9 @@ use App\Http\Controllers\DashboardController;
 // });
 
 //Admin Pages Routes
-Route::group(['as' => 'admin.', 'prefix' => 'admin'], function(){
-
+Route::group(['middleware' => ['auth','admin'], 'as' => 'admin.', 'prefix' => 'admin'], function(){
 	Route::get('/', [DashboardController::class, 'index'])->name('index');
-
-});	
+});
 
 Auth::routes();
 

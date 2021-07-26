@@ -1,6 +1,6 @@
 @include('admin/layouts/' . 'header')
 
-	@include('admin/partials/' . 'sidebar')
+	@include('admin/partials/' . 'nav')
 
 	@yield('content')
 
