@@ -25,3 +25,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin'], function(){
 	Route::get('/', [DashboardController::class, 'index'])->name('index');
 
 });	
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
