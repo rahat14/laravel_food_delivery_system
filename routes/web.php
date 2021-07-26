@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\DashboardController;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,15 +17,23 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
-//Admin Pages Routes
+// Redirect to Admin
+Route::get('/', function(){
+    return redirect(RouteServiceProvider::ADMIN);
+});
+
+// Auth Routes
+Auth::routes(['register' => false]);
+
+// Admin Pages Routes
 Route::group(['middleware' => ['auth','admin'], 'as' => 'admin.', 'prefix' => 'admin'], function(){
 	Route::get('/', [DashboardController::class, 'index'])->name('index');
 });
 
-Auth::routes();
+// Show Login Page
+Route::get('/login', [App\Http\Controllers\DashboardController::class, 'login'])->name('login');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
