@@ -7,7 +7,7 @@
 
 
             <li class="treeview {{ NavActive(null , 2) }}">
-                <a href="#">
+                <a href="{{url('/admin')}}">
                     <i class="iconsmind-Dashboard"></i>
                     <span>Dashboard</span>
 
@@ -15,7 +15,7 @@
             </li>
 
 
-            <li class="treeview">
+            <li class="treeview {{ NavActive('categories' , 2) }}">
                 <a href="{{url('/admin/categories')}}">
                     <i class="iconsmind-Add"></i>
                     <span>Categories</span>
@@ -31,8 +31,8 @@
                 </a>
             </li> --}}
 
-            <li class="treeview">
-                <a href="#">
+            <li class="treeview {{ NavActive('restaurants' , 2) }}">
+                <a href="{{url('/admin/restaurants')}}">
                     <i class="iconsmind-Plates"></i>
                     <span>Restaurants</span>
 
