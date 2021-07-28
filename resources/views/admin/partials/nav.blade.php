@@ -6,7 +6,7 @@
         <ul class="sidebar-menu" data-widget="tree">
 
 
-            <li class="treeview">
+            <li class="treeview {{ NavActive(null , 2) }}">
                 <a href="#">
                     <i class="iconsmind-Dashboard"></i>
                     <span>Dashboard</span>
