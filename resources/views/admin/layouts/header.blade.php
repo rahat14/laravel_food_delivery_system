@@ -158,10 +158,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <!-- Control Sidebar Toggle Button -->
-                        <li>
-                            <a href="#" data-toggle="control-sidebar"><i class="iconsmind-Gears-2"></i></a>
-                        </li>
+
                     </ul>
                 </div>
             </nav>

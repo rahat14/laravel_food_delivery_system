@@ -24,13 +24,13 @@
             </li>
 
 
-            <li class="treeview">
+            {{-- <li class="treeview">
                 <a href="#">
                     <i class="iconsmind-Add"></i>
                     <span>Subcategories</span>
 
                 </a>
-            </li>
+            </li> --}}
 
             <li class="treeview">
                 <a href="#">

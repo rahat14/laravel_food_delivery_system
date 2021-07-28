@@ -1,15 +1,8 @@
 <footer class="main-footer">
       <div class="pull-right d-none d-sm-inline-block">
-          <ul class="nav nav-primary nav-dotted nav-dot-separated justify-content-center justify-content-md-end">
-  		  <li class="nav-item">
-  			<a class="nav-link" href="javascript:void(0)">FAQ</a>
-  		  </li>
-  		  <li class="nav-item">
-  			<a class="nav-link" href="#">Purchase Now</a>
-  		  </li>
-  		</ul>
+
       </div>
-  	  &copy; 2020 <a href="#">Multi-Purpose Themes</a>. All Rights Reserved.
+  	  &copy; 2021 <a href="#">Food Delevery Admin</a>. All Rights Reserved.
     </footer>
 
     <!-- Control Sidebar -->
@@ -113,7 +106,7 @@
             <li>
               <a href="javascript:void(0)">
                 <h4 class="control-sidebar-subheading">
-                  Development 
+                  Development
                   <span class="label label-primary pull-right">72%</span>
                 </h4>
 
@@ -180,7 +173,7 @@
             <!-- /.form-group -->
 
             <div class="form-group">
-              <label class="control-sidebar-subheading">              
+              <label class="control-sidebar-subheading">
                 <a href="javascript:void(0)" class="text-red margin-r-5"><i class="fa fa-trash-o"></i></a>
                 Delete chat history
               </label>
@@ -192,16 +185,16 @@
       </div>
     </aside>
     <!-- /.control-sidebar -->
-    
+
     <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
     <div class="control-sidebar-bg"></div>
-    
+
   </div>
   <!-- ./wrapper -->
-  	
-	 
-	  
+
+
+
 	@include('admin/partials/' . 'scripts')
-	
+
 </body>
 </html>
