@@ -16,10 +16,9 @@
 
 
             <li class="treeview">
-                <a href="#">
+                <a href="{{url('/admin/categories')}}">
                     <i class="iconsmind-Add"></i>
                     <span>Categories</span>
-
                 </a>
             </li>
 

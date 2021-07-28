@@ -14,7 +14,7 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin/' . 'restaurant_all');
     }
 
     /**

@@ -21,9 +21,9 @@
 	<!-- FastClick -->
 	<script src="{{asset('_admin/assets/vendor_components/fastclick/lib/fastclick.js')}}"></script>
 
-	<!-- apexcharts -->
+	{{-- <!-- apexcharts -->
 	<script src="{{asset('_admin/assets/vendor_components/apexcharts-bundle/irregular-data-series.js')}}"></script>
-	<script src="{{asset('_admin/assets/vendor_components/apexcharts-bundle/dist/apexcharts.js')}}"></script>
+	<script src="{{asset('_admin/assets/vendor_components/apexcharts-bundle/dist/apexcharts.js')}}"></script> --}}
 
 	<!-- peity -->
 	<script src="{{asset('_admin/assets/vendor_components/jquery.peity/jquery.peity.js')}}"></script>
@@ -31,8 +31,8 @@
 	<!-- Admin App -->
 	<script src="{{asset('_admin/js/template.js')}}"></script>
 
-	<!-- Admin dashboard -->
-	<script src="{{asset('_admin/js/pages/dashboard.js')}}"></script>
+	{{-- <!-- Admin dashboard -->
+	<script src="{{asset('_admin/js/pages/dashboard.js')}}"></script> --}}
 
 	<!-- Admin -->
 	<script src="{{asset('_admin/js/demo.js')}}"></script>
