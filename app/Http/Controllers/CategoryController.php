@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use Illuminate\Support\Str;
+use File;
 
 class CategoryController extends Controller
 {
@@ -179,24 +180,31 @@ class CategoryController extends Controller
             'icon.dimensions' => 'The image dimensions should be less then 50x50',
         ]);
 
-        // Handling Image Files
-        $image = $this->makeImage($request, 'image', storage_path("app/public/uploads/images/"));
-        $banner = $this->makeImage($request, 'banner', storage_path("app/public/uploads/banners/"));
-        $icon = $this->makeImage($request, 'icon', storage_path("app/public/uploads/icons/"));
-
         $categoryUpdate = Category::find($category->id);
-
         $categoryUpdate->name = $request->name;
         $categoryUpdate->slug = Str::slug($request->name);
-        $image ?
-            $categoryUpdate->image = $image : '';
-        $banner ?
-            $categoryUpdate->banner = $banner : '';
-        $icon ?
-            $categoryUpdate->icon = $icon : '';
-        $request->status ?
-            $categoryUpdate->status = 1 : $categoryUpdate->status = 0;
+        if($request->hasFile('image')){
+            File::delete( storage_path("app/public/uploads/images/$categoryUpdate->image"));
+            $image = $this->makeImage($request, 'image', storage_path("app/public/uploads/images/"));
+            $categoryUpdate->image = $image;
+        }
+        if($request->hasFile('banner')){
+            File::delete( storage_path("app/public/uploads/banners/$categoryUpdate->banner"));
+            $banner = $this->makeImage($request, 'banner', storage_path("app/public/uploads/banners/"));
+            $categoryUpdate->banner = $banner;
+        }
+        if($request->hasFile('icon')){
+            File::delete( storage_path("app/public/uploads/icons/$categoryUpdate->icon"));
+            $icon = $this->makeImage($request, 'icon', storage_path("app/public/uploads/icons/"));
+            $categoryUpdate->icon = $icon;
+        }
+        if($request->status){
+            $categoryUpdate->status = 1;
+        }else{
+            $categoryUpdate->status = 0;
+        }
         $categoryUpdate->save();
+
         toast('Success Toast','Category Created')->width('300px');
         return redirect()->route('admin.categories.index');
     }

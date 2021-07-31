@@ -32,7 +32,7 @@
                             <label for="banner">Banner</label>
                             <input type="file" class="form-control" id="banner" name="banner">
                             <div class="image-preview mt-4">
-                                <img width="100px" src="{{asset("storage/uploads/images/$category->banner")}}" alt="">
+                                <img width="100px" src="{{asset("storage/uploads/banners/$category->banner")}}" alt="">
                             </div>
                         </div>
 
@@ -40,7 +40,7 @@
                             <label for="icon">Icon</label>
                             <input type="file" class="form-control" id="icon" name="icon">
                             <div class="image-preview mt-4">
-                                <img width="50px" src="{{asset("storage/uploads/images/$category->icon")}}" alt="">
+                                <img width="50px" src="{{asset("storage/uploads/icons/$category->icon")}}" alt="">
                             </div>
                         </div>
 
