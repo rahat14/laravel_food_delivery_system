@@ -35,13 +35,13 @@ class CategoryController extends Controller
 
         return DataTables::of($category)
             ->addColumn('banner', function ($category) {
-                $bannerUrl = asset("storage/uploads/banners/$category->banner");
+                $bannerUrl = asset("uploads/banners/$category->banner");
                 return'
                 <img src="'.$bannerUrl.'" border="0" width="40" class="img-rounded" align="center" />
                 ';
             })
             ->addColumn('image', function ($category) {
-                $iamgeUrl =asset("storage/uploads/images/$category->image");
+                $iamgeUrl =asset("uploads/images/$category->image");
                 return'
                 <img src="'.$iamgeUrl.'" border="0" width="40" class="img-rounded" align="center" />
                 ';
@@ -103,9 +103,9 @@ class CategoryController extends Controller
     ]);
 
     // Handling Image Files
-    $image = $this->makeImage($request, 'image', storage_path("app/public/uploads/images/"));
-    $banner = $this->makeImage($request, 'banner', storage_path("app/public/uploads/banners/"));
-    $icon = $this->makeImage($request, 'icon', storage_path("app/public/uploads/icons/"));
+    $image = $this->makeImage($request, 'image', public_path("uploads/images/"));
+    $banner = $this->makeImage($request, 'banner', public_path("uploads/banners/"));
+    $icon = $this->makeImage($request, 'icon', public_path("uploads/icons/"));
 
     $category = new Category();
 
@@ -184,18 +184,18 @@ class CategoryController extends Controller
         $categoryUpdate->name = $request->name;
         $categoryUpdate->slug = Str::slug($request->name);
         if($request->hasFile('image')){
-            File::delete( storage_path("app/public/uploads/images/$categoryUpdate->image"));
-            $image = $this->makeImage($request, 'image', storage_path("app/public/uploads/images/"));
+            File::delete( public_path("uploads/images/$categoryUpdate->image"));
+            $image = $this->makeImage($request, 'image', public_path("uploads/images/"));
             $categoryUpdate->image = $image;
         }
         if($request->hasFile('banner')){
-            File::delete( storage_path("app/public/uploads/banners/$categoryUpdate->banner"));
-            $banner = $this->makeImage($request, 'banner', storage_path("app/public/uploads/banners/"));
+            File::delete( public_path("uploads/banners/$categoryUpdate->banner"));
+            $banner = $this->makeImage($request, 'banner', public_path("uploads/banners/"));
             $categoryUpdate->banner = $banner;
         }
         if($request->hasFile('icon')){
-            File::delete( storage_path("app/public/uploads/icons/$categoryUpdate->icon"));
-            $icon = $this->makeImage($request, 'icon', storage_path("app/public/uploads/icons/"));
+            File::delete( public_path("uploads/icons/$categoryUpdate->icon"));
+            $icon = $this->makeImage($request, 'icon', public_path("uploads/icons/"));
             $categoryUpdate->icon = $icon;
         }
         if($request->status){
@@ -218,6 +218,9 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $destroy = Category::find($category->id);
+        File::delete( public_path("uploads/images/$destroy->image"));
+        File::delete( public_path("uploads/banners/$destroy->banner"));
+        File::delete( public_path("uploads/icons/$destroy->icon"));
         $destroy->delete();
     }
 }
