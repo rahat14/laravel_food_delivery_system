@@ -6,6 +6,7 @@ use App\Http\Traits\ImageTrait;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -108,11 +109,12 @@ class CategoryController extends Controller
     $category = new Category();
 
     $category->name = $request->name;
+    $category->slug = Str::slug($request->name);
     $category->image = $image;
     $category->banner = $banner;
     $category->icon = $icon;
     $request->status ?
-        $category->status = 1 : '';
+        $category->status = 1 : $category->status = 0;
     $category->save();
     toast('Success Toast','Category Created')->width('300px');
     return redirect()->route('admin.categories.index');
@@ -137,7 +139,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        $category = Category::find($category->id);
+        return view('admin.category_update', compact('category'));
     }
 
     /**
@@ -149,7 +152,53 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        // return $request;
+        // return $category->id;
+        $request->validate([
+            'name' => ['required'],
+            'image' => [
+                'mimes:png,jpg,jpeg',
+                'max:500',
+                'dimensions:width=200,_height=50'
+            ],
+            'banner' => [
+                'mimes:png,jpg,jpeg',
+                'max:500',
+                'dimensions:width=200,height=50'
+            ],
+            'icon' => [
+                'mimes:png,jpg,jpeg',
+                'max:500',
+                'dimensions:max_width=50,max_height=50'
+            ],
+        ],
+        [
+            // Custom errors
+            'image.dimensions' => 'The image dimensions should be 200x50',
+            'banner.dimensions' => 'The banner dimensions should be 200x50',
+            'icon.dimensions' => 'The image dimensions should be less then 50x50',
+        ]);
+
+        // Handling Image Files
+        $image = $this->makeImage($request, 'image', storage_path("app/public/uploads/images/"));
+        $banner = $this->makeImage($request, 'banner', storage_path("app/public/uploads/banners/"));
+        $icon = $this->makeImage($request, 'icon', storage_path("app/public/uploads/icons/"));
+
+        $categoryUpdate = Category::find($category->id);
+
+        $categoryUpdate->name = $request->name;
+        $categoryUpdate->slug = Str::slug($request->name);
+        $image ?
+            $categoryUpdate->image = $image : '';
+        $banner ?
+            $categoryUpdate->banner = $banner : '';
+        $icon ?
+            $categoryUpdate->icon = $icon : '';
+        $request->status ?
+            $categoryUpdate->status = 1 : $categoryUpdate->status = 0;
+        $categoryUpdate->save();
+        toast('Success Toast','Category Created')->width('300px');
+        return redirect()->route('admin.categories.index');
     }
 
     /**
