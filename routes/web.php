@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth', 'admin'], 'as' => 'admin.', 'prefix' => '
     Route::get('/', [DashboardController::class, 'index'])->name('index');
 
     // Category Routes
+    Route::get('/categories/list', [CategoryController::class, 'categoryList'])->name('category.list');
     Route::resource('/categories', CategoryController::class);
     // Restaurant Routes
     Route::resource('/restaurants', RestaurantController::class);

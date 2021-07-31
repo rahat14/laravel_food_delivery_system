@@ -8,3 +8,5 @@
 @include('admin/layouts/' . 'footer')
 
 @include('sweetalert::alert')
+
+@stack('custom-scripts')

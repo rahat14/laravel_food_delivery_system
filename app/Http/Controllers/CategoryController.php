@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Yajra\Datatables\Datatables;
 
 class CategoryController extends Controller
 {
@@ -17,6 +18,39 @@ class CategoryController extends Controller
         return view('admin/' . 'category_all');
     }
 
+    public function categoryList()
+    {
+        $category = Category::select(
+            'id',
+            'name',
+            'banner',
+            'image',
+            'status'
+        );
+
+        return DataTables::of($category)
+            ->addColumn('banner', function ($category) {
+                $bannerUrl = $category->banner;
+                return'
+                <img src="'.$bannerUrl.'" border="0" width="40" class="img-rounded" align="center" />
+                ';
+            })
+            ->addColumn('image', function ($category) {
+                $iamgeUrl = $category->image;
+                return'
+                <img src="'.$iamgeUrl.'" border="0" width="40" class="img-rounded" align="center" />
+                ';
+            })
+            ->addColumn('action', function ($category) {
+                return '
+                    <a href="categories/'.$category->id.'/edit" class=" btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+                    <a href="categories/'.$category->id.'" class="btn  btn-xs my-1 btn-danger"><i class="glyphicon glyphicon-trash"></i> Delete</a>
+                ';
+            })
+            ->rawColumns(['banner','image', 'action'])
+            ->make(true);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -24,7 +58,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.category_create');
     }
 
     /**
