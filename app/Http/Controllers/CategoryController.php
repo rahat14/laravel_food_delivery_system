@@ -33,13 +33,13 @@ class CategoryController extends Controller
 
         return DataTables::of($category)
             ->addColumn('banner', function ($category) {
-                $bannerUrl = $category->banner;
+                $bannerUrl = asset("storage/uploads/banners/$category->banner");
                 return'
                 <img src="'.$bannerUrl.'" border="0" width="40" class="img-rounded" align="center" />
                 ';
             })
             ->addColumn('image', function ($category) {
-                $iamgeUrl = $category->image;
+                $iamgeUrl =asset("storage/uploads/banners/$category->image");
                 return'
                 <img src="'.$iamgeUrl.'" border="0" width="40" class="img-rounded" align="center" />
                 ';
