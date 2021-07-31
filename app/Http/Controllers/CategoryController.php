@@ -69,7 +69,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $request->validate([
+        'name' => ['required'],
+        'image' => ['required', 'mimes:png,jpg,jpeg', 'max:500', 'dimensions:width=200,height=50'],
+        'banner' => ['required', 'mimes:png,jpg,jpeg', 'max:500', 'dimensions:width=200,height=50'],
+        'icon' => ['required', 'mimes:png,jpg,jpeg', 'max:500', 'dimensions:width=200,height=50'],
+       ]);
+
     }
 
     /**
