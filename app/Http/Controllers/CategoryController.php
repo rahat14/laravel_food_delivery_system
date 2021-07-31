@@ -80,26 +80,26 @@ class CategoryController extends Controller
             'required',
             'mimes:png,jpg,jpeg',
             'max:500',
-            'dimensions:width=200,_height=50'
+            // 'dimensions:width=200,_height=50'
         ],
         'banner' => [
             'required',
             'mimes:png,jpg,jpeg',
             'max:500',
-            'dimensions:width=200,height=50'
+            // 'dimensions:width=200,height=50'
         ],
         'icon' => [
             'required',
             'mimes:png,jpg,jpeg',
             'max:500',
-            'dimensions:max_width=50,max_height=50'
+            // 'dimensions:max_width=50,max_height=50'
         ],
     ],
     [
-        // Custom errors
-        'image.dimensions' => 'The image dimensions should be 200x50',
-        'banner.dimensions' => 'The banner dimensions should be 200x50',
-        'icon.dimensions' => 'The image dimensions should be less then 50x50',
+        // // Custom errors
+        // 'image.dimensions' => 'The image dimensions should be 200x50',
+        // 'banner.dimensions' => 'The banner dimensions should be 200x50',
+        // 'icon.dimensions' => 'The image dimensions should be less then 50x50',
     ]);
 
     // Handling Image Files
@@ -160,24 +160,24 @@ class CategoryController extends Controller
             'image' => [
                 'mimes:png,jpg,jpeg',
                 'max:500',
-                'dimensions:width=200,_height=50'
+                // 'dimensions:width=200,_height=50'
             ],
             'banner' => [
                 'mimes:png,jpg,jpeg',
                 'max:500',
-                'dimensions:width=200,height=50'
+                // 'dimensions:width=200,height=50'
             ],
             'icon' => [
                 'mimes:png,jpg,jpeg',
                 'max:500',
-                'dimensions:max_width=50,max_height=50'
+                // 'dimensions:max_width=50,max_height=50'
             ],
         ],
         [
-            // Custom errors
-            'image.dimensions' => 'The image dimensions should be 200x50',
-            'banner.dimensions' => 'The banner dimensions should be 200x50',
-            'icon.dimensions' => 'The image dimensions should be less then 50x50',
+            // // Custom errors
+            // 'image.dimensions' => 'The image dimensions should be 200x50',
+            // 'banner.dimensions' => 'The banner dimensions should be 200x50',
+            // 'icon.dimensions' => 'The image dimensions should be less then 50x50',
         ]);
 
         $categoryUpdate = Category::find($category->id);
