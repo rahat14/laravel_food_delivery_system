@@ -31,7 +31,7 @@ class CategoryController extends Controller
             'banner',
             'image',
             'status'
-        );
+        )->orderBy('id','desc');
 
         return DataTables::of($category)
             ->addColumn('banner', function ($category) {
@@ -41,15 +41,15 @@ class CategoryController extends Controller
                 ';
             })
             ->addColumn('image', function ($category) {
-                $iamgeUrl =asset("storage/uploads/banners/$category->image");
+                $iamgeUrl =asset("storage/uploads/images/$category->image");
                 return'
                 <img src="'.$iamgeUrl.'" border="0" width="40" class="img-rounded" align="center" />
                 ';
             })
             ->addColumn('action', function ($category) {
                 return '
-                    <a href="categories/'.$category->id.'/edit" class=" btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
-                    <a href="categories/'.$category->id.'" class="btn  btn-xs my-1 btn-danger"><i class="glyphicon glyphicon-trash"></i> Delete</a>
+                    <a href="/admin/categories/'.$category->id.'/edit" class=" btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+                    <a href="/admin/categories/'.$category->id.'" onclick="$(.submit).submit()" class="delete-confirm btn  btn-xs my-1 btn-danger"><i class="glyphicon glyphicon-trash"></i> Delete</a>
                 ';
             })
             ->rawColumns(['banner','image', 'action'])
@@ -217,6 +217,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $destroy = Category::find($category->id);
+        $destroy->delete();
     }
 }
