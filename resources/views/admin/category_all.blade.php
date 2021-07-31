@@ -10,7 +10,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="m-0">All Catergoris</h3>
-                    <a href="{{route('admin.categories.create')}}" class="float-left btn btn-success"> <i class="iconsmind-Add"></i> Add Category</a>
+                    <a href="{{route('admin.categories.create')}}" class="float-left btn btn-success"> <i class="iconsmind-Add"></i> Create Category</a>
                 </div>
 
                 <div class="card-body">

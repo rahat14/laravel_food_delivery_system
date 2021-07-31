@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Traits\ImageTrait;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 
 class CategoryController extends Controller
 {
+    use ImageTrait;
+
     /**
      * Display a listing of the resource.
      *
@@ -71,11 +74,48 @@ class CategoryController extends Controller
     {
        $request->validate([
         'name' => ['required'],
-        'image' => ['required', 'mimes:png,jpg,jpeg', 'max:500', 'dimensions:width=200,height=50'],
-        'banner' => ['required', 'mimes:png,jpg,jpeg', 'max:500', 'dimensions:width=200,height=50'],
-        'icon' => ['required', 'mimes:png,jpg,jpeg', 'max:500', 'dimensions:width=200,height=50'],
-       ]);
+        'image' => [
+            'required',
+            'mimes:png,jpg,jpeg',
+            'max:500',
+            'dimensions:width=200,_height=50'
+        ],
+        'banner' => [
+            'required',
+            'mimes:png,jpg,jpeg',
+            'max:500',
+            'dimensions:width=200,height=50'
+        ],
+        'icon' => [
+            'required',
+            'mimes:png,jpg,jpeg',
+            'max:500',
+            'dimensions:max_width=50,max_height=50'
+        ],
+    ],
+    [
+        // Custom errors
+        'image.dimensions' => 'The image dimensions should be 200x50',
+        'banner.dimensions' => 'The banner dimensions should be 200x50',
+        'icon.dimensions' => 'The image dimensions should be less then 50x50',
+    ]);
 
+    // Handling Image Files
+    $image = $this->makeImage($request, 'image', storage_path("app/public/uploads/images/"));
+    $banner = $this->makeImage($request, 'banner', storage_path("app/public/uploads/banners/"));
+    $icon = $this->makeImage($request, 'icon', storage_path("app/public/uploads/icons/"));
+
+    $category = new Category();
+
+    $category->name = $request->name;
+    $category->image = $image;
+    $category->banner = $banner;
+    $category->icon = $icon;
+    $request->status ?
+        $category->status = 1 : '';
+    $category->save();
+    toast('Success Toast','Category Created')->width('300px');
+    return redirect()->route('admin.categories.index');
     }
 
     /**

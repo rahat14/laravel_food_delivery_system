@@ -9,7 +9,7 @@
             @include('admin.partials.error')
             <div class="card">
                 <div class="card-header">
-                    <h3 class="m-0"> <a href="{{url()->previous()}}" class="btn btn-sm btn-primary"><i class="iconsmind-Left " ></i></a> Catergory</h3>
+                    <h3 class="m-0"> <a href="{{route('admin.categories.index')}}" class="btn btn-sm btn-primary"><i class="iconsmind-Left " ></i></a> Catergory</h3>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('admin.categories.store') }}" method="POST" enctype="multipart/form-data">
@@ -35,18 +35,13 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="email">Restaurant</label>
-                            <input type="text" class="form-control" id="restaurant" name="restaurant_id">
-                        </div>
-
-                        <div class="form-group">
                             <label for="status">Status</label>
                             <br>
                             <input type="checkbox" id="status" class="filled-in chk-col-green" name="status">
                             <label for="status"></label>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Add</button>
+                        <button type="submit" class="btn btn-primary">Create</button>
                     </form>
                 </div>
             </div>
