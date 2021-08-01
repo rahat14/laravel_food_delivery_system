@@ -13,6 +13,7 @@
     <title>Administration Dashboard</title>
 
     @include('admin/partials/' . 'styles')
+    @stack('custom-css')
 
 
 </head>

@@ -28,6 +28,11 @@ class CreateRestaurantsTable extends Migration
             $table->string('delivery_time');
             $table->integer('delivery_charge');
             $table->string('logo')->nullable();
+            $table->string('opening_time')->nullable();
+            $table->string('closeing_time')->nullable();
+            $table->text('tags')->nullable();
+            $table->boolean('is_featured')->default(0);
+            $table->float('rating')->default(null);
             $table->boolean('status')->default(1);
             $table->timestamps();
         });
