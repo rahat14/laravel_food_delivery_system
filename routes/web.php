@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RestaurantController;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,9 @@ Route::group(['middleware' => ['auth', 'admin'], 'as' => 'admin.', 'prefix' => '
     Route::get('/restaurants/list', [RestaurantController::class, 'restaurantsList'])->name('restaurants.list');
     Route::resource('/restaurants', RestaurantController::class);
 
+    // Products Routes
+    Route::get('/products/list', [ProductController::class, 'productsList'])->name('products.list');
+    Route::resource('/products', ProductController::class);
 
 
 });

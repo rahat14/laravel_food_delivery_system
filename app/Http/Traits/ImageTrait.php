@@ -20,4 +20,17 @@ trait ImageTrait {
         }
         return false;
     }
+
+    public function makeMultiImage($imageFieldName, $savePath)
+    {
+            // Garbing the original image name
+            $imageName = $imageFieldName->getClientOriginalName();
+            // Changing the name
+            $newImageName = str_replace(' ', '', time().'-'.$imageName);
+            // intervention Make image
+            $imageMake = Image::make($imageFieldName->getRealPath());
+            // saving image
+            $imageMake->save($savePath.$newImageName);
+            return $newImageName;
+    }
 }

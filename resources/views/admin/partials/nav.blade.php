@@ -39,6 +39,14 @@
                 </a>
             </li>
 
+            <li class="treeview {{ NavActive('products' , 2) }}">
+                <a href="{{url('/admin/products')}}">
+                    <i class="iconsmind-Plates"></i>
+                    <span>Products</span>
+
+                </a>
+            </li>
+
 
             <li class="treeview">
                 <a href="#">

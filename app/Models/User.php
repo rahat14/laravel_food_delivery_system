@@ -14,9 +14,9 @@ class User extends Authenticatable
     public function usertype()
     {
         return $this->hasOne(UserType::class);
-    }
+}
 
-   
+
 
     /**
      * The attributes that are mass assignable.

@@ -104,7 +104,7 @@ class RestaurantController extends Controller
         $request->is_featured ? $restaurant->is_featured = 1 : $restaurant->is_featured = 0;
         $request->status ? $restaurant->status = 1 : $restaurant->status = 0;
 
-        // null filds
+        // null fields
         $restaurant->area_id = 0;
         $restaurant->division_id = 0;
         $restaurant->lat = 0;

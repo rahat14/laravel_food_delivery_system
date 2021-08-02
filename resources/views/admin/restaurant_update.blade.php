@@ -14,7 +14,7 @@
             @include('admin.partials.error')
             <div class="card">
                 <div class="card-header">
-                    <h3 class="m-0"> <a href="{{route('admin.restaurants.index')}}" class="btn btn-sm btn-primary"><i class="iconsmind-Left " ></i></a> Catergory</h3>
+                    <h3 class="m-0"> <a href="{{route('admin.restaurants.index')}}" class="btn btn-sm btn-primary"><i class="iconsmind-Left " ></i></a> Update Restaurant</h3>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('admin.restaurants.update', $restaurant->id) }}" method="post" enctype="multipart/form-data">
@@ -105,7 +105,7 @@
                             <label for="status"></label>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Create </button>
+                        <button type="submit" class="btn btn-primary">Update </button>
                     </form>
                 </div>
             </div>
