@@ -33,6 +33,23 @@ class APIController extends Controller
     ALL GET
 
      */
+    public function getStatus($order_id)
+    {
+        // get the list
+        $list = OrderStatus::query()
+            ->where("order_id", $order_id)
+            ->with("orderstatustype")
+            ->get();
+
+        return response()->json(
+
+            $list,
+            200
+
+        );
+
+    }
+
     // appp settings
 
     public function settings()

@@ -20,6 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // $router->group(['prefix' => 'api/v1'], function () use ($router) {
 
+//get order status 
+Route::get('/order/status/{order_id}', 'App\Http\Controllers\APIController@getStatus');  
+
 //get app settings 
 Route::get('/settings', 'App\Http\Controllers\APIController@settings');
    
@@ -55,11 +58,8 @@ Route::get('/user/coupon/{coupon_code}', 'App\Http\Controllers\APIController@get
 // POST
 
 //adjust balance
-
 Route::post('/balance', 'App\Http\Controllers\APIController@AdjustBalance');
-
 Route::post('/create-order', 'App\Http\Controllers\APIController@create_Order');
-
 Route::post('/fav', 'App\Http\Controllers\APIController@getFav');
 Route::post('/resturant/search', 'App\Http\Controllers\APIController@getResturantViaSearch');
 Route::post('/foods/search', 'App\Http\Controllers\APIController@getFoodMenuViaSearch');
