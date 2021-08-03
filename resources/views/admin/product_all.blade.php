@@ -10,7 +10,7 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="m-0">Foods</h3>
-                <a href="{{route('admin.products.create')}}" class="add-button float-left btn btn-success"><i class="iconsmind-Add"></i> Cteate Foods</a>
+                <a href="{{route('admin.products.create')}}" class="add-button float-left btn btn-success"><i class="iconsmind-Add"></i> Create Product</a>
             </div>
             <div class="card-body">
                 <table class="table table-bordered" id="users-table">
