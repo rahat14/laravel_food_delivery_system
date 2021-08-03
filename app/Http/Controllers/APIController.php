@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use App\Models\Category;
+use App\Models\Coupon;
 use App\Models\Customer;
+use App\Models\DeliveryZone;
+use App\Models\District;
+use App\Models\Notification;
 use App\Models\OrderDetail;
 use App\Models\OrderItem;
 use App\Models\OrderProductAddon;
@@ -29,6 +33,23 @@ class APIController extends Controller
     ALL GET
 
      */
+    public function getStatus($order_id)
+    {
+        // get the list
+        $list = OrderStatus::query()
+            ->where("order_id", $order_id)
+            ->with("orderstatustype")
+            ->get();
+
+        return response()->json(
+
+            $list,
+            200
+
+        );
+
+    }
+
     // appp settings
 
     public function settings()
@@ -42,15 +63,45 @@ class APIController extends Controller
         $Cat_list = Category::get();
         $Sub_Cat_list = Subcategory::get();
 
+        $disList = District::get();
+
         return response()->
             json([
 
             'category' => $Cat_list,
             'banners' => $banners,
             'sub_cat' => $Sub_Cat_list,
+            'district_list' => $disList,
 
         ], 200);
 
+    }
+
+    // delivery zones
+
+    public function deliveryZone($district_id)
+    {
+
+        $Cat_list = DeliveryZone::query()
+            ->where("district_id", $district_id)
+            ->get();
+
+        return response()->
+            json($Cat_list, 200);
+
+    }
+
+    // get all feature resturnat
+    public function GetFeatureResturant()
+    {
+
+        $list = Restaurant::query()
+            ->orderBy('id', 'DESC')
+            ->where("is_featured", 1)
+            ->with(["category_subcategory.subcategories", "category_subcategory.categories"])
+            ->get();
+
+        return response()->json($list, 200);
     }
 
     // All Resturant
@@ -276,6 +327,17 @@ class APIController extends Controller
 
     }
 
+    public function getAllNotification($user_id)
+    {
+        $list = Notification::query()
+            ->where('user_id', $user_id)
+            ->orWhere('user_id', 0)
+            ->get();
+
+        return response()->
+            json($list, 200);
+    }
+
     // get all previos order
 
     public function getAllPreviousOrder($user_id)
@@ -290,6 +352,21 @@ class APIController extends Controller
 
         return response()->
             json($list, 200);
+
+    }
+
+    // coupon obj
+
+    public function getCoupons($coupon_code)
+    {
+        # code...
+        $coubonObj = Coupon::query()
+            ->where('code', $coupon_code)
+            ->limit(1)
+            ->get();
+
+        return response()->
+            json($coubonObj, 200);
 
     }
 
@@ -323,12 +400,11 @@ class APIController extends Controller
             return response()->
                 json([
                 'msg' => 'User With This Phone Number Allready Exist',
-                'error' => true ,
+                'error' => true,
                 'data' => null,
             ], 200);
 
-        } 
-        else {
+        } else {
 
             $user = new Customer();
             $user->fullname = str_replace('%20', ' ', $user_name);
@@ -378,18 +454,15 @@ class APIController extends Controller
                         'data' => $user,
                     ], 200);
 
-                }
-                else {
-                        // no valid ref code 
+                } else {
+                    // no valid ref code
 
-
-                        return response()->
+                    return response()->
                         json([
                         'msg' => 'Refferal Code No Valid !!!',
-                        'error' => true ,
-                        'data' => null ,
+                        'error' => true,
+                        'data' => null,
                     ], 200);
-
 
                 }
 
