@@ -10,7 +10,16 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="m-0">Restaurants</h3>
-                <a href="{{route('admin.restaurants.create')}}" class="add-button float-left btn btn-success"><i class="iconsmind-Add"></i> Cteate Restaurants</a>
+
+
+
+                <div class="d-flex">
+                    <h3 class="ml-0">Create</h3>
+                    <a href="{{route('admin.restaurants.create')}}" class="btn btn-success custom-button action-add"> <i class="fas fa-plus  "></i></a>
+                </div>
+
+
+
             </div>
             <div class="card-body">
                 <table class="table table-bordered" id="users-table">
@@ -65,10 +74,10 @@
         ],
         columnDefs: [
         { "width": "10%", "targets": 0 },
-        { "width": "35%", "targets": 1 },
+        { "width": "25%", "targets": 1 },
         { "width": "25%", "targets": 2 },
         { "width": "20%", "targets": 3 },
-        { "width": "20%", "targets": 4 },
+        { "width": "35%", "targets": 4 },
         ],
     });
 

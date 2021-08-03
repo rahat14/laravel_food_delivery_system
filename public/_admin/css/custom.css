@@ -1,4 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Alatsi&display=swap');
+body {
+    font-family: 'Alatsi', sans-serif;
+}
+
 /* Custom Scrollbar */
+
 ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
     box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
@@ -18,6 +24,7 @@
 }
 
 /* Main Background */
+
 .content {
     background-color: #ffffff;
 }
@@ -26,8 +33,8 @@
     background-color: #ffffff;
 }
 
-
 /* Sidebar */
+
 .sidebar-menu {
     list-style: none;
     margin: 0;
@@ -46,25 +53,17 @@
     padding: 14px !important;
 }
 
-.skin-blue-light .wrapper,
-.skin-blue-light .main-sidebar,
-.skin-blue-light .left-side {
+.skin-blue-light .wrapper, .skin-blue-light .main-sidebar, .skin-blue-light .left-side {
     background-color: #ffffff;
     border-right: 1px solid #eaeaea;
 }
 
-.skin-blue-light .sidebar-menu>li.active>a,
-.skin-blue-light .sidebar-menu>li.menu-open>a,
-.skin-blue-light .sidebar-menu>li.active>a i,
-.skin-blue-light .sidebar-menu>li.menu-open>a i {
+.skin-blue-light .sidebar-menu>li.active>a, .skin-blue-light .sidebar-menu>li.menu-open>a, .skin-blue-light .sidebar-menu>li.active>a i, .skin-blue-light .sidebar-menu>li.menu-open>a i {
     color: #2a93d5;
     background: rgb(238, 238, 238);
 }
 
-.sidebar-menu>li.active>a,
-.skin-blue-light .sidebar-menu>li.menu-open>a,
-.skin-blue-light .sidebar-menu>li.active>a i,
-.skin-blue-light .sidebar-menu>li.menu-open>a i {
+.sidebar-menu>li.active>a, .skin-blue-light .sidebar-menu>li.menu-open>a, .skin-blue-light .sidebar-menu>li.active>a i, .skin-blue-light .sidebar-menu>li.menu-open>a i {
     background: rgb(238, 238, 238);
 }
 
@@ -73,7 +72,45 @@
 }
 
 /* Wetgets */
+
 .box-body {
     background: rgb(0, 0, 0);
     background: linear-gradient(41deg, rgba(0, 0, 0, 0.5130427170868348) 0%, rgba(255, 255, 255, 0) 100%);
 }
+
+.form-control{
+    padding: 1.25rem;
+}
+.custom-button {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    padding: 6px;
+    background: rgb(42, 147, 213);
+    background: linear-gradient(45deg, rgba(42, 147, 213, 1) 35%, rgba(29, 119, 176, 1) 100%);
+    border: 2px solid rgb(40, 133, 191);
+}
+
+.action-add{
+    margin: 8px;
+}
+.custom-button i{
+    font-size: 10px;
+}
+
+.custom-file-uploader {
+    position: relative;
+  }
+  .custom-file-uploader input[type=file] {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: default;
+  }
