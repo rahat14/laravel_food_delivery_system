@@ -46,13 +46,16 @@ class CategoryController extends Controller
                 <img src="'.$iamgeUrl.'" border="0" width="40" class="img-rounded" align="center" />
                 ';
             })
+            ->addColumn('status', function ($category) {
+               return $category->status == 1 ? '<span class="label label-success  mt-5">Active</span>' : '<span class="label label-danger  mt-5">Inactive</span>';
+            })
             ->addColumn('action', function ($category) {
                 return '
                     <a href="/admin/categories/'.$category->id.'/edit" class=" btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
                     <a href="/admin/categories/'.$category->id.'" onclick="$(.submit).submit()" class="delete-confirm btn  btn-xs my-1 btn-danger"><i class="glyphicon glyphicon-trash"></i> Delete</a>
                 ';
             })
-            ->rawColumns(['banner','image', 'action'])
+            ->rawColumns(['banner','image','status', 'action'])
             ->make(true);
     }
 

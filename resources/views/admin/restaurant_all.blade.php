@@ -10,16 +10,10 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="m-0">Restaurants</h3>
-
-
-
                 <div class="d-flex">
                     <h3 class="ml-0">Create</h3>
                     <a href="{{route('admin.restaurants.create')}}" class="btn btn-success custom-button action-add"> <i class="fas fa-plus  "></i></a>
                 </div>
-
-
-
             </div>
             <div class="card-body">
                 <table class="table table-bordered" id="users-table">

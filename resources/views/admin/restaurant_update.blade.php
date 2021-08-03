@@ -12,9 +12,13 @@
         <!-- Main content -->
         <section class="content">
             @include('admin.partials.error')
-            <div class="card">
+            <div class="card col-md-6">
                 <div class="card-header">
-                    <h3 class="m-0"> <a href="{{route('admin.restaurants.index')}}" class="btn btn-sm btn-primary"><i class="iconsmind-Left " ></i></a> Update Restaurant</h3>
+
+                    <div class="d-flex">
+                        <a href="{{route('admin.restaurants.index')}}" class="btn btn-success custom-button action-add"> <i class="fas fa-arrow-left  "></i></a>
+                        <h3 class="ml-0">Create a restaurant</h3>
+                    </div>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('admin.restaurants.update', $restaurant->id) }}" method="post" enctype="multipart/form-data">
@@ -25,7 +29,16 @@
                                 <img width="150" src="{{ asset("/uploads/res_logos/$restaurant->logo") }}" alt="" srcset="">
                             </div>
                             <label for="logo">Logo</label>
-                            <input type="file" class="form-control" id="" name="logo">
+                            <div class="input-group">
+                                <input type="text" name="filename" class="form-control" placeholder="No file selected" readonly>
+                                <span class="input-group-btn">
+                                  <div class="btn btn-default  custom-file-uploader">
+                                    <input type="file" name="logo" onchange="this.form.filename.value = this.files.length ? this.files[0].name : ''" />
+                                    Select a file
+                                  </div>
+                                </span>
+                              </div>
+
                         </div>
 
                         <div class="form-group">
@@ -86,25 +99,38 @@
                                 @endforeach
                             </select>
                         </div>
-
-                        <div class="form-group">
-                            <label for="is_featured">Is Featured</label>
-                            <br>
-                            <input
-                            {{ $restaurant->is_featured == 1 ? 'checked' : '' }}
-                            type="checkbox" id="is_featured" class="filled-in chk-col-green" name="is_featured">
-                            <label for="is_featured"></label>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="is_featured">Is Featured</label>
+                                    <br>
+                                    <input
+                                    {{ $restaurant->is_featured == 1 ? 'checked' : '' }}
+                                    type="checkbox" id="is_featured" class="filled-in chk-col-green" name="is_featured">
+                                    <label for="is_featured"></label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="status">Is Closed</label>
+                                    <br>
+                                    <input
+                                    {{ $restaurant->is_closed == 1 ? 'checked' : '' }}
+                                     type="checkbox" id="status" class="filled-in chk-col-green" name="is_closed">
+                                    <label for="status"></label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="status">Status</label>
+                                    <br>
+                                    <input
+                                    {{ $restaurant->status == 1 ? 'checked' : '' }}
+                                     type="checkbox" id="status" class="filled-in chk-col-green" name="status">
+                                    <label for="status"></label>
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="form-group">
-                            <label for="status">Status</label>
-                            <br>
-                            <input
-                            {{ $restaurant->status == 1 ? 'checked' : '' }}
-                             type="checkbox" id="status" class="filled-in chk-col-green" name="status">
-                            <label for="status"></label>
-                        </div>
-
                         <button type="submit" class="btn btn-primary">Update </button>
                     </form>
                 </div>

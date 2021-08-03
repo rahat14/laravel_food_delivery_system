@@ -7,9 +7,12 @@
         <!-- Main content -->
         <section class="content">
             @include('admin.partials.error')
-            <div class="card">
+            <div class="card col-md-6">
                 <div class="card-header">
-                    <h3 class="m-0"> <a href="{{route('admin.categories.index')}}" class="btn btn-sm btn-primary"><i class="iconsmind-Left " ></i></a> Update Category</h3>
+                    <div class="d-flex">
+                        <a href="{{route('admin.categories.index')}}" class="btn btn-success custom-button action-add"> <i class="fas fa-arrow-left  "></i></a>
+                        <h3 class="ml-0">Create a restaurant</h3>
+                    </div>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('admin.categories.update', $category->id) }}" method="POST" enctype="multipart/form-data">
@@ -22,7 +25,17 @@
 
                         <div class="form-group">
                             <label for="image">Image</label>
-                            <input type="file" class="form-control" id="" name="image">
+
+                            <div class="input-group">
+                                <input type="text" name="fileOne" class="form-control" placeholder="No file selected" readonly>
+                                <span class="input-group-btn">
+                                  <div class="btn btn-default  custom-file-uploader">
+                                    <input type="file" name="image" onchange="this.form.fileOne.value = this.files.length ? this.files[0].name : ''" />
+                                    Select a file
+                                  </div>
+                                </span>
+                              </div>
+
                             <div class="image-preview mt-4">
                                 <img width="100px" src="{{asset("uploads/images/$category->image")}}" alt="">
                             </div>
@@ -30,7 +43,17 @@
 
                         <div class="form-group">
                             <label for="banner">Banner</label>
-                            <input type="file" class="form-control" id="banner" name="banner">
+
+                            <div class="input-group">
+                                <input type="text" name="filetwo" class="form-control" placeholder="No file selected" readonly>
+                                <span class="input-group-btn">
+                                  <div class="btn btn-default  custom-file-uploader">
+                                    <input type="file" name="banner" onchange="this.form.filetwo.value = this.files.length ? this.files[0].name : ''" />
+                                    Select a file
+                                  </div>
+                                </span>
+                              </div>
+
                             <div class="image-preview mt-4">
                                 <img width="100px" src="{{asset("uploads/banners/$category->banner")}}" alt="">
                             </div>
@@ -38,7 +61,15 @@
 
                         <div class="form-group">
                             <label for="icon">Icon</label>
-                            <input type="file" class="form-control" id="icon" name="icon">
+                            <div class="input-group">
+                                <input type="text" name="filethree" class="form-control" placeholder="No file selected" readonly>
+                                <span class="input-group-btn">
+                                  <div class="btn btn-default  custom-file-uploader">
+                                    <input type="file" name="icon" onchange="this.form.filethree.value = this.files.length ? this.files[0].name : ''" />
+                                    Select a file
+                                  </div>
+                                </span>
+                              </div>
                             <div class="image-preview mt-4">
                                 <img width="50px" src="{{asset("uploads/icons/$category->icon")}}" alt="">
                             </div>

@@ -43,6 +43,9 @@ class ProductController extends Controller
                 <img src="'.$imageUrl.'" border="0" width="40" class="img-rounded" align="center" />
                 ';
             })
+            ->addColumn('restaurant_id', function ($product) {
+               return $product->restaurant->name;
+            })
             ->addColumn('action', function ($product) {
                 return '
                     <a href="/admin/products/'.$product->id.'/edit" class=" btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>

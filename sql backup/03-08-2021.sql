@@ -357,7 +357,8 @@ INSERT INTO `categories` (`id`, `name`, `slug`, `banner`, `icon`, `image`, `stat
 	(5, 'fugit', NULL, '/61f7bb692fb2e1cdb6934620c03ca4da.jpg', '/41abf01262f8796a75cfda03e04ece1e.jpg', 'tmp//d0ed5345202c2e7c91aea066c4ab8721.jpg', 0, '1994-03-14 19:32:09', '1984-05-08 14:13:15'),
 	(6, 'Pizza', 'pizza', '/899cdf6858d107d51edad7fdd03814c1.jpg', '/504b58cf8dbb5ad0eab455fa5a326e84.jpg', 'tmp//57343a229e78d56763b8ed63ddff4993.jpg', 0, '2016-03-07 00:29:48', '2021-07-31 14:42:58'),
 	(7, 'vitae', NULL, '/6cd2b40aa0ad03aadb35073124c7f944.jpg', '/340f089b19ae77495974dfe62c67e5b4.jpg', 'tmp//9a2d9d7d74e9d26df60183d6d9f1a4cf.jpg', 0, '1994-05-05 18:07:59', '1972-11-13 08:04:26'),
-	(8, 'omnis', 'omnis', '/c67da19288c80fdb2205894887295cb9.jpg', '/020bab0c7b1fce16b8c19ba2e6ba8a91.jpg', 'tmp//226a8c8fdb58f63fabe56eed5302f1db.jpg', 0, '2010-07-20 19:13:10', '2021-07-31 18:18:31');
+	(8, 'omnis', 'omnis', '/c67da19288c80fdb2205894887295cb9.jpg', '/020bab0c7b1fce16b8c19ba2e6ba8a91.jpg', 'tmp//226a8c8fdb58f63fabe56eed5302f1db.jpg', 0, '2010-07-20 19:13:10', '2021-07-31 18:18:31'),
+	(9, 'Eleanor Williams', 'eleanor-williams', '1628017216-icon.jpg', '1628017216-icon-Copy(2).jpg', '1628017216-icon-Copy(2).jpg', 1, '2021-08-03 19:00:16', '2021-08-03 19:00:16');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 
 -- Dumping data for table laravel.countries: ~0 rows (approximately)
@@ -703,30 +704,30 @@ DELETE FROM `referrels`;
 /*!40000 ALTER TABLE `referrels` DISABLE KEYS */;
 /*!40000 ALTER TABLE `referrels` ENABLE KEYS */;
 
--- Dumping data for table laravel.restaurants: ~21 rows (approximately)
+-- Dumping data for table laravel.restaurants: ~20 rows (approximately)
 DELETE FROM `restaurants`;
 /*!40000 ALTER TABLE `restaurants` DISABLE KEYS */;
-INSERT INTO `restaurants` (`id`, `name`, `slug`, `email`, `phone`, `division_id`, `district_id`, `area_id`, `address`, `lat`, `long`, `delivery_time`, `delivery_charge`, `logo`, `opening_time`, `closing_time`, `is_featured`, `categories`, `rating`, `status`, `created_at`, `updated_at`) VALUES
-	(1, 'laudantium', 'r', 'jermain76@example.com', '924.060.1544', '', '5', '7', '2223 Jessika Village Apt. 821\nEast Wymanchester, CA 17882', 59960133.52, 4.938, '3', 5, '/880f886191828c6bd37ae35f0eb5b180.jpg', NULL, NULL, 0, NULL, 0, 0, '1975-08-31 01:19:45', '1993-04-22 12:34:33'),
-	(2, 'et', 'l', 'lonzo.grimes@example.net', '09701844425', '2', '3', '5', '774 Kavon Route Apt. 769\nJakubowskistad, UT 75258', 3427688.1160428, 8321.39, '1', 1, '/ce5a4007ad1e6c2396bcecebe59ab21d.jpg', NULL, NULL, 0, NULL, 0, 0, '2019-01-26 11:27:30', '1976-07-27 12:42:10'),
-	(3, 'enim', 'b', 'hassan.king@example.net', '(814)873-7694x663', '1', '9', '1', '4954 Cremin Freeway Apt. 801\nSouth Misaelburgh, GA 53288', 3.08, 94092.8469, '', 1, '/accf22a3ce7dd61a77d8712030492593.jpg', NULL, NULL, 0, NULL, 0, 0, '1974-07-11 23:05:17', '1972-01-10 06:11:52'),
-	(5, 'autem', 'i', 'bhoeger@example.net', '+96(6)6243476753', '2', '2', '4', '71883 Upton Village\nSouth Sheilatown, RI 42816-9096', 2568, 0, '', 8, '/c8a1d63802f5ef78c4e500c58dacbf76.jpg', NULL, NULL, 0, NULL, 0, 0, '1984-10-13 20:20:38', '1991-05-15 06:01:31'),
-	(6, 'temporibus', 'r', 'anais05@example.net', '(568)034-4507x45044', '4', '6', '1', '14096 Adelle Walks Suite 132\nCharlotteland, RI 88571', 0, 7.6, '4', 5, '/bfe246f5fd88791913c4642b48002ba2.jpg', NULL, NULL, 1, NULL, 0, 0, '1986-12-02 19:49:32', '1976-08-24 14:40:02'),
-	(7, 'animi', 'j', 'nstanton@example.com', '237-435-0903x16440', '8', '3', '2', '760 Kacey Way\nPort Angelinashire, LA 70865', 439700.7448, 0, '', 5, '/9a1a81c63c17892c40752142e17e5a51.jpg', NULL, NULL, 0, NULL, 0, 0, '2006-02-18 19:57:55', '2005-05-23 10:07:28'),
-	(8, 'et', 'g', 'tillman.kory@example.org', '781-549-0295x26820', '9', '9', '1', '92650 Mitchell Curve\nPfeffertown, MT 00770', 0, 0, '7', 5, '/29190bffbfcad4e15dfced3d14ebbedb.jpg', NULL, NULL, 0, NULL, 0, 0, '2008-02-24 04:54:13', '2010-01-15 15:10:15'),
-	(9, 'ullam', 'y', 'becker.maximillian@example.org', '557.309.6950', '5', '6', '3', '8984 Kling Glen Suite 526\nZeldabury, FL 06051-4677', 3669.452433762, 78758.7107, '8', 9, '/bf3940f15d2e01c85b42bd72ff4117b0.jpg', NULL, NULL, 1, NULL, 0, 0, '2012-04-30 06:12:24', '2006-06-04 17:11:27'),
-	(10, 'omnis', 'd', 'micah48@example.net', '(776)419-7277', '8', '9', '1', '033 Lemuel Meadow Apt. 853\nBahringerport, IN 74112-5991', 2808.88, 24444766.361727, '', 4, '/14a8dee60fb5e5003aecc4d637b31cb2.jpg', NULL, NULL, 1, NULL, 0, 0, '1983-09-06 15:09:13', '2016-03-31 11:57:33'),
-	(11, 'nulla', 'z', 'lebsack.carolanne@example.org', '1-047-058-2675', '', '5', '4', '72565 Legros Station Suite 565\nWest Guiseppestad, NV 68870', 8540449.4047075, 105337947.0552, '6', 1, '/b6d6bf1b764ba4f53cd85d9b4dbd856c.jpg', NULL, NULL, 0, NULL, 0, 0, '1978-06-12 20:23:04', '1989-09-21 23:50:26'),
-	(12, 'incidunt', 'l', 'hane.antonette@example.org', '(913)890-0187x812', '4', '5', '4', '06591 Pfeffer Street\nNew Colemanview, ND 41957', 3545.73, 0.90987516, '1', 2, '/ebc3f4c16d6cff609cf95981afadde03.jpg', NULL, NULL, 0, NULL, 0, 0, '2001-01-23 21:55:47', '1996-01-28 20:58:34'),
-	(13, 'assumenda', 'g', 'skertzmann@example.org', '1-372-609-3192x4286', '5', '4', '3', '8911 Mark Mission Apt. 484\nNew Gerard, CA 53137', 2948.99937046, 2497048.1516085, '4', 8, '/480e2202304446686bab592cc332b55a.jpg', NULL, NULL, 0, NULL, 0, 0, '1973-08-02 06:14:00', '1975-06-26 01:05:53'),
-	(14, 'reprehenderit', 'v', 'mschroeder@example.net', '068-744-2739x607', '', '5', '8', '5024 Buckridge Port\nNew Kirk, VT 46668', 6, 0, '6', 8, '/690ca34b026e956d467d7533019596f7.jpg', NULL, NULL, 1, NULL, 0, 0, '1985-10-24 08:04:59', '1993-05-22 03:17:03'),
-	(15, 'quos', 'f', 'dominic.lebsack@example.org', '+53(2)8103685721', '2', '4', '1', '908 Hauck Station\nWest Horaceland, NH 00872-8861', 0, 0, '1', 5, '/4a81f1eb66d42fd0eab135cb1914c6ff.jpg', NULL, NULL, 1, NULL, 0, 0, '2015-10-25 17:52:27', '1980-01-22 22:52:25'),
-	(16, 'nesciunt', 'j', 'sammy76@example.org', '09448726693', '6', '3', '2', '71361 Keenan Harbors Apt. 688\nSouth Princessville, ND 03207-9985', 19150098.514064, 24.98, '3', 3, '/206385136af3fbcb292724467c008a7b.jpg', NULL, NULL, 1, NULL, 0, 0, '2020-10-21 16:39:28', '2005-04-24 18:21:26'),
-	(17, 'earum', 'u', 'casey.davis@example.com', '(474)316-7296', '3', '7', '9', '318 Stefan Walks\nPort Maximilian, NE 23305', 2.231363036, 568730621.09081, '5', 3, '/5475ff4cb526bdd0afbd763d4d47e91e.jpg', NULL, NULL, 1, NULL, 0, 0, '1995-10-18 21:09:11', '1992-07-20 17:46:10'),
-	(18, 'eveniet', 'r', 'otha.jast@example.org', '09860147804', '3', '6', '4', '759 McLaughlin Track Apt. 054\nHueltown, AR 71220', 374623550.80788, 6.58071, '5', 2, '/f902253d3f23ab5d4cf4d3abc54e5992.jpg', NULL, NULL, 1, NULL, 0, 0, '2019-12-03 20:43:23', '1984-04-19 21:40:08'),
-	(19, 'et', 'y', 'carmella.herzog@example.org', '023-827-2540x173', '2', '5', '5', '945 Catherine Junction\nFordberg, LA 74879-6453', 0, 128443, '7', 0, '/b28f9b7db120b6f34ffc6444b0e1b2da.jpg', NULL, NULL, 0, NULL, 0, 0, '1980-11-01 09:32:51', '1988-11-05 10:23:12'),
-	(20, 'quasi', 'r', 'lwilliamson@example.org', '1-166-427-8057', '', '1', '2', '7970 Kulas Heights\nBrakusborough, NC 87637', 1.763975, 47217667.891107, '9', 9, '/b9bc3dd27b5a0111e7615ab657e5c01f.jpg', NULL, NULL, 0, NULL, 0, 0, '1999-12-28 14:45:03', '2015-12-06 22:31:24'),
-	(21, 'peryki@mailinator.com', NULL, 'becefasidy@mailinator.com', '01969290200', '1', '2', '0', 'Est ex soluta paria', 0, 0, '4', 78, '1627816395-icon-Copy(2).jpg', '14:23:00', '22:16:00', 1, '["5","6"]', 1, 1, '2021-08-01 11:13:15', '2021-08-01 15:03:50');
+INSERT INTO `restaurants` (`id`, `name`, `slug`, `email`, `phone`, `division_id`, `district_id`, `area_id`, `address`, `lat`, `long`, `delivery_time`, `delivery_charge`, `logo`, `opening_time`, `closing_time`, `is_featured`, `categories`, `rating`, `status`, `is_closed`, `created_at`, `updated_at`) VALUES
+	(1, 'laudantium', 'r', 'jermain76@example.com', '924.060.1544', '', '5', '7', '2223 Jessika Village Apt. 821\nEast Wymanchester, CA 17882', 59960133.52, 4.938, '3', 5, '/880f886191828c6bd37ae35f0eb5b180.jpg', NULL, NULL, 0, NULL, 0, 0, 0, '1975-08-31 01:19:45', '1993-04-22 12:34:33'),
+	(2, 'et', 'l', 'lonzo.grimes@example.net', '09701844425', '2', '3', '5', '774 Kavon Route Apt. 769\nJakubowskistad, UT 75258', 3427688.1160428, 8321.39, '1', 1, '/ce5a4007ad1e6c2396bcecebe59ab21d.jpg', NULL, NULL, 0, NULL, 0, 0, 0, '2019-01-26 11:27:30', '1976-07-27 12:42:10'),
+	(3, 'enim', 'b', 'hassan.king@example.net', '(814)873-7694x663', '1', '9', '1', '4954 Cremin Freeway Apt. 801\nSouth Misaelburgh, GA 53288', 3.08, 94092.8469, '', 1, '/accf22a3ce7dd61a77d8712030492593.jpg', NULL, NULL, 0, NULL, 0, 0, 0, '1974-07-11 23:05:17', '1972-01-10 06:11:52'),
+	(5, 'autem', 'i', 'bhoeger@example.net', '+96(6)6243476753', '2', '2', '4', '71883 Upton Village\nSouth Sheilatown, RI 42816-9096', 2568, 0, '', 8, '/c8a1d63802f5ef78c4e500c58dacbf76.jpg', NULL, NULL, 0, NULL, 0, 0, 0, '1984-10-13 20:20:38', '1991-05-15 06:01:31'),
+	(6, 'temporibus', 'r', 'anais05@example.net', '(568)034-4507x45044', '4', '6', '1', '14096 Adelle Walks Suite 132\nCharlotteland, RI 88571', 0, 7.6, '4', 5, '/bfe246f5fd88791913c4642b48002ba2.jpg', NULL, NULL, 1, NULL, 0, 0, 0, '1986-12-02 19:49:32', '1976-08-24 14:40:02'),
+	(7, 'animi', 'j', 'nstanton@example.com', '237-435-0903x16440', '8', '3', '2', '760 Kacey Way\nPort Angelinashire, LA 70865', 439700.7448, 0, '', 5, '/9a1a81c63c17892c40752142e17e5a51.jpg', NULL, NULL, 0, NULL, 0, 0, 0, '2006-02-18 19:57:55', '2005-05-23 10:07:28'),
+	(8, 'et', 'g', 'tillman.kory@example.org', '781-549-0295x26820', '9', '9', '1', '92650 Mitchell Curve\nPfeffertown, MT 00770', 0, 0, '7', 5, '/29190bffbfcad4e15dfced3d14ebbedb.jpg', NULL, NULL, 0, NULL, 0, 0, 0, '2008-02-24 04:54:13', '2010-01-15 15:10:15'),
+	(9, 'ullam', 'y', 'becker.maximillian@example.org', '557.309.6950', '5', '6', '3', '8984 Kling Glen Suite 526\nZeldabury, FL 06051-4677', 3669.452433762, 78758.7107, '8', 9, '/bf3940f15d2e01c85b42bd72ff4117b0.jpg', NULL, NULL, 1, NULL, 0, 0, 0, '2012-04-30 06:12:24', '2006-06-04 17:11:27'),
+	(10, 'omnis', 'd', 'micah48@example.net', '(776)419-7277', '8', '9', '1', '033 Lemuel Meadow Apt. 853\nBahringerport, IN 74112-5991', 2808.88, 24444766.361727, '', 4, '/14a8dee60fb5e5003aecc4d637b31cb2.jpg', NULL, NULL, 1, NULL, 0, 0, 0, '1983-09-06 15:09:13', '2016-03-31 11:57:33'),
+	(11, 'nulla', 'z', 'lebsack.carolanne@example.org', '1-047-058-2675', '', '5', '4', '72565 Legros Station Suite 565\nWest Guiseppestad, NV 68870', 8540449.4047075, 105337947.0552, '6', 1, '/b6d6bf1b764ba4f53cd85d9b4dbd856c.jpg', NULL, NULL, 0, NULL, 0, 0, 0, '1978-06-12 20:23:04', '1989-09-21 23:50:26'),
+	(12, 'incidunt', 'l', 'hane.antonette@example.org', '(913)890-0187x812', '4', '5', '4', '06591 Pfeffer Street\nNew Colemanview, ND 41957', 3545.73, 0.90987516, '1', 2, '/ebc3f4c16d6cff609cf95981afadde03.jpg', NULL, NULL, 0, NULL, 0, 0, 0, '2001-01-23 21:55:47', '1996-01-28 20:58:34'),
+	(13, 'assumenda', 'g', 'skertzmann@example.org', '1-372-609-3192x4286', '5', '4', '3', '8911 Mark Mission Apt. 484\nNew Gerard, CA 53137', 2948.99937046, 2497048.1516085, '4', 8, '/480e2202304446686bab592cc332b55a.jpg', NULL, NULL, 0, NULL, 0, 0, 0, '1973-08-02 06:14:00', '1975-06-26 01:05:53'),
+	(14, 'reprehenderit', 'v', 'mschroeder@example.net', '068-744-2739x607', '', '5', '8', '5024 Buckridge Port\nNew Kirk, VT 46668', 6, 0, '6', 8, '/690ca34b026e956d467d7533019596f7.jpg', NULL, NULL, 1, NULL, 0, 0, 0, '1985-10-24 08:04:59', '1993-05-22 03:17:03'),
+	(15, 'quos', 'f', 'dominic.lebsack@example.org', '+53(2)8103685721', '2', '4', '1', '908 Hauck Station\nWest Horaceland, NH 00872-8861', 0, 0, '1', 5, '/4a81f1eb66d42fd0eab135cb1914c6ff.jpg', NULL, NULL, 1, NULL, 0, 0, 0, '2015-10-25 17:52:27', '1980-01-22 22:52:25'),
+	(16, 'nesciunt', 'j', 'sammy76@example.org', '09448726693', '6', '3', '2', '71361 Keenan Harbors Apt. 688\nSouth Princessville, ND 03207-9985', 19150098.514064, 24.98, '3', 3, '/206385136af3fbcb292724467c008a7b.jpg', NULL, NULL, 1, NULL, 0, 0, 0, '2020-10-21 16:39:28', '2005-04-24 18:21:26'),
+	(17, 'earum', 'u', 'casey.davis@example.com', '(474)316-7296', '3', '7', '9', '318 Stefan Walks\nPort Maximilian, NE 23305', 2.231363036, 568730621.09081, '5', 3, '/5475ff4cb526bdd0afbd763d4d47e91e.jpg', NULL, NULL, 1, NULL, 0, 0, 0, '1995-10-18 21:09:11', '1992-07-20 17:46:10'),
+	(18, 'eveniet', 'r', 'otha.jast@example.org', '09860147804', '3', '6', '4', '759 McLaughlin Track Apt. 054\nHueltown, AR 71220', 374623550.80788, 6.58071, '5', 2, '/f902253d3f23ab5d4cf4d3abc54e5992.jpg', NULL, NULL, 1, NULL, 0, 0, 0, '2019-12-03 20:43:23', '1984-04-19 21:40:08'),
+	(19, 'et', 'y', 'carmella.herzog@example.org', '023-827-2540x173', '2', '5', '5', '945 Catherine Junction\nFordberg, LA 74879-6453', 0, 128443, '7', 0, '/b28f9b7db120b6f34ffc6444b0e1b2da.jpg', NULL, NULL, 0, NULL, 0, 0, 0, '1980-11-01 09:32:51', '1988-11-05 10:23:12'),
+	(20, 'quasi', 'r', 'lwilliamson@example.org', '1-166-427-8057', '', '1', '2', '7970 Kulas Heights\nBrakusborough, NC 87637', 1.763975, 47217667.891107, '9', 9, '/b9bc3dd27b5a0111e7615ab657e5c01f.jpg', NULL, NULL, 0, NULL, 0, 0, 0, '1999-12-28 14:45:03', '2015-12-06 22:31:24'),
+	(21, 'peryki@mailinator.com', NULL, 'becefasidy@mailinator.com', '01969290200', '1', '2', '0', 'Est ex soluta paria', 0, 0, '4', 78, '1628017040-icon-Copy(2).jpg', '14:23:00', '22:16:00', 1, '["5","6"]', 1, 1, 0, '2021-08-01 11:13:15', '2021-08-03 18:57:20');
 /*!40000 ALTER TABLE `restaurants` ENABLE KEYS */;
 
 -- Dumping data for table laravel.restaurant_menus: ~9 rows (approximately)
@@ -740,8 +741,8 @@ INSERT INTO `restaurant_menus` (`id`, `restaurant_id`, `product_id`, `category_i
 	(5, 0, 2, 2, 0, 1, NULL, NULL),
 	(6, 24, 0, 6, 0, 1, '2021-08-01 14:10:54', '2021-08-01 14:10:54'),
 	(7, 25, 0, 8, 0, 1, '2021-08-01 14:12:13', '2021-08-01 14:12:13'),
-	(128, 21, 0, 5, 0, 1, '2021-08-02 21:40:23', '2021-08-02 21:40:23'),
-	(129, 21, 0, 6, 0, 1, '2021-08-02 21:40:23', '2021-08-02 21:40:23');
+	(134, 21, 0, 5, 0, 1, '2021-08-03 18:57:20', '2021-08-03 18:57:20'),
+	(135, 21, 0, 6, 0, 1, '2021-08-03 18:57:20', '2021-08-03 18:57:20');
 /*!40000 ALTER TABLE `restaurant_menus` ENABLE KEYS */;
 
 -- Dumping data for table laravel.settings: ~0 rows (approximately)

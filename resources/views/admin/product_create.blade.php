@@ -12,11 +12,16 @@
         <!-- Main content -->
         <section class="content">
             @include('admin.partials.error')
-            <div class="card">
+            <div class="card col-md-6">
+
                 <div class="card-header">
-                    <h3 class="m-0"> <a href="{{route('admin.products.index')}}" class="btn btn-sm btn-primary"><i class="iconsmind-Left " ></i></a> Create Product</h3>
+                    <div class="d-flex">
+                        <a href="{{route('admin.products.index')}}" class="btn btn-success custom-button action-add"> <i class="fas fa-arrow-left  "></i></a>
+                        <h3 class="ml-0">Create Product</h3>
+                    </div>
+
                 </div>
-                <div class="card-body">
+                <div class="card-body ">
                     <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
@@ -26,12 +31,29 @@
 
                         <div class="form-group">
                             <label for="primary_iamge">Primary Image</label>
-                            <input type="file" class="form-control" id="primary_image" placeholder="Enter primary iamge" name="primary_image" >
+                            <div class="input-group">
+                                <input type="text" name="filename" class="form-control" placeholder="No file selected" readonly>
+                                <span class="input-group-btn">
+                                  <div class="btn btn-default  custom-file-uploader">
+                                    <input type="file" name="primary_image" onchange="this.form.filename.value = this.files.length ? this.files[0].name : ''" />
+                                    Select a file
+                                  </div>
+                                </span>
+                              </div>
                         </div>
 
                         <div class="form-group">
                             <label for="more_image">More Images</label>
-                            <input type="file" multiple class="form-control" id="more_image" placeholder="Enter more image" name="more_image[]">
+
+                            <div class="input-group">
+                                <input type="text" name="imageTwo" class="form-control" placeholder="No file selected" readonly>
+                                <span class="input-group-btn">
+                                  <div class="btn btn-default  custom-file-uploader">
+                                    <input multiple type="file" name="more_image[]" onchange="this.form.imageTwo.value = this.files.length ? this.files.length+ ' files selected' : ''" />
+                                    Select a file
+                                  </div>
+                                </span>
+                              </div>
                         </div>
 
                         <div class="form-group">

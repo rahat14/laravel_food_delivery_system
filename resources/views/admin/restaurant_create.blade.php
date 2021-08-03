@@ -19,7 +19,6 @@
                         <div class="card-header">
 
                             <div class="d-flex">
-
                                 <a href="{{route('admin.restaurants.index')}}" class="btn btn-success custom-button action-add"> <i class="fas fa-arrow-left  "></i></a>
                                 <h3 class="ml-0">Create a restaurant</h3>
                             </div>
@@ -41,7 +40,7 @@
                                         </div>
                                       </span>
                                     </div>
-                                  </div>
+                                </div>
 
 
                                 <div class="form-group">
@@ -102,21 +101,25 @@
                                         @endforeach
                                     </select>
                                 </div>
-
-                                <div class="form-group">
-                                    <label for="is_featured">Is Featured</label>
-                                    <br>
-                                    <input type="checkbox" id="is_featured" class="filled-in chk-col-green" name="is_featured">
-                                    <label for="is_featured"></label>
+                               <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="is_featured">Is Featured</label>
+                                        <br>
+                                        <input type="checkbox" id="is_featured" class="filled-in chk-col-green" name="is_featured">
+                                        <label for="is_featured"></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="status">Status</label>
+                                        <br>
+                                        <input type="checkbox" id="status" class="filled-in chk-col-green" name="status">
+                                        <label for="status"></label>
+                                    </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="status">Status</label>
-                                    <br>
-                                    <input type="checkbox" id="status" class="filled-in chk-col-green" name="status">
-                                    <label for="status"></label>
-                                </div>
-
+                               </div>
                                 <button type="submit" class="btn btn-primary">Create</button>
                             </form>
                         </div>

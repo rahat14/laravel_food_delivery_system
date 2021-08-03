@@ -10,7 +10,10 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="m-0">All Catergoris</h3>
-                    <a href="{{route('admin.categories.create')}}" class="float-left btn btn-success"> <i class="iconsmind-Add"></i> Create Category</a>
+                    <div class="d-flex">
+                        <h3 class="ml-0">Create</h3>
+                        <a href="{{route('admin.categories.create')}}" class="btn btn-success custom-button action-add"> <i class="fas fa-plus  "></i></a>
+                    </div>
                 </div>
 
                 <div class="card-body">
@@ -61,7 +64,7 @@
             { data: 'name', name: 'name' },
             { data: 'banner', name: 'banner' },
             { data: 'image', name: 'image' },
-            { data: 'status', name: 'status' },
+            { data: 'status', name: 'status',orderable: false, searchable: false },
             { data: 'action', name: 'action', orderable: false, searchable: false }
         ],
         columnDefs: [

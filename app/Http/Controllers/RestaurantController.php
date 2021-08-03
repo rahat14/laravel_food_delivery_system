@@ -201,10 +201,11 @@ class RestaurantController extends Controller
         $restaurantUpdate->closing_time = $request->closing_time;
         $restaurantUpdate->categories = json_encode($request->categories);
         $request->is_featured ? $restaurantUpdate->is_featured = 1 : $restaurantUpdate->is_featured = 0;
+        $request->is_closed ? $restaurantUpdate->is_closed = 1 : $restaurantUpdate->is_closed = 0;
         $request->status ? $restaurantUpdate->status = 1 : $request->status = 0;
 
         $restaurantUpdate->save();
-        //delteing previos records form restaurantMenu
+        //deleting previous records form restaurantMenu
         RestaurantMenu::where('restaurant_id', $restaurantUpdate->id)->delete();
         foreach($request->categories as $category_id){
             $restaurantMenu = new RestaurantMenu();
