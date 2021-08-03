@@ -424,9 +424,9 @@ throw new Error('template requires jQuery')
       return
     }
 
-    if (!this.options.followLink || link.attr('href') == '#') {
-      event.preventDefault()
-    }
+    // if (!this.options.followLink || link.attr('href') == '#') {
+    //   event.preventDefault()
+    // }
 
     if (isOpen) {
       this.collapse(treeviewMenu, parentLi)
@@ -963,21 +963,21 @@ throw new Error('template requires jQuery')
     if (event) event.preventDefault()
     Plugin.call($(this), 'toggle')
   })
-  
+
   // Slim scrolling
-  
+
   $('.inner-content-div').slimScroll({
     height: 'auto'
   });
-	
 
-  
+
+
   $(".search-box a, .search-box .app-search .srh-btn").on('click', function() {
         $(".app-search").toggle(200);
     });
-	
-	
-	
+
+
+
   // Close
     //
     $(document).on('click', '.box-btn-close', function() {
@@ -1014,21 +1014,21 @@ throw new Error('template requires jQuery')
     $(document).on('click', '.box-btn-fullscreen', function(){
       $(this).parents('.box').toggleClass('box-fullscreen').removeClass('box-maximize');
     });
-	
-	
-	
-	
 
-		
+
+
+
+
+
 		// Disable demonstrative links!
     //
     $(document).on('click', 'a[href="#"]', function(e){
       e.preventDefault();
     });
-	
-	
-	
-	
+
+
+
+
     // Upload
     //
     $(document).on('click', '.file-browser', function() {
@@ -1066,6 +1066,6 @@ throw new Error('template requires jQuery')
       $(this).next('.custom-file-control').attr('data-input-value', filename);
     });
     $('.custom-file-control:not([data-input-value])').attr('data-input-value', 'Choose file...');
-	
+
 }(jQuery) // End of use strict
 

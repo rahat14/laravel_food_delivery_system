@@ -23,6 +23,10 @@ class Product extends Model
     {
         return $this->belongsTo(Restaurant::class);
     }
+    public function restaurantMenu()
+    {
+        return $this->hasMany(RestaurantMenu::class);
+    }
 
     public function orderitems()
     {

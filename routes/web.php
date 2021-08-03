@@ -1,8 +1,13 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\RestaurantController;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,13 +20,34 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
-//Admin Pages Routes
-Route::group(['as' => 'admin.', 'prefix' => 'admin'], function(){
+// Redirect to Admin
+Route::get('/', function () {
+    return redirect(RouteServiceProvider::ADMIN);
+});
 
-	Route::get('/', [DashboardController::class, 'index'])->name('index');
+// Auth Routes
+Auth::routes(['register' => false]);
 
-});	
+// Admin Pages Routes
+Route::group(['middleware' => ['auth', 'admin'], 'as' => 'admin.', 'prefix' => 'admin'], function () {
+
+    Route::get('/', [DashboardController::class, 'index'])->name('index');
+
+    // Category Routes
+    Route::get('/categories/list', [CategoryController::class, 'categoryList'])->name('category.list');
+    Route::resource('/categories', CategoryController::class);
+
+    // Restaurant Routes
+    Route::get('/restaurants/list', [RestaurantController::class, 'restaurantsList'])->name('restaurants.list');
+    Route::resource('/restaurants', RestaurantController::class);
+
+    // Products Routes
+    Route::get('/products/list', [ProductController::class, 'productsList'])->name('products.list');
+    Route::resource('/products', ProductController::class);
+
+
+});
+
+// Show Login Page
+Route::get('/login', [App\Http\Controllers\DashboardController::class, 'login'])->name('login');

@@ -37,8 +37,8 @@ Project:	NeoX Admin - Responsive Admin Template
 -------------------------------------------------------------------*/
 
 
-/******************* 
-import icon and fonts Styles 
+/*******************
+import icon and fonts Styles
 *******************/
 @import url(icons/font-awesome/css/font-awesome.css);
 @import url(icons/Ionicons/css/ionicons.css);
@@ -49,14 +49,12 @@ import icon and fonts Styles
 @import url(icons/material-design-iconic-font/css/materialdesignicons.css);
 @import url(icons/simple-line-icons/css/simple-line-icons.css);
 @import url(icons/iconsmind/style.css);
-@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
 @import url('https://fonts.googleapis.com/css?family=Catamaran:400,800');
 
 /*------------------------------------------------------------------
 
 [Typography]
 
-Body :		Poppins, sans-serif;
 -------------------------------------------------------------------*/
 
 /*Body, layout*/
@@ -67,9 +65,8 @@ Body :		Poppins, sans-serif;
     overflow-y: auto;
 }
 .h1, .h2, .h3, .h4, .h5, .h6, body, h1, h2, h3, h4, h5, h6 {
-    font-family: Poppins, sans-serif;
 	line-height: 1.5;
-	text-shadow: none; 
+	text-shadow: none;
 }
 .row{
 	margin-right: -10px;
@@ -466,7 +463,7 @@ a:active, a:focus, a:hover {
 }
 .main-header .navbar-custom-menu {
     float: right;
-	text-align: right;    
+	text-align: right;
 }
 }
 @media (max-width:991px) {
@@ -634,7 +631,7 @@ a:active, a:focus, a:hover {
     height: 1px;
     background: rgba(120, 130, 140, 0.13);
     display: block;
-    margin: 15px 0;    
+    margin: 15px 0;
 	padding: 0;
 }
 .user-profile {
@@ -651,7 +648,7 @@ a:active, a:focus, a:hover {
 }
 .sidebar-menu>li>a>.fa, .sidebar-menu>li>a>.glyphicon, .sidebar-menu>li>a>.ion, .sidebar-menu>li>a>i {
     width: 30px;
-	font-size: 18px;    
+	font-size: 18px;
 	display: inline-block;
     vertical-align: middle;
     color: #555f6d;
@@ -804,7 +801,7 @@ a:active, a:focus, a:hover {
 }
 .sidebar-menu li>a {
     position: relative;
-	font-weight: 400;    
+	font-weight: 400;
 	font-size: 1rem;
 }
 .nav-tabs.control-sidebar-tabs>li>a, .sidebar-collapse .sidebar-menu>li.active>a, .sidebar-collapse .sidebar-menu>li.menu-open>a, .sidebar-collapse .sidebar-menu>li:hover>a {
@@ -1080,13 +1077,13 @@ body .main-header .navbar .nav > li.search-box > a:hover, body .main-header .nav
     box-shadow: 0 3px 12px rgba(0, 0, 0, .05);
     -webkit-box-shadow: 0 3px 12px rgba(0, 0, 0, .05);
     -moz-box-shadow: 0 3px 12px rgba(0, 0, 0, .05);
-    border-color: rgba(120, 130, 140, .13);	
+    border-color: rgba(120, 130, 140, .13);
     display: inline-block;
     -webkit-transition: all .3s ease;
     transition: all .3s ease;
     -webkit-transform: scale(0);
     transform: scale(0);
-    transform-origin: right 0;	
+    transform-origin: right 0;
 }
 .show>.dropdown-menu.scale-up {
     transform: scale(1);
@@ -2140,7 +2137,7 @@ input[type="color"] {
 	font-weight: 500;
 }
 .form-control {
-    border-radius: 30px;
+    border-radius: 5px;
     box-shadow: none;
     border-color: #d2d6de;
 }
@@ -2383,7 +2380,7 @@ input[type="color"] {
     font-size: 12px;
 }
 }
-.card{	
+.card{
 	border-radius: calc(1.15rem - 1px);
     box-shadow: 0 1px 15px rgba(0,0,0,.04), 0 1px 6px rgba(0,0,0,.04);
 }
@@ -2505,7 +2502,7 @@ input[type="color"] {
 }
 .box .fx-card-item .fx-card-avatar{
     border-top-left-radius: calc(1.15rem - 1px);
-    border-top-right-radius: calc(1.15rem - 1px);	
+    border-top-right-radius: calc(1.15rem - 1px);
 }
 .box-inverse{
   color: #fff !important;
@@ -6248,7 +6245,7 @@ ul.flexbox {
   margin: 0 8px;
 }
 .media .nav-link:focus, .media .nav-link:hover {
-     background-color: transparent; 
+     background-color: transparent;
 }
 .media a:not(.btn):not(.avatar) {
   color: #616a78;
@@ -8217,8 +8214,8 @@ ul.flexbox {
 
 
 
-/*-----------------*/	
-	
+/*-----------------*/
+
 .box-comments {
     background: #f7f7f7;
 }
@@ -10893,7 +10890,7 @@ button.btn.dropdown-toggle::after, .wysihtml5-toolbar .btn.dropdown-toggle::afte
     margin-right: 0;
 }
 .nav-tabs-custom>.nav-tabs.float-right>li:first-of-type>a {
-    border-left-width: 1px;	
+    border-left-width: 1px;
 }
 .nav-tabs-custom>.nav-tabs.float-right>li:first-of-type>a.active {
     border-left-color: #f4f4f4;
@@ -11500,7 +11497,7 @@ table.dataTable thead .sorting:after {
 /*widget*/
 .box-widget {
     border: none;
-    position: relative;    
+    position: relative;
 	overflow: hidden;
 }
 .widget-user .widget-user-header {
@@ -11627,7 +11624,7 @@ table.dataTable thead .sorting:after {
 }
 .treeview-menu>li>a>.fa, .treeview-menu>li>a>.glyphicon, .treeview-menu>li>a>.ion, .treeview-menu>li>a>i {
     width: 20px;
-	padding-right: 30px;    
+	padding-right: 30px;
 	display: inline-block;
 }
 .treeview-menu>li>a>.fa-angle-down, .treeview-menu>li>a>.fa-angle-left, .treeview-menu>li>a>.pull-right-container>.fa-angle-down, .treeview-menu>li>a>.pull-right-container>.fa-angle-left {
@@ -13972,7 +13969,7 @@ a.text-danger:hover, a.text-danger:focus {
     flex-flow: row wrap;
     margin-right: -15px;
     margin-left: -15px;
-}	
+}
 .box-deck .box {
     display: -ms-flexbox;
     display: flex;
@@ -13983,7 +13980,7 @@ a.text-danger:hover, a.text-danger:focus {
     margin-right: 15px;
     margin-bottom: 0;
     margin-left: 15px;
-}	
+}
 }
 .box-deck .box {
     margin-bottom: 30px;
@@ -14180,7 +14177,6 @@ hr {
 .grid-stack-item-content {
   background: #ffffff;
   color: #2b2b2b;
-  font-family: 'Poppins', sans-serif;
   text-align: center;
   font-size: 20px;
 }
@@ -14256,7 +14252,7 @@ hr {
 .ribbon-wrapper-right-bottom {
   position: relative;
   background: #f7f7f7;
-  padding: 50px 15px 15px 50px;    
+  padding: 50px 15px 15px 50px;
 	border-radius: 1.5rem;
 }
 .ribbon-overflow {
@@ -14810,7 +14806,7 @@ hr {
   margin-top: 35px;
 }
 
-.ace-editor { 
+.ace-editor {
 	min-height: 300px;
 }
 .w-32{
@@ -14954,7 +14950,7 @@ hr {
     top: -9999em;
     left: -9999em;
 }
-    
+
 @keyframes bgshadow {
   0% {
     box-shadow: inset -160px 160px 0px 5px rgba(0, 0, 0, 0.4);
@@ -14977,7 +14973,7 @@ hr {
 }
 
 /* demo stuff */
-.zoom-area { 
+.zoom-area {
   max-width: 490px;
   margin: 30px auto 30px;
   font-size: 19px;
