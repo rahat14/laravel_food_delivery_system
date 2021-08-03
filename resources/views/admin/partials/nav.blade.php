@@ -8,7 +8,7 @@
 
             <li class="treeview {{ NavActive(null , 2) }}">
                 <a href="{{url('/admin')}}">
-                    <i class="iconsmind-Dashboard"></i>
+                    <i class="fas fa-tachometer-alt"></i>
                     <span>Dashboard</span>
 
                 </a>
@@ -17,7 +17,7 @@
 
             <li class="treeview {{ NavActive('categories' , 2) }}">
                 <a href="{{url('/admin/categories')}}">
-                    <i class="iconsmind-Add"></i>
+                    <i class="fas fa-sitemap"></i>
                     <span>Categories</span>
                 </a>
             </li>
@@ -33,7 +33,7 @@
 
             <li class="treeview {{ NavActive('restaurants' , 2) }}">
                 <a href="{{url('/admin/restaurants')}}">
-                    <i class="iconsmind-Plates"></i>
+                    <i class="fas fa-store"></i>
                     <span>Restaurants</span>
 
                 </a>
@@ -41,8 +41,8 @@
 
             <li class="treeview {{ NavActive('products' , 2) }}">
                 <a href="{{url('/admin/products')}}">
-                    <i class="iconsmind-Plates"></i>
-                    <span>Products</span>
+                    <i class="fas fa-utensils"></i>
+                    <span>Foods</span>
 
                 </a>
             </li>
@@ -50,7 +50,7 @@
 
             <li class="treeview">
                 <a href="#">
-                    <i class="iconsmind-Check"></i>
+                    <i class="fas fa-tasks"></i>
                     <span>Menu Items</span>
 
                 </a>
@@ -58,7 +58,7 @@
 
             <li class="treeview">
                 <a href="#">
-                    <i class="iconsmind-Tag"></i>
+                    <i class="fas fa-tags"></i>
                     <span>Coupons</span>
 
                 </a>
@@ -67,7 +67,7 @@
 
             <li class="treeview">
                 <a href="#">
-                    <i class="iconsmind-Hamburger"></i>
+                    <i class="fas fa-cart-arrow-down"></i>
                     <span>Orders</span>
 
                 </a>
@@ -76,7 +76,7 @@
 
             <li class="treeview">
                 <a href="#">
-                    <i class="iconsmind-User"></i>
+                    <i class="fas fa-users"></i>
                     <span>Users</span>
 
                 </a>
@@ -85,7 +85,7 @@
 
             <li class="treeview">
                 <a href="#">
-                    <i class="iconsmind-Star"></i>
+                    <i class="fas fa-star"></i>
                     <span>Reviews</span>
 
                 </a>
@@ -93,7 +93,7 @@
 
             <li class="treeview">
                 <a href="#">
-                    <i class="iconsmind-Envelope"></i>
+                    <i class="fas fa-comment-alt"></i>
                     <span>Notification</span>
 
                 </a>
@@ -102,7 +102,7 @@
 
             <li class="treeview">
                 <a href="#">
-                    <i class="iconsmind-Map2"></i>
+                    <i class="fas fa-map-marked"></i>
                     <span>Working Areas</span>
 
                 </a>
@@ -110,7 +110,7 @@
 
             <li class="treeview">
                 <a href="#">
-                    <i class="iconsmind-Location"></i>
+                    <i class="fas fa-map-marker-alt"></i>
                     <span>Delivery Zones</span>
 
                 </a>
@@ -118,7 +118,7 @@
 
             <li class="treeview">
                 <a href="#">
-                    <i class="iconsmind-Gear"></i>
+                    <i class="fas fa-cog"></i>
                     <span>Settings</span>
 
                 </a>
