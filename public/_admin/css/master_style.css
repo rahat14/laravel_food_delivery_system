@@ -2137,7 +2137,7 @@ input[type="color"] {
 	font-weight: 500;
 }
 .form-control {
-    border-radius: 30px;
+    border-radius: 5px;
     box-shadow: none;
     border-color: #d2d6de;
 }
