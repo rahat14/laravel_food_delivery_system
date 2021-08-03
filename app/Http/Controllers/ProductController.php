@@ -44,7 +44,7 @@ class ProductController extends Controller
                 ';
             })
             ->addColumn('restaurant_id', function ($product) {
-               return $product->restaurant->name;
+               return $product->restaurant ? $product->restaurant->name : '';
             })
             ->addColumn('action', function ($product) {
                 return '
