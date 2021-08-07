@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddonController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,6 +46,10 @@ Route::group(['middleware' => ['auth', 'admin'], 'as' => 'admin.', 'prefix' => '
     // Products Routes
     Route::get('/products/list', [ProductController::class, 'productsList'])->name('products.list');
     Route::resource('/products', ProductController::class);
+
+    // Addons Routes
+    Route::get('/addons/list', [AddonController::class, 'addonsList'])->name('addons.list');
+    Route::resource('/addons', AddonController::class);
 
 
 });

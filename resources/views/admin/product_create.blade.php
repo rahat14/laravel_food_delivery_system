@@ -100,6 +100,16 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="name">Addons</label>
+
+                            <select class="js-example-basic-multiple-addon form-control" name="addons[]" multiple="multiple">
+                                @foreach ($addons as $addon)
+                                <option value="{{ $addon->id }}">{{ $addon->addon_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
                             <label for="tags">Tags</label>
                             <input type="text" class="form-control" id="phone" placeholder="Enter tags" name="tags" value="{{ old('tags') }}">
                         </div>
@@ -137,6 +147,7 @@
 $(document).ready(function() {
     $('.js-example-basic-single').select2();
     $('.js-example-basic-multiple').select2();
+    $('.js-example-basic-multiple-addon').select2();
 });
 
 </script>

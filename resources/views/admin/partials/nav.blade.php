@@ -47,6 +47,13 @@
                 </a>
             </li>
 
+            <li class="treeview {{ NavActive('addons' , 2) }}">
+                <a href="{{url('/admin/addons')}}">
+                    <i class="fas fa-utensils"></i>
+                    <span>Addons</span>
+                </a>
+            </li>
+
 
             <li class="treeview">
                 <a href="#">

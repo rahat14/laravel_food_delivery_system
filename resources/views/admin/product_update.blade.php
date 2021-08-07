@@ -56,10 +56,14 @@
                                 </span>
                               </div>
                             <div class="image-preview">
+                                <div class="row mt-2">
                                 @foreach ($product->productimages as $productImage)
 
-                                <img width="150" src="{{ asset("/uploads/product_images/$productImage->product_image") }}" alt="">
+                                <div class="col-md-6">
+                                    <img width="150" src="{{ asset("/uploads/product_images/$productImage->product_image") }}" alt="">
+                                </div>
                                 @endforeach
+                                </div>
                             </div>
                         </div>
 
@@ -105,22 +109,36 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="name">Addons</label>
+
+                            <select class="js-example-basic-multiple-addon form-control" name="addons[]" multiple="multiple">
+                                @foreach ($addons as $addon)
+                                <option value="{{ $addon->id }}">{{ $addon->addon_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
                             <label for="tags">Tags</label>
                             <input type="text" class="form-control" id="phone" placeholder="Enter tags" name="tags" value="{{ $product->tag }}">
                         </div>
-
-                        <div class="form-group">
-                            <label for="is_featured">Is Featured</label>
-                            <br>
-                            <input {{ $product->is_featured == 1 ? 'checked' : '' }} type="checkbox" id="is_featured" class="filled-in chk-col-green" name="is_featured">
-                            <label for="is_featured"></label>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="status">Status</label>
-                            <br>
-                            <input {{ $product->status == 1 ? 'checked' : '' }} type="checkbox" id="status" class="filled-in chk-col-green" name="status">
-                            <label for="status"></label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="is_featured">Is Featured</label>
+                                    <br>
+                                    <input {{ $product->is_featured == 1 ? 'checked' : '' }} type="checkbox" id="is_featured" class="filled-in chk-col-green" name="is_featured">
+                                    <label for="is_featured"></label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="status">Status</label>
+                                    <br>
+                                    <input {{ $product->status == 1 ? 'checked' : '' }} type="checkbox" id="status" class="filled-in chk-col-green" name="status">
+                                    <label for="status"></label>
+                                </div>
+                            </div>
                         </div>
 
                         <button type="submit" class="btn btn-primary">Create</button>
@@ -151,9 +169,21 @@ $(document).ready(function() {
             echo json_encode($data);
         @endphp
     ).trigger('change');
-});
+    });
 
+    $('.js-example-basic-multiple-addon').select2();
+    $('.js-example-basic-multiple-addon').select2().val(
+        @php
+            $addons = [];
+            foreach($product->productaddons as $addon){
+                $addons[] = $addon->addon_id;
+            }
+            echo json_encode($addons);
+        @endphp
+    ).trigger('change');
 </script>
 
 
 @endpush
+
+

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Traits\ImageTrait;
+use App\Models\Addon;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductAddon;
 use App\Models\ProductImage;
 use App\Models\Restaurant;
 use App\Models\RestaurantMenu;
@@ -65,7 +67,8 @@ class ProductController extends Controller
     {
         $restaurants = Restaurant::select('id', 'name')->orderBy('id', 'DESC')->get();
         $categories = Category::select('name', 'id')->get();
-        return view('admin.product_create', compact('categories', 'restaurants'));
+        $addons = Addon::select('id','addon_name')->get();
+        return view('admin.product_create', compact('categories', 'restaurants', 'addons'));
     }
 
     /**
@@ -82,7 +85,8 @@ class ProductController extends Controller
             'primary_image' => ['required', 'max:500'],
             'unit_price' => ['required', 'integer'],
             'categories' => ['required'],
-            'restaurant_id' => ['required']
+            'restaurant_id' => ['required'],
+            'addons' => ['required']
         ]);
 
 
@@ -115,6 +119,14 @@ class ProductController extends Controller
             $restaurantMenuItem->save();
         }
 
+        // Inserting Addons on product_addon table
+        foreach($request->addons as $addonId){
+            $addon = new ProductAddon();
+            $addon->product_id = $product->id;
+            $addon->addon_id = $addonId;
+            $addon->save();
+        }
+
         // inserting multiple image if image exist
         if($request->hasFile('more_image')){
             foreach($request->file('more_image') as $image){
@@ -125,9 +137,10 @@ class ProductController extends Controller
                 $productImage->product_image = $moreImage;
                 $productImage->save();
             }
+
         }
 
-        toast('Success Toast','Food Created')->width('300px');
+        toast('Food Created','success')->width('300px');
         return redirect()->route('admin.products.index');
     }
 
@@ -150,10 +163,12 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        // dd($product->productaddons);
         $restaurants = Restaurant::select('id', 'name')->orderBy('id', 'DESC')->get();
         $categories = Category::select('name', 'id')->get();
+        $addons = Addon::select('id','addon_name')->get();
         $product = Product::findOrFail($product->id);
-        return view('admin.product_update', compact('restaurants', 'categories', 'product'));
+        return view('admin.product_update', compact('restaurants', 'categories', 'product', 'addons'));
     }
 
     /**
@@ -211,6 +226,19 @@ class ProductController extends Controller
             $restaurantMenuItem->save();
         }
 
+        // we will delete previous all product addon
+        // items base on product id
+        // then insert the new update ones
+        ProductAddon::where('product_id', $product->id)->delete();
+        // Inserting Addons on product_addon table
+        foreach($request->addons as $addonId){
+            $addon = new ProductAddon();
+            $addon->product_id = $product->id;
+            $addon->addon_id = $addonId;
+            $addon->save();
+        }
+
+
         // we will delete previous all images
         // item base on product id from product image table
         // then insert the new update ones
@@ -235,7 +263,7 @@ class ProductController extends Controller
             }
         }
 
-        toast('Success Toast','Food Updated')->width('300px');
+        toast('Food Updated','success')->width('300px');
         return redirect()->route('admin.products.index');
     }
 
