@@ -19,6 +19,11 @@ class OrderItem extends Model
         return $this->hasOne(Product::class);
     }
 
+    public function singleProduct()
+    {
+        return $this->belongsTo(Product::class, 'order_id');
+    }
+
     public function addon()
     {
         return $this->hasMany(Addon::class);

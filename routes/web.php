@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\OrderDetailsController;
 use App\Http\Controllers\RestaurantController;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
@@ -50,6 +51,10 @@ Route::group(['middleware' => ['auth', 'admin'], 'as' => 'admin.', 'prefix' => '
     // Addons Routes
     Route::get('/addons/list', [AddonController::class, 'addonsList'])->name('addons.list');
     Route::resource('/addons', AddonController::class);
+
+    // orders Routes
+    Route::get('/orders/list', [OrderDetailsController::class, 'ordersList'])->name('orders.list');
+    Route::resource('/orders', OrderDetailsController::class);
 
 
 });

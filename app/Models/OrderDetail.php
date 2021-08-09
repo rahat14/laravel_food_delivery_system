@@ -39,6 +39,11 @@ class OrderDetail extends Model
         return $this->hasMany(OrderStatus::class ,"order_id" , "id");
     }
 
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class, 'order_id', 'id');
+    }
+
     protected $fillable = [
         'id',
         'invoice_id',

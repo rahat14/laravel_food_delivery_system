@@ -54,6 +54,13 @@
                 </a>
             </li>
 
+            <li class="treeview {{ NavActive('orders' , 2) }}">
+                <a href="{{url('/admin/orders')}}">
+                    <i class="fas fa-utensils"></i>
+                    <span>Orders</span>
+                </a>
+            </li>
+
 
             <li class="treeview">
                 <a href="#">
