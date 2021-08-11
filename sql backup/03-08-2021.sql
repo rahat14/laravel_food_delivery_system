@@ -12,10 +12,39 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+
+-- Dumping database structure for laravel
+DROP DATABASE IF EXISTS `laravel`;
+CREATE DATABASE IF NOT EXISTS `laravel` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `laravel`;
+
+-- Dumping structure for table laravel.accesses
+DROP TABLE IF EXISTS `accesses`;
+CREATE TABLE IF NOT EXISTS `accesses` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `access_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table laravel.accesses: ~0 rows (approximately)
 DELETE FROM `accesses`;
 /*!40000 ALTER TABLE `accesses` DISABLE KEYS */;
 /*!40000 ALTER TABLE `accesses` ENABLE KEYS */;
+
+-- Dumping structure for table laravel.addons
+DROP TABLE IF EXISTS `addons`;
+CREATE TABLE IF NOT EXISTS `addons` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `addon_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `addon_price` int(11) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table laravel.addons: ~50 rows (approximately)
 DELETE FROM `addons`;
@@ -73,10 +102,32 @@ INSERT INTO `addons` (`id`, `addon_name`, `addon_price`, `status`, `created_at`,
 	(50, 'aut', 598, 0, '2011-06-18 06:41:35', '1977-07-19 17:34:15');
 /*!40000 ALTER TABLE `addons` ENABLE KEYS */;
 
+-- Dumping structure for table laravel.areas
+DROP TABLE IF EXISTS `areas`;
+CREATE TABLE IF NOT EXISTS `areas` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `district_id` bigint(20) unsigned NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `area_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table laravel.areas: ~0 rows (approximately)
 DELETE FROM `areas`;
 /*!40000 ALTER TABLE `areas` DISABLE KEYS */;
 /*!40000 ALTER TABLE `areas` ENABLE KEYS */;
+
+-- Dumping structure for table laravel.a_listofcounties
+DROP TABLE IF EXISTS `a_listofcounties`;
+CREATE TABLE IF NOT EXISTS `a_listofcounties` (
+  `CountryID` int(3) NOT NULL AUTO_INCREMENT,
+  `country_name` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `country_code` varchar(10) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  PRIMARY KEY (`CountryID`)
+) ENGINE=MyISAM AUTO_INCREMENT=248 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- Dumping data for table laravel.a_listofcounties: 247 rows
 DELETE FROM `a_listofcounties`;
@@ -331,22 +382,70 @@ INSERT INTO `a_listofcounties` (`CountryID`, `country_name`, `country_code`) VAL
 	(247, 'Zimbabwe', 'ZW');
 /*!40000 ALTER TABLE `a_listofcounties` ENABLE KEYS */;
 
+-- Dumping structure for table laravel.banners
+DROP TABLE IF EXISTS `banners`;
+CREATE TABLE IF NOT EXISTS `banners` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `banner_type_id` bigint(20) unsigned NOT NULL,
+  `banner_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table laravel.banners: ~0 rows (approximately)
 DELETE FROM `banners`;
 /*!40000 ALTER TABLE `banners` DISABLE KEYS */;
 /*!40000 ALTER TABLE `banners` ENABLE KEYS */;
+
+-- Dumping structure for table laravel.banner_images
+DROP TABLE IF EXISTS `banner_images`;
+CREATE TABLE IF NOT EXISTS `banner_images` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `banner_id` bigint(20) unsigned NOT NULL,
+  `banner` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table laravel.banner_images: ~0 rows (approximately)
 DELETE FROM `banner_images`;
 /*!40000 ALTER TABLE `banner_images` DISABLE KEYS */;
 /*!40000 ALTER TABLE `banner_images` ENABLE KEYS */;
 
+-- Dumping structure for table laravel.banner_types
+DROP TABLE IF EXISTS `banner_types`;
+CREATE TABLE IF NOT EXISTS `banner_types` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `banner_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table laravel.banner_types: ~0 rows (approximately)
 DELETE FROM `banner_types`;
 /*!40000 ALTER TABLE `banner_types` DISABLE KEYS */;
 /*!40000 ALTER TABLE `banner_types` ENABLE KEYS */;
 
--- Dumping data for table laravel.categories: ~8 rows (approximately)
+-- Dumping structure for table laravel.categories
+DROP TABLE IF EXISTS `categories`;
+CREATE TABLE IF NOT EXISTS `categories` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `banner` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `icon` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table laravel.categories: ~9 rows (approximately)
 DELETE FROM `categories`;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
 INSERT INTO `categories` (`id`, `name`, `slug`, `banner`, `icon`, `image`, `status`, `created_at`, `updated_at`) VALUES
@@ -361,25 +460,100 @@ INSERT INTO `categories` (`id`, `name`, `slug`, `banner`, `icon`, `image`, `stat
 	(9, 'Eleanor Williams', 'eleanor-williams', '1628017216-icon.jpg', '1628017216-icon-Copy(2).jpg', '1628017216-icon-Copy(2).jpg', 1, '2021-08-03 19:00:16', '2021-08-03 19:00:16');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 
+-- Dumping structure for table laravel.countries
+DROP TABLE IF EXISTS `countries`;
+CREATE TABLE IF NOT EXISTS `countries` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `country_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table laravel.countries: ~0 rows (approximately)
 DELETE FROM `countries`;
 /*!40000 ALTER TABLE `countries` DISABLE KEYS */;
 /*!40000 ALTER TABLE `countries` ENABLE KEYS */;
+
+-- Dumping structure for table laravel.coupons
+DROP TABLE IF EXISTS `coupons`;
+CREATE TABLE IF NOT EXISTS `coupons` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `amount` int(11) NOT NULL,
+  `start_time` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `end_time` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `min_value` int(11) NOT NULL,
+  `max_value` int(11) NOT NULL,
+  `max_usage` int(11) NOT NULL,
+  `restaurant_id` bigint(20) unsigned DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table laravel.coupons: ~0 rows (approximately)
 DELETE FROM `coupons`;
 /*!40000 ALTER TABLE `coupons` DISABLE KEYS */;
 /*!40000 ALTER TABLE `coupons` ENABLE KEYS */;
 
+-- Dumping structure for table laravel.customers
+DROP TABLE IF EXISTS `customers`;
+CREATE TABLE IF NOT EXISTS `customers` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `fullname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_type_id` bigint(20) unsigned NOT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `wallet_id` bigint(20) unsigned DEFAULT NULL,
+  `referrel_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `referred_by` bigint(20) unsigned DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `customers_phone_unique` (`phone`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table laravel.customers: ~0 rows (approximately)
 DELETE FROM `customers`;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 
+-- Dumping structure for table laravel.delivery_zones
+DROP TABLE IF EXISTS `delivery_zones`;
+CREATE TABLE IF NOT EXISTS `delivery_zones` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` int(11) NOT NULL,
+  `comment` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `is_free` tinyint(1) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table laravel.delivery_zones: ~0 rows (approximately)
 DELETE FROM `delivery_zones`;
 /*!40000 ALTER TABLE `delivery_zones` DISABLE KEYS */;
 /*!40000 ALTER TABLE `delivery_zones` ENABLE KEYS */;
+
+-- Dumping structure for table laravel.districts
+DROP TABLE IF EXISTS `districts`;
+CREATE TABLE IF NOT EXISTS `districts` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `division_id` bigint(20) unsigned NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `bn_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lat` tinyint(1) NOT NULL,
+  `lon` tinyint(1) NOT NULL,
+  `website` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table laravel.districts: ~4 rows (approximately)
 DELETE FROM `districts`;
@@ -391,15 +565,50 @@ INSERT INTO `districts` (`id`, `division_id`, `name`, `bn_name`, `lat`, `lon`, `
 	(4, 4, 'Barishal', 'Barishal', 0, 0, '0', NULL, NULL);
 /*!40000 ALTER TABLE `districts` ENABLE KEYS */;
 
+-- Dumping structure for table laravel.divisions
+DROP TABLE IF EXISTS `divisions`;
+CREATE TABLE IF NOT EXISTS `divisions` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `country_id` bigint(20) unsigned NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `bn_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table laravel.divisions: ~0 rows (approximately)
 DELETE FROM `divisions`;
 /*!40000 ALTER TABLE `divisions` DISABLE KEYS */;
 /*!40000 ALTER TABLE `divisions` ENABLE KEYS */;
 
+-- Dumping structure for table laravel.failed_jobs
+DROP TABLE IF EXISTS `failed_jobs`;
+CREATE TABLE IF NOT EXISTS `failed_jobs` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table laravel.failed_jobs: ~0 rows (approximately)
 DELETE FROM `failed_jobs`;
 /*!40000 ALTER TABLE `failed_jobs` DISABLE KEYS */;
 /*!40000 ALTER TABLE `failed_jobs` ENABLE KEYS */;
+
+-- Dumping structure for table laravel.migrations
+DROP TABLE IF EXISTS `migrations`;
+CREATE TABLE IF NOT EXISTS `migrations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table laravel.migrations: ~37 rows (approximately)
 DELETE FROM `migrations`;
@@ -444,52 +653,190 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(91, '2021_07_06_182526_create_order_product_addons_table', 3);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
+-- Dumping structure for table laravel.notifications
+DROP TABLE IF EXISTS `notifications`;
+CREATE TABLE IF NOT EXISTS `notifications` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `message` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` bigint(20) unsigned NOT NULL,
+  `data_type` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table laravel.notifications: ~0 rows (approximately)
 DELETE FROM `notifications`;
 /*!40000 ALTER TABLE `notifications` DISABLE KEYS */;
 /*!40000 ALTER TABLE `notifications` ENABLE KEYS */;
+
+-- Dumping structure for table laravel.order_details
+DROP TABLE IF EXISTS `order_details`;
+CREATE TABLE IF NOT EXISTS `order_details` (
+  `id` int(11) NOT NULL,
+  `invoice_id` int(11) NOT NULL,
+  `customer_id` bigint(20) unsigned NOT NULL,
+  `order_datetime` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `total_amount` int(11) NOT NULL,
+  `discount_amount` int(11) NOT NULL,
+  `district_id` bigint(20) NOT NULL DEFAULT '0',
+  `delivery_zone` bigint(20) unsigned NOT NULL,
+  `address_id` bigint(20) unsigned NOT NULL,
+  `coupon_id` bigint(20) unsigned DEFAULT NULL,
+  `vat` int(11) DEFAULT NULL,
+  `grand_total` int(11) NOT NULL,
+  `payment_method` bigint(20) unsigned NOT NULL,
+  `is_complete` tinyint(1) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table laravel.order_details: ~0 rows (approximately)
 DELETE FROM `order_details`;
 /*!40000 ALTER TABLE `order_details` DISABLE KEYS */;
 /*!40000 ALTER TABLE `order_details` ENABLE KEYS */;
 
+-- Dumping structure for table laravel.order_items
+DROP TABLE IF EXISTS `order_items`;
+CREATE TABLE IF NOT EXISTS `order_items` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `order_id` bigint(20) unsigned NOT NULL,
+  `product_id` bigint(20) unsigned NOT NULL,
+  `unit_price` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `addon_id` int(11) NOT NULL,
+  `restaurant_id` bigint(20) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table laravel.order_items: ~0 rows (approximately)
 DELETE FROM `order_items`;
 /*!40000 ALTER TABLE `order_items` DISABLE KEYS */;
 /*!40000 ALTER TABLE `order_items` ENABLE KEYS */;
+
+-- Dumping structure for table laravel.order_product_addons
+DROP TABLE IF EXISTS `order_product_addons`;
+CREATE TABLE IF NOT EXISTS `order_product_addons` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `order_id` bigint(20) unsigned NOT NULL,
+  `product_id` bigint(20) unsigned NOT NULL,
+  `addon_id` bigint(20) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table laravel.order_product_addons: ~0 rows (approximately)
 DELETE FROM `order_product_addons`;
 /*!40000 ALTER TABLE `order_product_addons` DISABLE KEYS */;
 /*!40000 ALTER TABLE `order_product_addons` ENABLE KEYS */;
 
+-- Dumping structure for table laravel.order_statuses
+DROP TABLE IF EXISTS `order_statuses`;
+CREATE TABLE IF NOT EXISTS `order_statuses` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `order_id` bigint(20) unsigned NOT NULL,
+  `order_status_id` bigint(20) unsigned NOT NULL,
+  `order_status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table laravel.order_statuses: ~0 rows (approximately)
 DELETE FROM `order_statuses`;
 /*!40000 ALTER TABLE `order_statuses` DISABLE KEYS */;
 /*!40000 ALTER TABLE `order_statuses` ENABLE KEYS */;
+
+-- Dumping structure for table laravel.order_status_types
+DROP TABLE IF EXISTS `order_status_types`;
+CREATE TABLE IF NOT EXISTS `order_status_types` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `status_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table laravel.order_status_types: ~0 rows (approximately)
 DELETE FROM `order_status_types`;
 /*!40000 ALTER TABLE `order_status_types` DISABLE KEYS */;
 /*!40000 ALTER TABLE `order_status_types` ENABLE KEYS */;
 
+-- Dumping structure for table laravel.password_resets
+DROP TABLE IF EXISTS `password_resets`;
+CREATE TABLE IF NOT EXISTS `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  KEY `password_resets_email_index` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table laravel.password_resets: ~0 rows (approximately)
 DELETE FROM `password_resets`;
 /*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
 /*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
+
+-- Dumping structure for table laravel.payment_methods
+DROP TABLE IF EXISTS `payment_methods`;
+CREATE TABLE IF NOT EXISTS `payment_methods` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `payment_method` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table laravel.payment_methods: ~0 rows (approximately)
 DELETE FROM `payment_methods`;
 /*!40000 ALTER TABLE `payment_methods` DISABLE KEYS */;
 /*!40000 ALTER TABLE `payment_methods` ENABLE KEYS */;
 
+-- Dumping structure for table laravel.permissions
+DROP TABLE IF EXISTS `permissions`;
+CREATE TABLE IF NOT EXISTS `permissions` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `user_type_id` bigint(20) unsigned NOT NULL,
+  `access_id` bigint(20) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table laravel.permissions: ~0 rows (approximately)
 DELETE FROM `permissions`;
 /*!40000 ALTER TABLE `permissions` DISABLE KEYS */;
 /*!40000 ALTER TABLE `permissions` ENABLE KEYS */;
 
--- Dumping data for table laravel.products: ~100 rows (approximately)
+-- Dumping structure for table laravel.products
+DROP TABLE IF EXISTS `products`;
+CREATE TABLE IF NOT EXISTS `products` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `restaurant_id` bigint(20) unsigned DEFAULT NULL,
+  `district_id` bigint(20) NOT NULL DEFAULT '0',
+  `area_id` bigint(20) NOT NULL DEFAULT '0',
+  `category_id` bigint(20) unsigned NOT NULL,
+  `subcategory_id` bigint(20) unsigned DEFAULT NULL,
+  `primary_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `unit_price` int(11) NOT NULL,
+  `discount_price` int(11) DEFAULT NULL,
+  `ingridient` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `detail` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tag` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `is_featured` tinyint(1) NOT NULL,
+  `rating` float NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table laravel.products: ~103 rows (approximately)
 DELETE FROM `products`;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
 INSERT INTO `products` (`id`, `name`, `slug`, `restaurant_id`, `district_id`, `area_id`, `category_id`, `subcategory_id`, `primary_image`, `unit_price`, `discount_price`, `ingridient`, `detail`, `tag`, `status`, `created_at`, `updated_at`, `is_featured`, `rating`) VALUES
@@ -598,6 +945,17 @@ INSERT INTO `products` (`id`, `name`, `slug`, `restaurant_id`, `district_id`, `a
 	(103, 'Luke Carpenter', NULL, 21, 2, 0, 0, NULL, '1627928981-banner.jpg', 426, 654, 'hafyfoniru@mailinator.com', 'Quae eiusmod in moll', NULL, 0, '2021-08-02 18:29:41', '2021-08-02 18:29:41', 1, 0);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 
+-- Dumping structure for table laravel.product_addons
+DROP TABLE IF EXISTS `product_addons`;
+CREATE TABLE IF NOT EXISTS `product_addons` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `product_id` bigint(20) unsigned NOT NULL,
+  `addon_id` bigint(20) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table laravel.product_addons: ~30 rows (approximately)
 DELETE FROM `product_addons`;
 /*!40000 ALTER TABLE `product_addons` DISABLE KEYS */;
@@ -633,6 +991,17 @@ INSERT INTO `product_addons` (`id`, `product_id`, `addon_id`, `created_at`, `upd
 	(29, 29, 29, '1986-03-08 12:29:56', '1991-01-10 16:06:48'),
 	(30, 30, 30, '1999-11-04 04:55:31', '1994-10-01 07:12:46');
 /*!40000 ALTER TABLE `product_addons` ENABLE KEYS */;
+
+-- Dumping structure for table laravel.product_images
+DROP TABLE IF EXISTS `product_images`;
+CREATE TABLE IF NOT EXISTS `product_images` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `product_id` bigint(20) unsigned NOT NULL,
+  `product_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table laravel.product_images: ~59 rows (approximately)
 DELETE FROM `product_images`;
@@ -699,15 +1068,57 @@ INSERT INTO `product_images` (`id`, `product_id`, `product_image`, `created_at`,
 	(59, 103, '1627928981-icon.jpg', '2021-08-02 18:29:41', '2021-08-02 18:29:41');
 /*!40000 ALTER TABLE `product_images` ENABLE KEYS */;
 
+-- Dumping structure for table laravel.referrels
+DROP TABLE IF EXISTS `referrels`;
+CREATE TABLE IF NOT EXISTS `referrels` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `referrel_owner_id` bigint(20) unsigned NOT NULL,
+  `referrel_user_id` bigint(20) unsigned NOT NULL,
+  `referrel_using_time` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `referrel_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table laravel.referrels: ~0 rows (approximately)
 DELETE FROM `referrels`;
 /*!40000 ALTER TABLE `referrels` DISABLE KEYS */;
 /*!40000 ALTER TABLE `referrels` ENABLE KEYS */;
 
+-- Dumping structure for table laravel.restaurants
+DROP TABLE IF EXISTS `restaurants`;
+CREATE TABLE IF NOT EXISTS `restaurants` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `division_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `district_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `area_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lat` double DEFAULT NULL,
+  `long` double DEFAULT NULL,
+  `delivery_time` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `delivery_charge` int(11) NOT NULL,
+  `logo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `opening_time` time DEFAULT NULL,
+  `closing_time` time DEFAULT NULL,
+  `is_featured` tinyint(1) NOT NULL,
+  `categories` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rating` float NOT NULL DEFAULT '0',
+  `is_closed` bigint(20) DEFAULT '0',
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table laravel.restaurants: ~20 rows (approximately)
 DELETE FROM `restaurants`;
 /*!40000 ALTER TABLE `restaurants` DISABLE KEYS */;
-INSERT INTO `restaurants` (`id`, `name`, `slug`, `email`, `phone`, `division_id`, `district_id`, `area_id`, `address`, `lat`, `long`, `delivery_time`, `delivery_charge`, `logo`, `opening_time`, `closing_time`, `is_featured`, `categories`, `rating`, `status`, `is_closed`, `created_at`, `updated_at`) VALUES
+INSERT INTO `restaurants` (`id`, `name`, `slug`, `email`, `phone`, `division_id`, `district_id`, `area_id`, `address`, `lat`, `long`, `delivery_time`, `delivery_charge`, `logo`, `opening_time`, `closing_time`, `is_featured`, `categories`, `rating`, `is_closed`, `status`, `created_at`, `updated_at`) VALUES
 	(1, 'laudantium', 'r', 'jermain76@example.com', '924.060.1544', '', '5', '7', '2223 Jessika Village Apt. 821\nEast Wymanchester, CA 17882', 59960133.52, 4.938, '3', 5, '/880f886191828c6bd37ae35f0eb5b180.jpg', NULL, NULL, 0, NULL, 0, 0, 0, '1975-08-31 01:19:45', '1993-04-22 12:34:33'),
 	(2, 'et', 'l', 'lonzo.grimes@example.net', '09701844425', '2', '3', '5', '774 Kavon Route Apt. 769\nJakubowskistad, UT 75258', 3427688.1160428, 8321.39, '1', 1, '/ce5a4007ad1e6c2396bcecebe59ab21d.jpg', NULL, NULL, 0, NULL, 0, 0, 0, '2019-01-26 11:27:30', '1976-07-27 12:42:10'),
 	(3, 'enim', 'b', 'hassan.king@example.net', '(814)873-7694x663', '1', '9', '1', '4954 Cremin Freeway Apt. 801\nSouth Misaelburgh, GA 53288', 3.08, 94092.8469, '', 1, '/accf22a3ce7dd61a77d8712030492593.jpg', NULL, NULL, 0, NULL, 0, 0, 0, '1974-07-11 23:05:17', '1972-01-10 06:11:52'),
@@ -727,8 +1138,22 @@ INSERT INTO `restaurants` (`id`, `name`, `slug`, `email`, `phone`, `division_id`
 	(18, 'eveniet', 'r', 'otha.jast@example.org', '09860147804', '3', '6', '4', '759 McLaughlin Track Apt. 054\nHueltown, AR 71220', 374623550.80788, 6.58071, '5', 2, '/f902253d3f23ab5d4cf4d3abc54e5992.jpg', NULL, NULL, 1, NULL, 0, 0, 0, '2019-12-03 20:43:23', '1984-04-19 21:40:08'),
 	(19, 'et', 'y', 'carmella.herzog@example.org', '023-827-2540x173', '2', '5', '5', '945 Catherine Junction\nFordberg, LA 74879-6453', 0, 128443, '7', 0, '/b28f9b7db120b6f34ffc6444b0e1b2da.jpg', NULL, NULL, 0, NULL, 0, 0, 0, '1980-11-01 09:32:51', '1988-11-05 10:23:12'),
 	(20, 'quasi', 'r', 'lwilliamson@example.org', '1-166-427-8057', '', '1', '2', '7970 Kulas Heights\nBrakusborough, NC 87637', 1.763975, 47217667.891107, '9', 9, '/b9bc3dd27b5a0111e7615ab657e5c01f.jpg', NULL, NULL, 0, NULL, 0, 0, 0, '1999-12-28 14:45:03', '2015-12-06 22:31:24'),
-	(21, 'peryki@mailinator.com', NULL, 'becefasidy@mailinator.com', '01969290200', '1', '2', '0', 'Est ex soluta paria', 0, 0, '4', 78, '1628017040-icon-Copy(2).jpg', '14:23:00', '22:16:00', 1, '["5","6"]', 1, 1, 0, '2021-08-01 11:13:15', '2021-08-03 18:57:20');
+	(21, 'peryki@mailinator.com', NULL, 'becefasidy@mailinator.com', '01969290200', '1', '2', '0', 'Est ex soluta paria', 0, 0, '4', 78, '1628017040-icon-Copy(2).jpg', '14:23:00', '22:16:00', 1, '["5","6"]', 1, 0, 1, '2021-08-01 11:13:15', '2021-08-03 18:57:20');
 /*!40000 ALTER TABLE `restaurants` ENABLE KEYS */;
+
+-- Dumping structure for table laravel.restaurant_menus
+DROP TABLE IF EXISTS `restaurant_menus`;
+CREATE TABLE IF NOT EXISTS `restaurant_menus` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `restaurant_id` bigint(20) unsigned NOT NULL,
+  `product_id` bigint(20) unsigned NOT NULL,
+  `category_id` bigint(20) unsigned NOT NULL,
+  `subcategory_id` bigint(20) unsigned DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=136 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table laravel.restaurant_menus: ~9 rows (approximately)
 DELETE FROM `restaurant_menus`;
@@ -745,10 +1170,49 @@ INSERT INTO `restaurant_menus` (`id`, `restaurant_id`, `product_id`, `category_i
 	(135, 21, 0, 6, 0, 1, '2021-08-03 18:57:20', '2021-08-03 18:57:20');
 /*!40000 ALTER TABLE `restaurant_menus` ENABLE KEYS */;
 
+-- Dumping structure for table laravel.settings
+DROP TABLE IF EXISTS `settings`;
+CREATE TABLE IF NOT EXISTS `settings` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `site_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `theme` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `primary_mbl` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `alt_mbl` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `facebook_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `twitter_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `instagram_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `linkedin_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `skype_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `logo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alt_logo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `copyright_text` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table laravel.settings: ~0 rows (approximately)
 DELETE FROM `settings`;
 /*!40000 ALTER TABLE `settings` DISABLE KEYS */;
 /*!40000 ALTER TABLE `settings` ENABLE KEYS */;
+
+-- Dumping structure for table laravel.subcategories
+DROP TABLE IF EXISTS `subcategories`;
+CREATE TABLE IF NOT EXISTS `subcategories` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `category_id` bigint(20) unsigned NOT NULL,
+  `banner` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `icon` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table laravel.subcategories: ~5 rows (approximately)
 DELETE FROM `subcategories`;
@@ -761,12 +1225,47 @@ INSERT INTO `subcategories` (`id`, `name`, `slug`, `category_id`, `banner`, `ico
 	(5, 'rerum', NULL, 5, NULL, NULL, 'tmp//19d4563b5400143fa14d764551ed88e6.jpg', 0, '1977-01-11 19:09:21', '2007-08-29 00:53:15');
 /*!40000 ALTER TABLE `subcategories` ENABLE KEYS */;
 
--- Dumping data for table laravel.users: ~0 rows (approximately)
+-- Dumping structure for table laravel.users
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_type_id` bigint(20) unsigned NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_email_unique` (`email`),
+  UNIQUE KEY `users_phone_unique` (`phone`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table laravel.users: ~1 rows (approximately)
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `user_type_id`, `email`, `phone`, `address`, `status`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 	(1, 'trest', 1, 'admin@admin.com', '01516185792', '', 1, NULL, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, '2021-07-03 03:33:41', '2021-07-03 03:33:41');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
+
+-- Dumping structure for table laravel.user_addresses
+DROP TABLE IF EXISTS `user_addresses`;
+CREATE TABLE IF NOT EXISTS `user_addresses` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `customer_id` bigint(20) unsigned NOT NULL,
+  `division_id` bigint(20) unsigned NOT NULL,
+  `district_id` bigint(20) unsigned NOT NULL,
+  `area_id` bigint(20) unsigned NOT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `address_type` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table laravel.user_addresses: ~3 rows (approximately)
 DELETE FROM `user_addresses`;
@@ -777,20 +1276,70 @@ INSERT INTO `user_addresses` (`id`, `customer_id`, `division_id`, `district_id`,
 	(3, 1, 1, 1, 1, 'asdfasdf', NULL, NULL, 'asdfasdf');
 /*!40000 ALTER TABLE `user_addresses` ENABLE KEYS */;
 
+-- Dumping structure for table laravel.user_reviews
+DROP TABLE IF EXISTS `user_reviews`;
+CREATE TABLE IF NOT EXISTS `user_reviews` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `rating` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `review` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `customer_id` bigint(20) unsigned NOT NULL,
+  `restaurant_id` bigint(20) unsigned NOT NULL,
+  `order_id` bigint(20) unsigned NOT NULL,
+  `is_reviewed` tinyint(1) NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `is_Food` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table laravel.user_reviews: ~0 rows (approximately)
 DELETE FROM `user_reviews`;
 /*!40000 ALTER TABLE `user_reviews` DISABLE KEYS */;
 /*!40000 ALTER TABLE `user_reviews` ENABLE KEYS */;
+
+-- Dumping structure for table laravel.user_types
+DROP TABLE IF EXISTS `user_types`;
+CREATE TABLE IF NOT EXISTS `user_types` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `rolename` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table laravel.user_types: ~0 rows (approximately)
 DELETE FROM `user_types`;
 /*!40000 ALTER TABLE `user_types` DISABLE KEYS */;
 /*!40000 ALTER TABLE `user_types` ENABLE KEYS */;
 
+-- Dumping structure for table laravel.wallets
+DROP TABLE IF EXISTS `wallets`;
+CREATE TABLE IF NOT EXISTS `wallets` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `customer_id` bigint(20) unsigned NOT NULL,
+  `point` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table laravel.wallets: ~0 rows (approximately)
 DELETE FROM `wallets`;
 /*!40000 ALTER TABLE `wallets` DISABLE KEYS */;
 /*!40000 ALTER TABLE `wallets` ENABLE KEYS */;
+
+-- Dumping structure for table laravel.zones
+DROP TABLE IF EXISTS `zones`;
+CREATE TABLE IF NOT EXISTS `zones` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `district_id` bigint(20) unsigned NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table laravel.zones: ~0 rows (approximately)
 DELETE FROM `zones`;
