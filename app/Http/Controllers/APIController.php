@@ -39,6 +39,7 @@ class APIController extends Controller
         $list = OrderStatus::query()
             ->where("order_id", $order_id)
             ->with("orderstatustype")
+            ->orderBy( "id", "asc")
             ->get();
 
         return response()->json(
