@@ -20,5 +20,5 @@ class ProductAddon extends Model
         return $this->belongsTo(Addon::class);
     }
 
-    
+
 }
