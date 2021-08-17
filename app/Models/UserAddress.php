@@ -18,6 +18,4 @@ class UserAddress extends Model
     {
         return $this->belongsTo(OrderDetail::class);
     }
-
-
 }

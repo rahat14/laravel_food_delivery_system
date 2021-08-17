@@ -21,11 +21,4 @@ class OrderProductAddon extends Model
     {
         return $this->hasMany(Addon::class);
     }
-
-    public function orderAddons()
-    {
-        return $this->belongsTo(Addon::class, 'addon_id', 'id');
-    }
-
-
 }
