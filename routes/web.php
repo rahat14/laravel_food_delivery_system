@@ -53,8 +53,11 @@ Route::group(['middleware' => ['auth', 'admin'], 'as' => 'admin.', 'prefix' => '
     Route::resource('/addons', AddonController::class);
 
     // orders Routes
+
     Route::get('/orders/list', [OrderDetailsController::class, 'ordersList'])->name('orders.list');
     Route::resource('/orders', OrderDetailsController::class);
+
+
 
 
 });
