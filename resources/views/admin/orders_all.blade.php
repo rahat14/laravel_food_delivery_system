@@ -60,7 +60,7 @@
         ajax: '{{ route('admin.orders.list') }}',
         columns: [
             { data: 'invoice_id', name: 'invoice_id' },
-            { data: 'customer.fullname', name: 'customer.fullname' },
+            { data: 'customer_name', name: 'customer_name' },
             { data: 'orders', name: 'orders' },
             { data: 'status', name: 'status' },
             { data: 'action', name: 'action', orderable: false, searchable: false }

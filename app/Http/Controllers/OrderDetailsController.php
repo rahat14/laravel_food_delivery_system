@@ -3,12 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\OrderDetail;
-use App\Models\OrderItem;
-use App\Models\OrderStatus;
-use App\Models\OrderStatusType;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
-
 class OrderDetailsController extends Controller
 {
     /**
@@ -27,31 +23,27 @@ class OrderDetailsController extends Controller
             'id',
             'invoice_id',
             'customer_id',
-            'is_completed'
-        )->with('customer')->with('status')->orderBy('id','desc');
+        )->with('customer')->orderBy('id','desc');
 
         return DataTables::of($orders)
-
+            // ->addColumn('status', function ($order) {
+            //     return $order->status == 1 ? '<span class="label label-success  mt-5">Active</span>' : '<span class="label label-danger  mt-5">Inactive</span>';
+            //  })
             ->addColumn('customer_name', function ($customer) {
                 return $customer->customer->fullname;
              })
 
-            ->addColumn('orders', function ($orders) {
+             ->addColumn('orders', function ($orders) {
                 if($orders->orderItems){
-                    $data = [];
                     foreach($orders->orderItems as $orderItem){
-                        $data[] = $orderItem->productByOrder->name;
-                    }
 
-                    return $data;
+                        return $orderItem->singleProduct->name;
+                    }
                 }
             })
 
-            // ->addColumn('status', function ($status) {
-            //     return "<span class='label label-success  mt-5'>".$status->orderstatus->first()->orderstatustype->status_type."</span>";
-            // })
             ->addColumn('status', function ($status) {
-                return "<span class='label label-success  mt-5'>".$status->status->orderstatustype->status_type."</span>";
+                return "<span class='label label-success  mt-5'>".$status->orderstatus->first()->orderstatustype->status_type."</span>";
             })
             ->addColumn('action', function ($order) {
                 return '
@@ -92,11 +84,8 @@ class OrderDetailsController extends Controller
     public function show($id)
     {
         $order = OrderDetail::findOrFail($id);
-        // $orderItems = OrderItem::where('order_id', $id)->get();
-        $status = OrderStatusType::all();
 
-
-        return view('admin.order_show', compact('order', 'status'));
+        return view('admin.order_show', compact('order'));
     }
 
     /**
@@ -117,19 +106,9 @@ class OrderDetailsController extends Controller
      * @param  \App\Models\OrderDetails  $orderdetails
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, OrderDetails $orderdetails)
     {
-        $orderStatus = OrderStatus::where('order_id', $id)->first();
-        $orderStatus->order_status_id = $request->status;
-        $orderStatus->save();
-
-        // update is_orderComplite
-        $updateOrderDtaileStatus = OrderDetail::find($id);
-        $updateOrderDtaileStatus->is_completed = $request->status;
-        $updateOrderDtaileStatus->save();
-
-        return redirect()->back();
-
+        //
     }
 
     /**
