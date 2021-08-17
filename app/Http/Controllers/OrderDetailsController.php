@@ -128,7 +128,7 @@ class OrderDetailsController extends Controller
         $updateOrderDtaileStatus->is_completed = $request->status;
         $updateOrderDtaileStatus->save();
 
-        return redirect()->back();
+        return redirect()->route('admin.orders.index');
 
     }
 
