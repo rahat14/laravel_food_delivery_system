@@ -18,10 +18,11 @@ class OrderDetailsController extends Controller
      */
     public function index()
     {
-        return view('admin.orders_all');
+        $status = OrderStatusType::all();
+        return view('admin.orders_all', compact('status'));
     }
 
-    public function ordersList()
+    public function ordersList(Request $request)
     {
         $orders = OrderDetail::select(
             'id',
@@ -46,10 +47,6 @@ class OrderDetailsController extends Controller
                     return $data;
                 }
             })
-
-            // ->addColumn('status', function ($status) {
-            //     return "<span class='label label-success  mt-5'>".$status->orderstatus->first()->orderstatustype->status_type."</span>";
-            // })
             ->addColumn('status', function ($status) {
                 return "<span class='label label-success  mt-5'>".$status->status->orderstatustype->status_type."</span>";
             })
@@ -57,6 +54,20 @@ class OrderDetailsController extends Controller
                 return '
                     <a href="/admin/orders/'.$order->id.'" class=" btn btn-xs btn-dark"><i class="glyphicon glyphicon-eye-open"></i> View</a>
                 ';
+            })
+            ->filter(function ($instance) use ($request) {
+                if ($request->approved) {
+                    $instance->where('is_completed', $request->get('approved'));
+                }
+
+                if (!empty($request->search)) {
+                     $instance->where(function($query) use($request){
+                        $query->orWhere('invoice_id', 'LIKE', "%$request->search%");
+                    })->orWhereHas('customer', function ($query) use ($request) {
+                        $query->where('fullname', 'LIKE', "%{$request->search}%");
+                    });
+                }
+
             })
             ->rawColumns(['status', 'action'])
             ->make(true);
