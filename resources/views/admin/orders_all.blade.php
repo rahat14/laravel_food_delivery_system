@@ -9,11 +9,7 @@
         <section class="content">
         <div class="card">
             <div class="card-header">
-                <h3 class="m-0">Foods</h3>
-                <div class="d-flex">
-                    <h3 class="ml-0">Create</h3>
-                    <a href="{{route('admin.products.create')}}" class="btn btn-success custom-button action-add"> <i class="fas fa-plus  "></i></a>
-                </div>
+                <h3 class="m-0">All Orders</h3>
             </div>
             <div class="card-body">
                 <div class="row">

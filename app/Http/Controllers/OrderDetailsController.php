@@ -48,7 +48,7 @@ class OrderDetailsController extends Controller
                 }
             })
             ->addColumn('status', function ($status) {
-                return "<span class='label label-success  mt-5'>".$status->status->orderstatustype->status_type."</span>";
+                return "<span class='label mt-5 label-".$status->status->orderstatustype->color_class."'>".$status->status->orderstatustype->status_type."</span>";
             })
             ->addColumn('action', function ($order) {
                 return '
@@ -139,6 +139,7 @@ class OrderDetailsController extends Controller
         $updateOrderDtaileStatus->is_completed = $request->status;
         $updateOrderDtaileStatus->save();
 
+        toast('Order Updated!','info')->width('300px');
         return redirect()->route('admin.orders.index');
 
     }
