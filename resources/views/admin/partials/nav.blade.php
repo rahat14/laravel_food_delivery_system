@@ -61,6 +61,13 @@
                 </a>
             </li>
 
+            <li class="treeview {{ NavActive('users' , 2) }}">
+                <a href="{{url('/admin/users')}}">
+                    <i class="fas fa-utensils"></i>
+                    <span>Users</span>
+                </a>
+            </li>
+
 
             <li class="treeview">
                 <a href="#">

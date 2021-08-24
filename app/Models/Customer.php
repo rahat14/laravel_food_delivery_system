@@ -31,4 +31,9 @@ class Customer extends Model
     {
         return $this->hasOne(Wallet::class);
     }
+
+    public function orders()
+    {
+        return $this->hasMany(OrderDetail::class, 'customer_id', 'id');
+    }
 }

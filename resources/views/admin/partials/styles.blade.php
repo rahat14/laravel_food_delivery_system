@@ -11,6 +11,11 @@
     margin-right: 5px;
     }
 
+    a.paginate_button.current {
+    background: #2a93d5 !important;
+    border: none !important;
+    color: rgb(250, 250, 250) !important;
+    }
 
 
   </style>
@@ -26,10 +31,10 @@
 
   <!-- Admin skins -->
   <link rel="stylesheet" href="{{ asset('_admin/css/skins/_all-skins.css') }}">
-
+<!-- Datatable -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
   {{-- Custom Css --}}
   <link rel="stylesheet" href="{{ asset('_admin/css/custom.css') }}">
 
   {{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css"> --}}
-
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AddonController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\DashboardController;
@@ -53,9 +54,14 @@ Route::group(['middleware' => ['auth', 'admin'], 'as' => 'admin.', 'prefix' => '
     Route::resource('/addons', AddonController::class);
 
     // orders Routes
-
     Route::get('/orders/list', [OrderDetailsController::class, 'ordersList'])->name('orders.list');
     Route::resource('/orders', OrderDetailsController::class);
+
+    // Users Routes
+    Route::get('/users/list', [CustomerController::class, 'userList'])->name('users.list');
+    Route::get('/users/order/show/{id}', [CustomerController::class, 'ordersShow'])->name('users.order.list');
+
+    Route::resource('/users', CustomerController::class);
 
 
 
