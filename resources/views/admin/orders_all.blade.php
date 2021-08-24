@@ -32,6 +32,7 @@
                             <th>invoice id</th>
                             <th>customer name</th>
                             <th>orders</th>
+                            <th>date</th>
                             <th>status</th>
                             <th>Action</th>
                         </tr>
@@ -50,7 +51,7 @@
 
 @push('custom-scripts')
 <!-- Jquery DataTable CDN-->
-<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 
 <script>
     // AJAX CSRF TOKEN *
@@ -67,7 +68,6 @@
         responsive: true,
         processing: true,
         serverSide: true,
-        ordering: false,
         ajax: {
             url: '{{ route('admin.orders.list') }}',
             data: function (d) {
@@ -77,20 +77,27 @@
         },
 
         columns: [
+
             { data: 'invoice_id', name: 'invoice_id' },
-            { data: 'customer.fullname', name: 'customer.fullname' },
-            { data: 'orders', name: 'orders' },
-            { data: 'status', name: 'status' },
-            { data: 'action', name: 'action', orderable: false, searchable: false }
+            { data: 'customer.fullname', name: 'customer.fullname',orderable: false },
+            { data: 'orders', name: 'orders', orderable: false },
+            { data: 'date', name: 'created_at'},
+            { data: 'status', name: 'status', orderable: false },
+            { data: 'action', name: 'action', orderable: false, searchable: false },
+
         ],
         columnDefs: [
-            { "width": "20%", "targets": 0 },
+
             { "width": "20%", "targets": 1 },
-            { "width": "40%", "targets": 2 },
+            { "width": "25%", "targets": 2 },
             { "width": "10%", "targets": 3 },
             { "width": "10%", "targets": 4 },
+            { "width": "10%", "targets": 5 },
+            { "width": "20%", "targets": 0 },
         ],
+
     });
+
 
     $('#approved').change(function(){
         table.draw();

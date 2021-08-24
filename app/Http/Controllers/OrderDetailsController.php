@@ -6,6 +6,7 @@ use App\Models\OrderDetail;
 use App\Models\OrderItem;
 use App\Models\OrderStatus;
 use App\Models\OrderStatusType;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 
@@ -28,8 +29,10 @@ class OrderDetailsController extends Controller
             'id',
             'invoice_id',
             'customer_id',
+            'created_at',
             'is_completed'
-        )->with('customer')->with('status')->orderBy('id','desc');
+        )->with('customer')->with('status');
+
 
         return DataTables::of($orders)
 
@@ -55,6 +58,9 @@ class OrderDetailsController extends Controller
                     <a href="/admin/orders/'.$order->id.'" class=" btn btn-xs btn-dark"><i class="glyphicon glyphicon-eye-open"></i> View</a>
                 ';
             })
+            ->addColumn('date', function ($order) {
+                return Carbon::parse($order->created_at)->format('d/m/Y  H:i');
+            })
             ->filter(function ($instance) use ($request) {
                 if ($request->approved) {
                     $instance->where('is_completed', $request->get('approved'));
@@ -69,7 +75,7 @@ class OrderDetailsController extends Controller
                 }
 
             })
-            ->rawColumns(['status', 'action'])
+            ->rawColumns(['status', 'created_at', 'action'])
             ->make(true);
     }
 

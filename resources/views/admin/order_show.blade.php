@@ -95,12 +95,11 @@
                             </tr>
                          @endforeach
 
-                         @if ($order->order_note)
                             <tr>
-                                <td>Note: </td>
-                                <td colspan="5">{{ $order->order_note }}</td>
+                                <td><b>Note:</b> </td>
+                                <td colspan="5">{{ $order->order_note ? $order->order_note : '-'  }}</td>
                             </tr>
-                         @endif
+
                             <tr>
                                 <td colspan="4">Total: </td>
                                 <td>{{ $totalAmount }} <span class="ml-5">৳</span></td>
