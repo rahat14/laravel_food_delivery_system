@@ -722,7 +722,7 @@ class APIController extends Controller
         $order_Status = new OrderStatus();
 
         $order_Status->order_id = $o_Id;
-        $order_Status->order_status_id = 1; // 1 == setting it pending
+        $order_Status->order_status_id = 1; // 1 == status  setting it pending
         $order_Status->save();
 
         //  now loop thrugh the json
