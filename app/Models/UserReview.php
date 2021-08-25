@@ -23,4 +23,14 @@ class UserReview extends Model
     {
         return $this->belongsTo(Customer::class , "customer_id", "id");
     }
+
+    public function reviewedRestaurant()
+    {
+        return $this->belongsTo(Restaurant::class, "restaurant_id", "id");
+    }
+
+    // public function reviewedOrder()
+    // {
+    //     return $this->belongsTo(OrderDetail::class, "order_id", "id");
+    // }
 }

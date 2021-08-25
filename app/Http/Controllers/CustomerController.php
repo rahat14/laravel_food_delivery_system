@@ -93,7 +93,6 @@ class CustomerController extends Controller
 
 
         return DataTables::of($orders)
-
             ->addColumn('customer_name', function ($customer) {
                 return $customer->customer->fullname;
              })
@@ -119,11 +118,8 @@ class CustomerController extends Controller
             ->addColumn('date', function ($order) {
                 return Carbon::parse($order->created_at)->format('d/m/Y  H:i');
             })
-
             ->rawColumns(['status', 'created_at', 'action'])
             ->make(true);
-
-
     }
 
     /**

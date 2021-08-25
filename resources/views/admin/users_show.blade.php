@@ -1,12 +1,8 @@
 @extends('admin/layouts/' . 'master')
 
 @section('content')
-
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-
-
-
         <!-- Main content -->
         <section class="content">
 
@@ -50,7 +46,6 @@
                 <div class="col-md-3">
                     <div class="info-box bg-info">
                         <span class="info-box-icon push-top"><i class="iconsmind-Add-Bag"></i></span>
-
                         <div class="info-box-content">
                           <span class="info-box-text">Orders</span>
                           <span class="info-box-number">{{ $orderCount }}</span>
@@ -58,7 +53,6 @@
                           <div class="progress">
                             <div class="progress-bar" style="width: 100%"></div>
                           </div>
-
                         </div>
                         <!-- /.info-box-content -->
                       </div>
@@ -80,10 +74,6 @@
                         <!-- /.info-box-content -->
                       </div>
                 </div>
-
-
-
-
             </div>
 
             <div class="card">
@@ -163,8 +153,6 @@
         ],
 
     });
-
-
 });
 </script>
 @endpush

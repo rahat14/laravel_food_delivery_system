@@ -11,6 +11,8 @@ use App\Http\Controllers\RestaurantController;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserReviewController;
+use App\Models\UserReview;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,9 +62,11 @@ Route::group(['middleware' => ['auth', 'admin'], 'as' => 'admin.', 'prefix' => '
     // Users Routes
     Route::get('/users/list', [CustomerController::class, 'userList'])->name('users.list');
     Route::get('/users/order/show/{id}', [CustomerController::class, 'ordersShow'])->name('users.order.list');
-
     Route::resource('/users', CustomerController::class);
 
+    // Reviews Routes
+    Route::get('/reviews/list', [UserReviewController::class, 'reviewList'])->name('review.list');
+    Route::resource('/reviews', UserReviewController::class);
 
 
 
