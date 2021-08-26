@@ -49,40 +49,32 @@
 
             <li class="treeview {{ NavActive('addons' , 2) }}">
                 <a href="{{url('/admin/addons')}}">
-                    <i class="fas fa-utensils"></i>
+                    <i class="fas fa-tasks"></i>
                     <span>Addons</span>
                 </a>
             </li>
 
             <li class="treeview {{ NavActive('orders' , 2) }}">
                 <a href="{{url('/admin/orders')}}">
-                    <i class="fas fa-utensils"></i>
+                    <i class="fas fa-cart-arrow-down"></i>
                     <span>Orders</span>
                 </a>
             </li>
 
             <li class="treeview {{ NavActive('users' , 2) }}">
                 <a href="{{url('/admin/users')}}">
-                    <i class="fas fa-utensils"></i>
+                    <i class="fas fa-users"></i>
                     <span>Users</span>
                 </a>
             </li>
 
             <li class="treeview {{ NavActive('reviews' , 2) }}">
                 <a href="{{url('/admin/reviews')}}">
-                    <i class="fas fa-utensils"></i>
+                    <i class="fas fa-star"></i>
                     <span>Reviews</span>
                 </a>
             </li>
 
-
-            <li class="treeview">
-                <a href="#">
-                    <i class="fas fa-tasks"></i>
-                    <span>Menu Items</span>
-
-                </a>
-            </li>
 
             <li class="treeview">
                 <a href="#">
@@ -93,31 +85,7 @@
             </li>
 
 
-            <li class="treeview">
-                <a href="#">
-                    <i class="fas fa-cart-arrow-down"></i>
-                    <span>Orders</span>
 
-                </a>
-            </li>
-
-
-            <li class="treeview">
-                <a href="#">
-                    <i class="fas fa-users"></i>
-                    <span>Users</span>
-
-                </a>
-            </li>
-
-
-            <li class="treeview">
-                <a href="#">
-                    <i class="fas fa-star"></i>
-                    <span>Reviews</span>
-
-                </a>
-            </li>
 
             <li class="treeview">
                 <a href="#">
