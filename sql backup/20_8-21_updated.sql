@@ -458,7 +458,7 @@ INSERT INTO `categories` (`id`, `name`, `slug`, `banner`, `icon`, `image`, `stat
 	(6, 'enim', NULL, '/899cdf6858d107d51edad7fdd03814c1.jpg', '/504b58cf8dbb5ad0eab455fa5a326e84.jpg', 'tmp//57343a229e78d56763b8ed63ddff4993.jpg', 0, '2016-03-07 06:29:48', '1998-06-17 14:58:09'),
 	(7, 'vitae', NULL, '/6cd2b40aa0ad03aadb35073124c7f944.jpg', '/340f089b19ae77495974dfe62c67e5b4.jpg', 'tmp//9a2d9d7d74e9d26df60183d6d9f1a4cf.jpg', 0, '1994-05-06 00:07:59', '1972-11-13 14:04:26'),
 	(8, 'omnis', NULL, '/c67da19288c80fdb2205894887295cb9.jpg', '/020bab0c7b1fce16b8c19ba2e6ba8a91.jpg', 'tmp//226a8c8fdb58f63fabe56eed5302f1db.jpg', 0, '2010-07-21 01:13:10', '2001-01-07 09:58:04'),
-	(9, 'eos', NULL, '/fb397402e5e50fd64e1b853cf426ecb8.jpg', '/e9973fc379f81306f22ec52f0da17683.jpg', 'tmp//16363bdc35436232a231fb500bba84a6.jpg', 0, '2007-07-14 23:51:06', '1989-06-01 02:06:22'),
+	(9, 'eos', 'eos', '/fb397402e5e50fd64e1b853cf426ecb8.jpg', '/e9973fc379f81306f22ec52f0da17683.jpg', 'tmp//16363bdc35436232a231fb500bba84a6.jpg', 1, '2007-07-14 23:51:06', '2021-08-24 18:21:17'),
 	(10, 'qui', 'qui', '/62b78778faf6e80e2648dda7061ed257.jpg', '/ba9406c4326ad4c1d842e2d341d73130.jpg', 'tmp//dc37524dfb22b80c37fbaec0a58c09a0.jpg', 1, '1987-04-10 16:11:13', '2021-08-15 23:53:16');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 
@@ -494,7 +494,7 @@ CREATE TABLE IF NOT EXISTS `coupons` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table laravel.coupons: ~0 rows (approximately)
+-- Dumping data for table laravel.coupons: ~1 rows (approximately)
 DELETE FROM `coupons`;
 /*!40000 ALTER TABLE `coupons` DISABLE KEYS */;
 INSERT INTO `coupons` (`id`, `code`, `amount`, `start_time`, `end_time`, `min_value`, `max_value`, `max_usage`, `restaurant_id`, `status`, `created_at`, `updated_at`) VALUES
@@ -525,7 +525,7 @@ CREATE TABLE IF NOT EXISTS `customers` (
 DELETE FROM `customers`;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
 INSERT INTO `customers` (`id`, `fullname`, `username`, `user_type_id`, `phone`, `image`, `wallet_id`, `referrel_code`, `referred_by`, `status`, `created_at`, `updated_at`, `password`) VALUES
-	(1, 'shakil', 'shakil', 3, '01969290200', NULL, NULL, NULL, NULL, 1, NULL, NULL, 'sadfsdaf');
+	(1, 'shakil', 'shakil', 3, '01969290200', 'demo.gif', NULL, '0', 0, 1, '2021-08-25 13:35:49', '2021-08-25 13:35:52', 'sadfsdaf');
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 
 -- Dumping structure for table laravel.delivery_zones
@@ -542,7 +542,7 @@ CREATE TABLE IF NOT EXISTS `delivery_zones` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table laravel.delivery_zones: ~0 rows (approximately)
+-- Dumping data for table laravel.delivery_zones: ~1 rows (approximately)
 DELETE FROM `delivery_zones`;
 /*!40000 ALTER TABLE `delivery_zones` DISABLE KEYS */;
 INSERT INTO `delivery_zones` (`id`, `name`, `price`, `comment`, `is_free`, `created_at`, `updated_at`, `district_id`) VALUES
@@ -564,7 +564,7 @@ CREATE TABLE IF NOT EXISTS `districts` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table laravel.districts: ~0 rows (approximately)
+-- Dumping data for table laravel.districts: ~1 rows (approximately)
 DELETE FROM `districts`;
 /*!40000 ALTER TABLE `districts` DISABLE KEYS */;
 INSERT INTO `districts` (`id`, `division_id`, `name`, `bn_name`, `lat`, `lon`, `website`, `created_at`, `updated_at`) VALUES
@@ -710,8 +710,8 @@ CREATE TABLE IF NOT EXISTS `order_details` (
 DELETE FROM `order_details`;
 /*!40000 ALTER TABLE `order_details` DISABLE KEYS */;
 INSERT INTO `order_details` (`id`, `invoice_id`, `customer_id`, `order_datetime`, `total_amount`, `discount_amount`, `delivery_zone`, `address_id`, `coupon_id`, `vat`, `grand_total`, `payment_method`, `created_at`, `updated_at`, `trx_id`, `order_list`, `is_completed`, `requsted_order_time`, `order_note`) VALUES
-	(1, '46595656', 1, '2021-08-16 20:05:54', 2000, 0, 0, 1, NULL, 0, 2000, 1, '2021-08-16 20:05:54', '2021-08-20 11:00:04', 'sd', 'sdafsadf', 6, NULL, NULL),
-	(2, '465956578', 1, '2021-08-16 20:05:54', 5000, 0, 0, 1, NULL, 0, 5000, 1, '2021-08-16 20:05:54', '2021-08-19 15:25:02', 'sd', 'sdafsadf', 3, NULL, NULL);
+	(1, '46595656', 1, '2021-08-16 20:05:54', 2000, 0, 0, 1, NULL, 0, 2000, 1, '2021-07-25 15:38:16', '2021-08-26 05:58:36', 'sd', 'sdafsadf', 5, NULL, NULL),
+	(2, '465956578', 1, '2021-08-16 20:05:54', 5000, 0, 0, 1, NULL, 0, 5000, 1, '2021-08-16 20:05:54', '2021-08-26 05:58:25', 'sd', 'sdafsadf', 5, NULL, NULL);
 /*!40000 ALTER TABLE `order_details` ENABLE KEYS */;
 
 -- Dumping structure for table laravel.order_items
@@ -777,8 +777,8 @@ CREATE TABLE IF NOT EXISTS `order_statuses` (
 DELETE FROM `order_statuses`;
 /*!40000 ALTER TABLE `order_statuses` DISABLE KEYS */;
 INSERT INTO `order_statuses` (`id`, `order_id`, `order_status_id`, `order_status`, `created_at`, `updated_at`) VALUES
-	(25, 1, 6, NULL, '2021-08-19 00:22:38', '2021-08-20 11:00:04'),
-	(26, 2, 3, NULL, '2021-08-19 00:23:03', '2021-08-19 15:25:02');
+	(25, 1, 5, NULL, '2021-08-19 00:22:38', '2021-08-26 05:58:36'),
+	(26, 2, 5, NULL, '2021-08-19 00:23:03', '2021-08-26 05:58:25');
 /*!40000 ALTER TABLE `order_statuses` ENABLE KEYS */;
 
 -- Dumping structure for table laravel.order_status_types
@@ -1116,7 +1116,7 @@ CREATE TABLE IF NOT EXISTS `referrels` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table laravel.referrels: ~0 rows (approximately)
+-- Dumping data for table laravel.referrels: ~1 rows (approximately)
 DELETE FROM `referrels`;
 /*!40000 ALTER TABLE `referrels` DISABLE KEYS */;
 INSERT INTO `referrels` (`id`, `referrel_owner_id`, `referrel_user_id`, `referrel_using_time`, `referrel_code`, `created_at`, `updated_at`) VALUES
@@ -1302,7 +1302,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `users_phone_unique` (`phone`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table laravel.users: ~0 rows (approximately)
+-- Dumping data for table laravel.users: ~1 rows (approximately)
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `user_type_id`, `email`, `phone`, `address`, `status`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
@@ -1358,27 +1358,27 @@ CREATE TABLE IF NOT EXISTS `user_reviews` (
   `is_Food` tinyint(1) NOT NULL,
   `food_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table laravel.user_reviews: ~15 rows (approximately)
 DELETE FROM `user_reviews`;
 /*!40000 ALTER TABLE `user_reviews` DISABLE KEYS */;
 INSERT INTO `user_reviews` (`id`, `rating`, `review`, `customer_id`, `restaurant_id`, `order_id`, `is_reviewed`, `created_at`, `updated_at`, `is_Food`, `food_id`) VALUES
-	(1, 3.5, 'test c', 1, 0, 0, 1, '2021-07-18 16:08:18', '2021-07-18 16:08:18', 1, 1),
-	(2, 3, 'test this is a another. test', 1, 0, 0, 1, '2021-07-18 16:11:24', '2021-07-18 16:11:24', 1, 1),
-	(3, 2.5, 'keep testing', 1, 0, 0, 1, '2021-07-18 16:11:39', '2021-07-18 16:11:39', 1, 1),
-	(4, 3.5, 'tsa', 1, 0, 0, 1, '2021-07-18 17:43:08', '2021-07-18 17:43:08', 1, 1),
-	(5, 3.5, 'tsa', 1, 0, 0, 1, '2021-07-18 17:43:22', '2021-07-18 17:43:22', 1, 1),
-	(6, 1.5, 'dfgdsg', 1, 0, 0, 1, '2021-07-18 17:45:18', '2021-07-18 17:45:18', 1, 1),
-	(7, 1.5, 'dfgdsg', 1, 0, 0, 1, '2021-07-18 17:45:26', '2021-07-18 17:45:26', 1, 1),
-	(8, 2.5, 'gs', 1, 0, 0, 1, '2021-07-18 17:46:07', '2021-07-18 17:46:07', 1, 1),
-	(9, 3.5, 'dddddd', 1, 0, 0, 1, '2021-07-18 17:48:47', '2021-07-18 17:48:47', 1, 1),
-	(10, 2, 'dfdf', 1, 0, 0, 1, '2021-07-18 17:49:51', '2021-07-18 17:49:51', 1, 1),
-	(11, 2.5, 'asdfasdf', 1, 0, 0, 1, '2021-07-18 17:50:08', '2021-07-18 17:50:08', 1, 1),
-	(12, 3, 'dasfasdasdfasdfs', 1, 0, 0, 1, '2021-07-18 17:50:32', '2021-07-18 17:50:32', 1, 1),
-	(13, 2.5, 'asdfasdf', 1, 0, 0, 1, '2021-07-18 17:51:26', '2021-07-18 17:51:26', 1, 1),
-	(14, 1, 'asdfs', 1, 0, 0, 1, '2021-07-18 17:51:46', '2021-07-18 17:51:46', 1, 1),
-	(15, 5, 'asdfsttttttttttttttttttt', 1, 0, 0, 1, '2021-07-18 17:52:01', '2021-07-18 17:52:01', 1, 1);
+	(2, 3, 'test this is a another. test', 1, 1, 0, 1, '2021-07-18 16:11:24', '2021-07-18 16:11:24', 1, 1),
+	(3, 2.5, 'keep testing', 1, 1, 0, 1, '2021-07-18 16:11:39', '2021-07-18 16:11:39', 1, 1),
+	(4, 3.5, 'tsa', 1, 1, 0, 1, '2021-07-18 17:43:08', '2021-07-18 17:43:08', 1, 1),
+	(5, 3.5, 'tsa', 1, 1, 0, 1, '2021-07-18 17:43:22', '2021-07-18 17:43:22', 1, 1),
+	(6, 1.5, 'dfgdsg', 1, 1, 0, 1, '2021-07-18 17:45:18', '2021-07-18 17:45:18', 1, 1),
+	(7, 1.5, 'dfgdsg', 1, 1, 0, 1, '2021-07-18 17:45:26', '2021-07-18 17:45:26', 1, 1),
+	(8, 2.5, 'gs', 1, 1, 0, 1, '2021-07-18 17:46:07', '2021-07-18 17:46:07', 1, 1),
+	(9, 3.5, 'dddddd', 1, 1, 0, 1, '2021-07-18 17:48:47', '2021-07-18 17:48:47', 1, 1),
+	(10, 2, 'dfdf', 1, 1, 0, 1, '2021-07-18 17:49:51', '2021-07-18 17:49:51', 1, 1),
+	(11, 2.5, 'asdfasdf', 1, 1, 0, 1, '2021-07-18 17:50:08', '2021-07-18 17:50:08', 1, 1),
+	(12, 3, 'dasfasdasdfasdfs', 1, 1, 0, 1, '2021-07-18 17:50:32', '2021-07-18 17:50:32', 1, 1),
+	(13, 2.5, 'asdfasdf', 1, 1, 0, 1, '2021-07-18 17:51:26', '2021-07-18 17:51:26', 1, 1),
+	(14, 1, 'asdfs', 1, 1, 0, 1, '2021-08-15 10:25:45', '2021-07-18 17:51:46', 1, 1),
+	(15, 5, 'asdfsttttttttttttttttttt', 1, 1, 0, 1, '2021-08-15 10:25:45', '2021-07-18 17:52:01', 1, 1),
+	(16, 5, 'sadf', 1, 1, 0, 1, '2021-08-25 13:38:27', '2021-08-25 13:38:29', 1, 1);
 /*!40000 ALTER TABLE `user_reviews` ENABLE KEYS */;
 
 -- Dumping structure for table laravel.user_types
