@@ -119,6 +119,6 @@ class UserReviewController extends Controller
      */
     public function destroy($id)
     {
-        $delete = UserReview::findOrFail($id)->delete();
+        UserReview::findOrFail($id)->delete();
     }
 }

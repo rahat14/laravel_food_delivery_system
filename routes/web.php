@@ -11,6 +11,7 @@ use App\Http\Controllers\RestaurantController;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\UserReviewController;
 use App\Models\UserReview;
 
@@ -67,6 +68,10 @@ Route::group(['middleware' => ['auth', 'admin'], 'as' => 'admin.', 'prefix' => '
     // Reviews Routes
     Route::get('/reviews/list', [UserReviewController::class, 'reviewList'])->name('review.list');
     Route::resource('/reviews', UserReviewController::class);
+
+    // Report Route
+    Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
+    Route::post('/reports/search', [ReportController::class, 'reportSearch'])->name('reports.search');
 
 
 
