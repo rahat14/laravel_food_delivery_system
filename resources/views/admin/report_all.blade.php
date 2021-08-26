@@ -135,12 +135,6 @@
     // AJAX CSRF TOKEN *
     $(document).ready(function() {
 
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
     // DataTable
     $('#users-table').DataTable({
         responsive: true,
@@ -149,38 +143,6 @@
             'copy', 'csv', 'excel', 'pdf', 'print'
         ]
     });
-
-    // SweetAlert for DELETE
-    $('body').on('click', '.delete-confirm', function(event){
-        event.preventDefault();
-        const url = $(this).attr('href');
-        swal({
-            title: 'Are you sure?',
-            text: 'This record and it`s details will be permanantly deleted!',
-            icon: 'warning',
-            buttons: ["Cancel", "Yes!"],
-        }).then(function(value) {
-            if (value) {
-                $.ajax({
-                    type: "DELETE",
-                    url: url,
-                    data: "",
-                    success: function (response) {
-                        swal(
-                            {
-                                title: 'Success',
-                                text: 'Item removed!',
-                                icon: 'success',
-                            }
-                        )
-                        .then((result)=>{
-                            location.reload()
-                        })
-                    }
-                });
-            }
-        });
-    })
 
 });
 </script>

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\OrderExport;
 use App\Models\OrderDetail;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
+
 
 
 class ReportController extends Controller
