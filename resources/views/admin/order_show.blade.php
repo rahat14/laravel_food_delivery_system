@@ -9,7 +9,13 @@
         <section class="content">
         <div class="card">
             <div class="card-header">
-                <h3 class="m-0">Order view</h3>
+
+                <h3 class="m-0 no-print">Order view</h3>
+                <h3 class="m-0 d-none only-print">Invoice</h3>
+
+                <div class="d-flex Order no-print">
+                        <a href="" onclick="print()" class="btn-sm btn-info"> <i class="fas fa-print text-white"></i> Print Invoice</a>
+                    </div>
 
             </div>
             <div class="card-body">
@@ -105,7 +111,7 @@
                                 <td>{{ $totalAmount }} <span class="ml-5">৳</span></td>
                             </tr>
 
-                         <tr>
+                         <tr class="no-print">
                             <td colspan="4">Action: </td>
                             <td class="text-center">
                                 <form action="{{ route('admin.orders.update', $order->id) }}" method="POST">

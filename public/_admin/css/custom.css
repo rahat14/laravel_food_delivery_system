@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Alatsi&display=swap');
+
 body {
     font-family: 'Alatsi', sans-serif;
 }
@@ -58,17 +59,25 @@ span.select2.select2-container.select2-container--default {
     padding: 14px !important;
 }
 
-.skin-blue-light .wrapper, .skin-blue-light .main-sidebar, .skin-blue-light .left-side {
+.skin-blue-light .wrapper,
+.skin-blue-light .main-sidebar,
+.skin-blue-light .left-side {
     background-color: #ffffff;
     border-right: 1px solid #eaeaea;
 }
 
-.skin-blue-light .sidebar-menu>li.active>a, .skin-blue-light .sidebar-menu>li.menu-open>a, .skin-blue-light .sidebar-menu>li.active>a i, .skin-blue-light .sidebar-menu>li.menu-open>a i {
+.skin-blue-light .sidebar-menu>li.active>a,
+.skin-blue-light .sidebar-menu>li.menu-open>a,
+.skin-blue-light .sidebar-menu>li.active>a i,
+.skin-blue-light .sidebar-menu>li.menu-open>a i {
     color: #2a93d5;
     background: rgb(247 247 247);
 }
 
-.sidebar-menu>li.active>a, .skin-blue-light .sidebar-menu>li.menu-open>a, .skin-blue-light .sidebar-menu>li.active>a i, .skin-blue-light .sidebar-menu>li.menu-open>a i {
+.sidebar-menu>li.active>a,
+.skin-blue-light .sidebar-menu>li.menu-open>a,
+.skin-blue-light .sidebar-menu>li.active>a i,
+.skin-blue-light .sidebar-menu>li.menu-open>a i {
     background: rgb(247 247 247);
 }
 
@@ -83,9 +92,10 @@ span.select2.select2-container.select2-container--default {
     background: linear-gradient(41deg, rgba(0, 0, 0, 0.5130427170868348) 0%, rgba(255, 255, 255, 0) 100%);
 }
 
-.form-control{
+.form-control {
     padding: 1.25rem;
 }
+
 .custom-button {
     height: 35px;
     width: 35px;
@@ -96,17 +106,19 @@ span.select2.select2-container.select2-container--default {
     border: 2px solid rgb(40, 133, 191);
 }
 
-.action-add{
+.action-add {
     margin: 8px;
 }
-.custom-button i{
+
+.custom-button i {
     font-size: 10px;
 }
 
 .custom-file-uploader {
     position: relative;
-  }
-  .custom-file-uploader input[type=file] {
+}
+
+.custom-file-uploader input[type=file] {
     display: block;
     position: absolute;
     top: 0;
@@ -118,9 +130,9 @@ span.select2.select2-container.select2-container--default {
     height: 100%;
     opacity: 0;
     cursor: default;
-  }
+}
 
-  .select-selected:after {
+.select-selected:after {
     position: absolute;
     content: "";
     top: 14px;
@@ -129,6 +141,18 @@ span.select2.select2-container.select2-container--default {
     height: 0;
     border: 6px solid transparent;
     border-color: #fff transparent transparent transparent;
-  }
+}
 
 
+@media print {
+
+    .no-print,
+    .no-print * {
+        display: none !important;
+    }
+
+    .only-print,
+    .only-print * {
+        display: block !important;
+    }
+}

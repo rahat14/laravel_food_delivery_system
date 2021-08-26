@@ -1,4 +1,4 @@
-<footer class="main-footer">
+<footer class="main-footer no-print">
       <div class="pull-right d-none d-sm-inline-block">
 
       </div>
