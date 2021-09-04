@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AddonController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CouponController;
 use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 
@@ -72,6 +73,10 @@ Route::group(['middleware' => ['auth', 'admin'], 'as' => 'admin.', 'prefix' => '
     // Report Route
     Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
     Route::post('/reports/search', [ReportController::class, 'reportSearch'])->name('reports.search');
+
+    // Users Routes
+    Route::get('/coupon/list', [CouponController::class, 'couponlist'])->name('coupon.list');
+    Route::resource('/coupon', CouponController::class);
 
 
 

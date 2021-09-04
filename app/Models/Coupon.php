@@ -14,5 +14,10 @@ class Coupon extends Model
         return $this->belongsToMany(OrderDetail::class);
     }
 
+    public function restaurant()
+    {
+        return $this->belongsTo(Restaurant::class);
+    }
+
 
 }

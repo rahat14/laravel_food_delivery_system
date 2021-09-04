@@ -83,11 +83,10 @@
             </li>
 
 
-            <li class="treeview">
-                <a href="#">
-                    <i class="fas fa-tags"></i>
-                    <span>Coupons</span>
-
+            <li class="treeview {{ NavActive('coupon' , 2) }}">
+                <a href="{{url('/admin/coupon')}}">
+                    <i class="fas fa-tag"></i>
+                    <span>Coupon</span>
                 </a>
             </li>
 
