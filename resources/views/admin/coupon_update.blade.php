@@ -25,7 +25,7 @@
                         @method('PUT')
                         <div class="form-group">
                             <label for="code">Coupon Code</label>
-                            <input type="text" class="form-control" id="code" value="{{$coupon->code}}" name="code" required>
+                            <input oninput="this.value = this.value.toUpperCase()" type="text" class="form-control" id="code" value="{{$coupon->code}}" name="code" required>
                         </div>
 
                         <div class="form-group">
