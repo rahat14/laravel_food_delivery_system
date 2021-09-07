@@ -110,8 +110,8 @@
                 </a>
             </li>
 
-            <li class="treeview">
-                <a href="#">
+            <li class="treeview {{ NavActive('delivery-zone' , 2) }}">
+                <a href="{{url('/admin/delivery-zone')}}">
                     <i class="fas fa-map-marker-alt"></i>
                     <span>Delivery Zones</span>
 
