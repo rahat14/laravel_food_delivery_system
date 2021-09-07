@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\districts;
+use App\Models\District;
 use Illuminate\Http\Request;
 
 class DistrictsController extends Controller
@@ -41,10 +41,10 @@ class DistrictsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\districts  $districts
+     * @param  \App\Models\District  $District
      * @return \Illuminate\Http\Response
      */
-    public function show(districts $districts)
+    public function show(District $District)
     {
         //
     }
@@ -52,10 +52,10 @@ class DistrictsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\districts  $districts
+     * @param  \App\Models\District  $District
      * @return \Illuminate\Http\Response
      */
-    public function edit(districts $districts)
+    public function edit(District $District)
     {
         //
     }
@@ -64,10 +64,10 @@ class DistrictsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\districts  $districts
+     * @param  \App\Models\District  $District
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, districts $districts)
+    public function update(Request $request, District $District)
     {
         //
     }
@@ -75,10 +75,10 @@ class DistrictsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\districts  $districts
+     * @param  \App\Models\District  $District
      * @return \Illuminate\Http\Response
      */
-    public function destroy(districts $districts)
+    public function destroy(District $District)
     {
         //
     }

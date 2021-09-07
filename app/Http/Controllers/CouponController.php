@@ -129,10 +129,10 @@ class CouponController extends Controller
      */
     public function destroy(Coupon $coupon)
     {
-        Coupon::findOrFail($coupon->id)->delete();
+        $coupon->delete();
     }
 
-    public function couponlist(){
+    public function couponList(){
 
         $coupon = Coupon::select(
             'id',

@@ -13,4 +13,8 @@ class DeliveryZone extends Model
     {
         return $this->belongsToMany(OrderDetail::class);
     }
+
+    public function district(){
+        return $this->belongsTo(District::class);
+    }
 }

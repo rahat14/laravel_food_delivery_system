@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\UserReviewController;
+use App\Http\Controllers\DeliveryZoneController;
 use App\Models\UserReview;
 
 /*
@@ -74,9 +75,13 @@ Route::group(['middleware' => ['auth', 'admin'], 'as' => 'admin.', 'prefix' => '
     Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
     Route::post('/reports/search', [ReportController::class, 'reportSearch'])->name('reports.search');
 
-    // Users Routes
-    Route::get('/coupon/list', [CouponController::class, 'couponlist'])->name('coupon.list');
+    // Coupon Routes
+    Route::get('/coupon/list', [CouponController::class, 'couponList'])->name('coupon.list');
     Route::resource('/coupon', CouponController::class);
+
+    // Delevery Zone Routes
+    Route::get('/delevery-zone/list', [DeliveryZoneController::class, 'deliveryzoneList'])->name('delivery-zone.list');
+    Route::resource('/delivery-zone', DeliveryZoneController::class);
 
 
 
