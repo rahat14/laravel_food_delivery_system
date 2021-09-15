@@ -93,8 +93,8 @@
 
 
 
-            <li class="treeview">
-                <a href="#">
+            <li class="treeview {{ NavActive('notification' , 2) }}">
+                <a href="{{url('/admin/notification')}}">
                     <i class="fas fa-comment-alt"></i>
                     <span>Notification</span>
 

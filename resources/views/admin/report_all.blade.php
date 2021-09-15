@@ -139,6 +139,7 @@
     $('#users-table').DataTable({
         responsive: true,
         dom: 'Bfrtip',
+        paginate: false,
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
         ]

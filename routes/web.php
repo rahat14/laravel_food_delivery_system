@@ -16,6 +16,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\UserReviewController;
 use App\Http\Controllers\DeliveryZoneController;
 use App\Models\UserReview;
+use App\Http\Controllers\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,6 +83,13 @@ Route::group(['middleware' => ['auth', 'admin'], 'as' => 'admin.', 'prefix' => '
     // Delevery Zone Routes
     Route::get('/delevery-zone/list', [DeliveryZoneController::class, 'deliveryzoneList'])->name('delivery-zone.list');
     Route::resource('/delivery-zone', DeliveryZoneController::class);
+
+    // Notification Routes
+    Route::get('/notification', [NotificationController::class, 'index'])->name('notification.index');
+    Route::get('/notification/list', [NotificationController::class, 'notificationList'])->name('notification.list');
+    Route::post('/notification/send', [NotificationController::class, 'notificationSend'])->name('notification.send');
+    Route::delete('/notification/{id}', [NotificationController::class, 'destroy'])->name('notification.destory');
+
 
 
 
