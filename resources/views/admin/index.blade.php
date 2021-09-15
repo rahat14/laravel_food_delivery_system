@@ -14,156 +14,182 @@
 
 
                 <div class="col-xl-3 col-md-6 col-12 ">
-                    <div class="box box-body bg-primary">
+                    <div class="box box-body bg-gradient-danger">
                         <div class="flexbox">
-
-                            <span class="font-size-40 font-weight-200">0</span>
+                            <span class="font-size-40 font-weight-200">
+                                {{App\Models\User::count()}}
+                            </span>
                         </div>
-                        <div class="text-right">Ctegories</div>
-                    </div>
-                </div>
-                <!-- /.col -->
-
-
-
-
-                <div class="col-xl-3 col-md-6 col-12 ">
-                    <div class="box box-body bg-danger">
-                        <div class="flexbox">
-
-                            <span class="font-size-40 font-weight-200">0</span>
-                        </div>
-                        <div class="text-right">Items</div>
-                    </div>
-                </div>
-                <!-- /.col -->
-
-
-                <div class="col-xl-3 col-md-6 col-12">
-                    <div class="box box-body bg-warning">
-                        <div class="flexbox">
-
-                            <span class="font-size-40 font-weight-200">0</span>
-                        </div>
-                        <div class="text-right">Addons</div>
-                    </div>
-                </div>
-                <!-- /.col -->
-
-
-                <div class="col-xl-3 col-md-6 col-12 ">
-                    <div class="box box-body bg-success">
-                        <div class="flexbox">
-
-                            <span class="font-size-40 font-weight-200">0</span>
-                        </div>
-                        <div class="text-right">Addons</div>
-                    </div>
-                </div>
-                <!-- /.col -->
-
-
-
-
-                <div class="col-xl-3 col-md-6 col-12">
-                    <div class="box box-body bg-info">
-                        <div class="flexbox">
-
-                            <span class="font-size-40 font-weight-200">0</span>
+                        <div class="wetget-icon">
+                            <i class="fas fa-user"></i>
                         </div>
                         <div class="text-right">Users</div>
+                        <img class="w-get-bg" src="{{ asset('_admin/images/circle.svg') }}" alt="fdg">
                     </div>
                 </div>
                 <!-- /.col -->
 
 
-                <!-- /.col -->
+
+
                 <div class="col-xl-3 col-md-6 col-12 ">
-                    <div class="box box-body bg-warning">
+                    <div class="box box-body bg-gradient-info">
                         <div class="flexbox">
-
-                            <span class="font-size-40 font-weight-200">0</span>
+                            <span class="font-size-40 font-weight-200">
+                                {{App\Models\Restaurant::count()}}
+                            </span>
                         </div>
-                        <div class="text-right">Orders</div>
+                        <div class="wetget-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="text-right">Restaurants</div>
+                        <img class="w-get-bg" src="{{ asset('_admin/images/circle.svg') }}" alt="fdg">
                     </div>
                 </div>
                 <!-- /.col -->
 
 
-                <div class="col-xl-3 col-md-6 col-12">
-                    <div class="box box-body bg-success">
-                        <div class="flexbox">
-
-                            <span class="font-size-40 font-weight-200">0</span>
-                        </div>
-                        <div class="text-right">Reviews</div>
-                    </div>
-                </div>
-                <!-- /.col -->
-
-
-                <div class="col-xl-3 col-md-6 col-12">
-                    <div class="box box-body bg-info">
-                        <div class="flexbox">
-
-                            <span class="font-size-40 font-weight-200">0</span>
-                        </div>
-                        <div class="text-right">Promocodes</div>
-                    </div>
-                </div>
-                <!-- /.col -->
-
-
-                <!-- /.col -->
                 <div class="col-xl-3 col-md-6 col-12 ">
-                    <div class="box box-body bg-success">
+                    <div class="box box-body bg-gradient-warning">
                         <div class="flexbox">
-
                             <span class="font-size-40 font-weight-200">0</span>
                         </div>
-                        <div class="text-right">Earnings</div>
+                        <div class="wetget-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="text-right">Ctegories</div>
+                        <img class="w-get-bg" src="{{ asset('_admin/images/circle.svg') }}" alt="fdg">
                     </div>
                 </div>
                 <!-- /.col -->
 
 
-                  <!-- /.col -->
-                  <div class="col-xl-3 col-md-6 col-12 ">
-                    <div class="box box-body bg-danger">
+                <div class="col-xl-3 col-md-6 col-12 ">
+                    <div class="box box-body bg-gradient-success">
                         <div class="flexbox">
-
                             <span class="font-size-40 font-weight-200">0</span>
                         </div>
-                        <div class="text-right">Invoices</div>
+                        <div class="wetget-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="text-right">Ctegories</div>
+                        <img class="w-get-bg" src="{{ asset('_admin/images/circle.svg') }}" alt="fdg">
                     </div>
                 </div>
-                <!-- /.col -->
 
 
-                  <!-- /.col -->
-                  <div class="col-xl-3 col-md-6 col-12 ">
-                    <div class="box box-body bg-warning">
+
+
+                <div class="col-xl-3 col-md-6 col-12 ">
+                    <div class="box box-body bg-gradient-primary">
                         <div class="flexbox">
-
                             <span class="font-size-40 font-weight-200">0</span>
                         </div>
-                        <div class="text-right">Invoices</div>
+                        <div class="wetget-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="text-right">Ctegories</div>
+                        <img class="w-get-bg" src="{{ asset('_admin/images/circle.svg') }}" alt="fdg">
                     </div>
                 </div>
-                <!-- /.col -->
 
 
-                 <!-- /.col -->
+                <div class="col-xl-3 col-md-6 col-12 ">
+                    <div class="box box-body bg-gradient-warning">
+                        <div class="flexbox">
+                            <span class="font-size-40 font-weight-200">0</span>
+                        </div>
+                        <div class="wetget-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="text-right">Ctegories</div>
+                        <img class="w-get-bg" src="{{ asset('_admin/images/circle.svg') }}" alt="fdg">
+                    </div>
+                </div>
+
+
+                <div class="col-xl-3 col-md-6 col-12 ">
+                    <div class="box box-body bg-gradient-success">
+                        <div class="flexbox">
+                            <span class="font-size-40 font-weight-200">0</span>
+                        </div>
+                        <div class="wetget-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="text-right">Ctegories</div>
+                        <img class="w-get-bg" src="{{ asset('_admin/images/circle.svg') }}" alt="fdg">
+                    </div>
+                </div>
+
+
+                <div class="col-xl-3 col-md-6 col-12 ">
+                    <div class="box box-body bg-gradient-primary">
+                        <div class="flexbox">
+                            <span class="font-size-40 font-weight-200">0</span>
+                        </div>
+                        <div class="wetget-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="text-right">Ctegories</div>
+                        <img class="w-get-bg" src="{{ asset('_admin/images/circle.svg') }}" alt="fdg">
+                    </div>
+                </div>
+
+
                  <div class="col-xl-3 col-md-6 col-12 ">
-                    <div class="box box-body bg-primary">
+                    <div class="box box-body bg-gradient-success">
                         <div class="flexbox">
-
                             <span class="font-size-40 font-weight-200">0</span>
                         </div>
-                        <div class="text-right">Invoices</div>
+                        <div class="wetget-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="text-right">Ctegories</div>
+                        <img class="w-get-bg" src="{{ asset('_admin/images/circle.svg') }}" alt="fdg">
                     </div>
                 </div>
-                <!-- /.col -->
+
+
+                <div class="col-xl-3 col-md-6 col-12 ">
+                    <div class="box box-body bg-gradient-info">
+                        <div class="flexbox">
+                            <span class="font-size-40 font-weight-200">0</span>
+                        </div>
+                        <div class="wetget-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="text-right">Ctegories</div>
+                        <img class="w-get-bg" src="{{ asset('_admin/images/circle.svg') }}" alt="fdg">
+                    </div>
+                </div>
+
+
+                <div class="col-xl-3 col-md-6 col-12 ">
+                    <div class="box box-body bg-gradient-warning">
+                        <div class="flexbox">
+                            <span class="font-size-40 font-weight-200">0</span>
+                        </div>
+                        <div class="wetget-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="text-right">Ctegories</div>
+                        <img class="w-get-bg" src="{{ asset('_admin/images/circle.svg') }}" alt="fdg">
+                    </div>
+                </div>
+
+
+                <div class="col-xl-3 col-md-6 col-12 ">
+                    <div class="box box-body bg-gradient-primary">
+                        <div class="flexbox">
+                            <span class="font-size-40 font-weight-200">0</span>
+                        </div>
+                        <div class="wetget-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="text-right">Ctegories</div>
+                        <img class="w-get-bg" src="{{ asset('_admin/images/circle.svg') }}" alt="fdg">
+                    </div>
+                </div>
 
             </div>
 
