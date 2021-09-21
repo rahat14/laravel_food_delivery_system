@@ -476,3 +476,13 @@ color: #fff;
     right: 25px;
     bottom: 25px;
 }
+
+table.dataTable.no-footer {
+    border-bottom: 1px solid rgba(17, 17, 17, 0.179);
+}
+
+table.dataTable thead th, table.dataTable thead td {
+
+
+    border-bottom: 1px solid rgba(17, 17, 17, 0.179);
+}
