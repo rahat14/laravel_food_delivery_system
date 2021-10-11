@@ -87,6 +87,7 @@ class DeliveryZoneController extends Controller
      */
     public function update(Request $request, DeliveryZone $delivery_zone)
     {
+
         $zone = DeliveryZone::findOrFail($delivery_zone->id);
         $zone->name        = $request->name;
         $zone->price       = $request->price;
