@@ -17,6 +17,7 @@ use App\Http\Controllers\UserReviewController;
 use App\Http\Controllers\DeliveryZoneController;
 use App\Models\UserReview;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\DistrictsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,7 +91,9 @@ Route::group(['middleware' => ['auth', 'admin'], 'as' => 'admin.', 'prefix' => '
     Route::post('/notification/send', [NotificationController::class, 'notificationSend'])->name('notification.send');
     Route::delete('/notification/{id}', [NotificationController::class, 'destroy'])->name('notification.destory');
 
-
+    // Working Area
+    Route::get('/working-area/list', [DistrictsController::class, 'workingareaList'])->name('workingarea.list');
+    Route::resource('/working-area', DistrictsController::class);
 
 
 });

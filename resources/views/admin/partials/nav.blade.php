@@ -102,13 +102,13 @@
             </li>
 
 
-            <li class="treeview">
-                <a href="#">
+            <li class="treeview {{ NavActive('working-area' , 2) }}">
+                <a href="{{url('/admin/working-area')}}">
                     <i class="fas fa-map-marked"></i>
                     <span>Working Areas</span>
-
                 </a>
             </li>
+
 
             <li class="treeview {{ NavActive('delivery-zone' , 2) }}">
                 <a href="{{url('/admin/delivery-zone')}}">
