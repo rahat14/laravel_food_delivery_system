@@ -106,6 +106,7 @@ class DeliveryZoneController extends Controller
      * @param  \App\Models\DeliveryZone  $delivery_zone
      * @return \Illuminate\Http\Response
      */
+
     public function destroy(DeliveryZone $delivery_zone)
     {
         $delivery_zone->delete();

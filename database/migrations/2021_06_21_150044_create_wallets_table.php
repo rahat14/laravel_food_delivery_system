@@ -16,6 +16,8 @@ class CreateWalletsTable extends Migration
         Schema::create('wallets', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('customer_id');
+            $table->text('comment');
+            $table->string('transaction_type');
             $table->integer('point');
             $table->timestamps();
         });

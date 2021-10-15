@@ -79,10 +79,10 @@ class DistrictsController extends Controller
      * @param  \App\Models\District  $district
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, District $district)
+    public function update(Request $request, $id)
     {
 
-        $zone = District::findOrFail($request->segment('3'));
+        $zone = District::findOrFail($id);
         $zone->name        = $request->name;
         $zone->bn_name       = 0;
         $zone->division_id       = 0;

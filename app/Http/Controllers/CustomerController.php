@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use App\Models\OrderDetail;
+use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Yajra\DataTables\DataTables;
@@ -32,6 +33,13 @@ class CustomerController extends Controller
         ->orderBy('id','desc');
 
         return DataTables::of($customer)
+
+        ->addColumn('wallet', function ($customer) {
+
+           return Wallet($customer->id).' ৳';
+        })
+
+
             ->addColumn('image', function ($customer) {
                 $bannerUrl = asset("uploads/user_images/$customer->image");
                 return'

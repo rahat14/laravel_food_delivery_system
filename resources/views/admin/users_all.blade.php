@@ -19,6 +19,7 @@
                                 <th>Image</th>
                                 <th>Name</th>
                                 <th>Phone</th>
+                                <th>Wallet</th>
                                 <th>Created at</th>
                                 <th>Action</th>
                             </tr>
@@ -59,6 +60,7 @@
             { data: 'image', name: 'image' },
             { data: 'fullname', name: 'fullname' },
             { data: 'phone', name: 'phone' },
+            { data: 'wallet', name: 'wallet' },
             { data: 'created_at', name: 'created_at' },
             { data: 'action', name: 'action', orderable: false, searchable: false }
         ],
