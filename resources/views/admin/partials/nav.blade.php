@@ -68,6 +68,13 @@
                 </a>
             </li>
 
+            <li class="treeview {{ NavActive('wallet' , 2) }}">
+                <a href="{{url('/admin/wallet')}}">
+                    <i class="fas fa-wallet"></i>
+                    <span>Wallet</span>
+                </a>
+            </li>
+
             <li class="treeview {{ NavActive('reviews' , 2) }}">
                 <a href="{{url('/admin/reviews')}}">
                     <i class="fas fa-star"></i>

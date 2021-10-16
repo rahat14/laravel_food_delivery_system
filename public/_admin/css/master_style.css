@@ -10949,47 +10949,7 @@ button.btn.dropdown-toggle::after, .wysihtml5-toolbar .btn.dropdown-toggle::afte
 .right-float {
     float: right;
 }
-/*pagination*/
-.pagination>li>a {
-    background-color: #fff;
-    color: #455a64;
-    border-color: #fff;
-}
-.pagination.pagination-flat>li>a {
-    border-radius: 0;
-}
-.pagination li a.current, .pagination li a.current:hover {
-    color: #fff;
-    border: 1px solid #145388;
-    background-color: #145388;
-}
-.pagination li a {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    display: inline-block;
-    min-width: 25px;
-    padding: .4em 1em;
-    margin: 0 3px;
-    text-decoration: none;
-    cursor: pointer;
-    color: #67757c;
-    border: 1px solid transparent;
-    border-radius: 2px;
-}
-.pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover {
-    color: #67757c;
-    background-color: #fff;
-    border-color: #fff;
-    cursor: not-allowed;
-}
-.pagination {
-    margin-bottom: 10px;
-}
-.pagination li a:hover {
-    color: #fff;
-    border: 1px solid #145388;
-    background-color: #145388 !important;
-}
+
 .products-list {
     list-style: none;
     margin: 0;

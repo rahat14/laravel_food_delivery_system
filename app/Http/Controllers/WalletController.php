@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class WalletController extends Controller
 {
@@ -12,9 +14,49 @@ class WalletController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    public function walletList()
+    {
+        $customer = Customer::select(
+            'id',
+            'fullname',
+            'phone',
+            'image',
+            'created_at'
+        )
+        ->orderBy('id','desc');
+
+        return DataTables::of($customer)
+
+        ->addColumn('wallet', function ($customer) {
+
+           return Wallet($customer->id).' ৳';
+        })
+
+
+            ->addColumn('image', function ($customer) {
+                $bannerUrl = asset("uploads/user_images/$customer->image");
+                return'
+                <img src="'.$bannerUrl.'" border="0" width="100" class="img-rounded" align="center" />
+                ';
+            })
+            ->addColumn('action', function ($customer) {
+                return '
+                    <a href="/admin/wallet/'.$customer->id.'" class=" btn btn-xs btn-wrning"><i class="glyphicon glyphicon-eye"></i> View</a>
+                ';
+            })
+            ->rawColumns(['image','action'])
+            ->make(true);
+    }
+
+    public function addCredit(Request $request){
+        return view('admin.wallet_create' , compact('request'));
+    }
+
     public function index()
     {
-        //
+        return view('admin.wallet_all');
     }
 
     /**
@@ -35,7 +77,17 @@ class WalletController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $wallet = new Wallet();
+        $wallet->customer_id = $request->customer_id;
+        $wallet->point = $request->point;
+        $wallet->transaction_type = $request->transaction_type;
+        $wallet->comment = $request->comment;
+        $wallet->save();
+
+
+        return redirect()->route('admin.wallet.show', ['wallet' => $request->customer_id]);
+
+
     }
 
     /**
@@ -44,9 +96,11 @@ class WalletController extends Controller
      * @param  \App\Models\Wallet  $wallet
      * @return \Illuminate\Http\Response
      */
-    public function show(Wallet $wallet)
+    public function show($id)
     {
-        //
+        $customer = Customer::findOrFail($id);
+        $wallet = Wallet::where('customer_id', $id)->paginate('10');
+        return view('admin.wallet_show', compact('wallet','customer'));
     }
 
     /**

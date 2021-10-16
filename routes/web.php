@@ -18,6 +18,7 @@ use App\Http\Controllers\DeliveryZoneController;
 use App\Models\UserReview;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\DistrictsController;
+use App\Http\Controllers\WalletController;
 
 /*
 |--------------------------------------------------------------------------
@@ -94,6 +95,10 @@ Route::group(['middleware' => ['auth', 'admin'], 'as' => 'admin.', 'prefix' => '
     // Working Area
     Route::get('/working-area/list', [DistrictsController::class, 'workingareaList'])->name('workingarea.list');
     Route::resource('/working-area', DistrictsController::class);
+
+    Route::get('/wallet/list', [WalletController::class, 'walletList'])->name('wallet.list');
+    Route::get('/wallet/addamount/{id}', [WalletController::class, 'addCredit'])->name('wallet.addamount');
+    Route::resource('/wallet', WalletController::class);
 
 
 });
