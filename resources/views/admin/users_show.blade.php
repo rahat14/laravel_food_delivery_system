@@ -33,7 +33,6 @@
                         <div class="info-box-content">
                           <span class="info-box-text">Wallet</span>
                           <span class="info-box-number">{{ Wallet($customer->id) }} ৳</span>
-
                           <div class="progress">
                             <div class="progress-bar" style="width: 100%"></div>
                           </div>
