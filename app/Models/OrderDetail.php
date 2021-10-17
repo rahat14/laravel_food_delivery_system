@@ -69,6 +69,9 @@ class OrderDetail extends Model
         'payment_method',
         'trx_id',
         'order_list',
+        'lat',
+        'lon',
+        'order_note'
     ];
 
 }
