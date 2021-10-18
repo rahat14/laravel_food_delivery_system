@@ -39,7 +39,7 @@ class APIController extends Controller
         $list = OrderStatus::query()
             ->where("order_id", $order_id)
             ->with("orderstatustype")
-            ->orderBy( "id", "asc")
+            ->orderBy("id", "asc")
             ->get();
 
         return response()->json(
@@ -562,6 +562,7 @@ class APIController extends Controller
         $zone_id = $req->zone_id;
         $address_type = $req->address_type;
         $address = $req->address;
+        
 
         $addressModel = new UserAddress();
 
@@ -569,6 +570,9 @@ class APIController extends Controller
         $addressModel->zone_id = (int) $zone_id;
         $addressModel->address_type = $address_type;
         $addressModel->address = $address;
+
+        $addressModel->name = $req->name;
+        $addressModel->phone = $req->phone;
 
         $addressModel->division_id = 0;
         $addressModel->district_id = 0;
@@ -779,37 +783,59 @@ class APIController extends Controller
     public function AdjustBalance(Request $req)
     {
         $type = $req->type;
+        $comment = $req->comment;
         $amt = (Int) $req->amount;
         $user_id = $req->user_id;
 
+        $walletModel = Wallet();
+        $walletModel->comment = $comment;
+        $walletModel->customer_id = $user_id;
+        $walletModel->point = $amt;
+
         if ($type == "credit") {
             // using his balance
+            //TODO neeed to check if the wallet balance is available or not
 
-            $usersWallet = Wallet::query()
-                ->where("customer_id", $user_id)
-                ->decrement('point', $amt);
+            $wallet_balance = (Int) Wallet($user_id);
 
-            $Wallet = Wallet::query()
-                ->where("customer_id", $user_id)
-                ->limit(1)
-                ->get();
+            if ($wallet_balance >= $amt) {
 
-            return response()->json($Wallet, 200);
+                // add the transaction in backend
+                $wallerModel->transaction_type = "-";
+                $wallerModel->save();
+
+                return response()->json([
+                    'error' => false ,
+                    'msg' => "Balance Successfully Deducted!!",
+                    'data' => null,
+                ], 200);
+
+            } else {
+
+                return response()->json([
+                    'error' => true,
+                    'msg' => "Error",
+                    'data' => null,
+                ], 200);
+
+            }
+
+           
 
         } else if ($type == "debit") {
             //add money to balance
-            $usersWallet = Wallet::query()
-                ->where("customer_id", $user_id)
-                ->increment('point', $amt);
 
-            $Wallet = Wallet::query()
-                ->where("customer_id", $user_id)
-                ->limit(1)
-                ->get();
+            $wallerModel->transaction_type = "+";
+            $wallerModel->save();
 
-            return response()->json($Wallet, 200);
+             return response()->json([
+                'error' => false,
+                'msg' => "Balance Successfully Added!!",
+                'data' => null,
+            ], 200);
 
         }
 
     }
+
 }
