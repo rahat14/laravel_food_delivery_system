@@ -54,6 +54,11 @@ class OrderDetail extends Model
         return $this->hasMany(OrderItem::class, 'order_id', 'id');
     }
 
+    public function orderPaymentMethod()
+    {
+        return $this->hasOne(PaymentMethod::class, 'id', 'payment_method');
+    }
+
 
     protected $fillable = [
         'id',

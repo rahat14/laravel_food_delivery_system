@@ -14,7 +14,8 @@
                 <h3 class="m-0 d-none only-print">Invoice</h3>
 
                 <div class="d-flex Order no-print">
-                        <a href="" onclick="print()" class="btn-sm btn-info"> <i class="fas fa-print text-white"></i> Print Invoice</a>
+
+                        <a href="" onclick="print()" class="btn-sm btn-info"> <i class="fas fa-print text-white"></i> Print Invoice </a>
                     </div>
 
             </div>
@@ -36,8 +37,15 @@
                       </tr>
 
                       <tr>
-                        <th width='25%'><h5 class="m-0">Customer Address</h5></th>
-                        <td>{{ $order->useraddress->address }}</td>
+                        <th width='25%'><h5 class="m-0">Customer Location</h5></th>
+                        <td><a href="{{'https://www.google.com/maps/search/?api=1&query='.$order->lat.','.$order->lon}}"
+                            onclick="window.open('{{'https://www.google.com/maps/search/?api=1&query='.$order->lat.','.$order->lon}}','popup','width=800,height=600'); return false;"
+                             class="btn-sm btn-info  mr-4 no-print"> <i class="fas fa-map"></i> Google Map</a> {{ $order->useraddress->address }}  </td>
+                      </tr>
+
+                      <tr>
+                        <th width='25%'><h5 class="m-0">Payment Method</h5></th>
+                        <td>{{ $order->orderPaymentMethod->payment_method }}</td>
                       </tr>
 
                     </tbody>
