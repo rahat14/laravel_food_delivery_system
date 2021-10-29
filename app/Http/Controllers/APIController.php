@@ -22,7 +22,7 @@ use App\Models\Subcategory;
 use App\Models\User;
 use App\Models\UserAddress;
 use App\Models\UserReview;
-use App\MOdels\Wallet;
+use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -787,22 +787,20 @@ class APIController extends Controller
         $amt = (Int) $req->amount;
         $user_id = $req->user_id;
 
-        $walletModel = Wallet();
+        $walletModel = new Wallet();
         $walletModel->comment = $comment;
         $walletModel->customer_id = $user_id;
         $walletModel->point = $amt;
 
         if ($type == "credit") {
             // using his balance
-            //TODO neeed to check if the wallet balance is available or not
-
             $wallet_balance = (Int) Wallet($user_id);
 
             if ($wallet_balance >= $amt) {
 
                 // add the transaction in backend
-                $wallerModel->transaction_type = "-";
-                $wallerModel->save();
+                $walletModel->transaction_type = "-";
+                $walletModel->save();
 
                 return response()->json([
                     'error' => false ,
@@ -814,7 +812,7 @@ class APIController extends Controller
 
                 return response()->json([
                     'error' => true,
-                    'msg' => "Error",
+                    'msg' => "Error : You Don't Have Enough Balance In Your Wallet",
                     'data' => null,
                 ], 200);
 
@@ -825,8 +823,8 @@ class APIController extends Controller
         } else if ($type == "debit") {
             //add money to balance
 
-            $wallerModel->transaction_type = "+";
-            $wallerModel->save();
+            $walletModel->transaction_type = "+";
+            $walletModel->save();
 
              return response()->json([
                 'error' => false,
