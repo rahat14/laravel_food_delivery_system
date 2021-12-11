@@ -417,6 +417,12 @@ class APIController extends Controller
             $user->user_type_id = 3;
             // $user->address = $address;
             $user->password = Hash::make($password);
+
+            $user->name = str_replace('%20', ' ', $user_name);
+            $user->email = str_replace('%20', ' ', $user_name);
+
+
+
             $user->save();
 
             if ($ref_code != 0) {
